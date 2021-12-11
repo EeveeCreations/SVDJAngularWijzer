@@ -2,3 +2,4 @@
   *ngFor="let result of results"
   [result-item]="result">
 </app-result-list-item>
+<div *ngIf="results.length === 0">No results to show</div>
