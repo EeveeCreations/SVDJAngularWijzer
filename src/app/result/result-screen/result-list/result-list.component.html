@@ -2,4 +2,7 @@
   *ngFor="let result of results"
   [result-item]="result">
 </app-result-list-item>
-<div *ngIf="results.length === 0">No results to show</div>
+<div *ngIf="results.length === 0">Geen passend resultaat, dit betekent niet dat je je niet kan aanmelden voor een
+  regeling.
+  Of kijk op <a href="https://www.nvj.nl/">deze (dummy link)</a> andere website waar je mogelijk ook terecht kan.
+</div>
