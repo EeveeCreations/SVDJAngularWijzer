@@ -8,12 +8,12 @@ import {Question} from "../shared/model/question.model";
   styleUrls: ['./question-list.component.css']
 })
 export class QuestionListComponent implements OnInit {
-private questions:Question[]
+  private questions:Question[]
   constructor(private service: ApiService) {
   }
 
   ngOnInit(): void {
- this.service.getQuestionFromApi().subscribe((data: Question[])=>{
+ this.service.getQuestionFromApi("question/all").subscribe((data: Question[])=>{
    this.setQuestions(data)
    })
   }
@@ -22,4 +22,7 @@ private questions:Question[]
     this.questions = value;
   }
 
+  get getQuestions(): Question[] {
+    return this.questions;
+  }
 }

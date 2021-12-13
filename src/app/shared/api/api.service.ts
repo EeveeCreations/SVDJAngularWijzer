@@ -8,8 +8,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) {
   }
-  
-  getQuestionFromApi() {
-  return this.http.get("https://localhost:8443/question/all")
+
+  getQuestionFromApi(endpoint:string) {
+  return this.http.get("https://localhost:8443/"+endpoint)
   }
 }
