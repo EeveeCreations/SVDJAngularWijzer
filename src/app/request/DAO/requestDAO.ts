@@ -1,74 +1,100 @@
+import {SafeUrl} from "@angular/platform-browser";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {Request} from "../Request.model";
+// import {errorContext} from "rxjs/dist/types/internal/util/errorContext";
+
 export class RequestDAO {
 
+
   private static requestDao;
+  private con: SafeUrl;
+  private url: string;
 
   static getInstance(): RequestDAO {
     if (this.requestDao == null) {
-      this.requestDao = new RequestDAO();
+      // this.requestDao = new RequestDAO(new HttpCli));
     }
     return this.requestDao;
   }
 
+  constructor(private http: HttpClient) {
+  }
+
   /**
-   * Sends request in diffrent Methods
+   * Sends request in different Methods
    * @return requestAnswer
    * @throws IOException
    * @author Eefje | AntiEevee
    */
-  sendRequest(readyRequest: Request, className: string, duty: string, specific: string) {
-    let newRequest: string = null;
-    this.setconectionSpecifics(className, duty, specific);
-    // if (!duty === "GET") {
-    //   this.formRequest(readyRequest, className);
-    // }
-    newRequest = this.readRequest();
+  sendRequest(readyRequest: Request, className: string): any[] {
+    let newRequest: any[] = null;
+    this.setConnectionSpecifics(className, readyRequest.specific);
+    newRequest = this.readRequest(readyRequest, className);
 
     return newRequest;
   }
 
-  private readRequest(): string {
-    let content: string = "";
-    // InputStream inputStream = con.getInputStream();
-    // scan: RedableStreamDefaultController = new Scanner(inputStream);
-    // if (con.getResponseCode() == 200) {
-    //
-    //   while (scan.hasNext()) {
-    //     content.append(scan.next());
-    //   }
-    //
-    // }
-    // inputStream.close();
-    // return content.toString();
-    return "";
+  private readRequest(readyRequest: Request, className: string): any[] {
+    let content: any[];
+    if (readyRequest.givenVariables !== null) {
+      content = this.addOnToRequest(readyRequest, className)
+    }
+    this.http.request(readyRequest.duty, this.url,{
+      headers: this.giveHeadingToRequest(readyRequest)})
+      .subscribe(((response: any[]) => {
+        content = response;
+      }));
+    return content;
+  }
+
+
+  private giveHeadingToRequest(readyRequest: Request): HttpHeaders {
+    let headerOfRequest: HttpHeaders = new HttpHeaders();
+    headerOfRequest.set("userNumber", readyRequest.userNr.toString());
+    return headerOfRequest
+
   }
 
   /**
-   * sets the request ready
-   * @
+   * When a request needs  parameters that isnt the header  fo methods other than GET  this function will give those parameters.
+   * @param readyRequest
+   * @param className
+   * @param headerOfRequest
+   * @private
    */
-  private formRequest(jsonRequest: Request, className: string): void {
-    let parameters: Map<string, string>;
-    // parameters.put(className.toLowerCase(), jsonRequest.to(:string));
-    // con.setDoOutput(true);
-    // DataOutputStream out = null;
-    // out = new DataOutputStream(con.getOutputStream());
-    //
-    // for(Object item: jsonRequest.getGivenVariables()){
-    //   out.writeBytes(item.to(:string));
-    //   System.out.println(item.to(:string));
-    //
-    // out.flush();
-    // out.close();
+  private addOnToRequest(readyRequest: Request, className: string): any[] {
+    let content: any[];
+    let parameters: HttpParams = this.formRequest(readyRequest, className)
+    this.http.request(readyRequest.duty, this.url, {
+      headers: this.giveHeadingToRequest(readyRequest),
+      params: parameters
+    })
+      .subscribe((response: any[]) => {
+        content = response;
+      }, (error) => {
+        // throw errorContext(
+          alert(JSON.stringify(error));
+      });
+
+    return content;
+  }
+
+  /**
+   * Makes parameters for the REquest to send when needed
+   */
+  private formRequest(jsonRequest: Request, className: string): HttpParams {
+    let parameters: HttpParams = new HttpParams();
+    for (let aModel of jsonRequest.givenVariables) {
+      parameters.append(className.toLowerCase(), aModel);
+    }
+    return parameters;
 
   }
 
-  private setconectionSpecifics(className: string, duty: string, specific: string): void {
-    let url: URL = new URL("http://localhost:8080/" + className.toLowerCase());
-    if (!(specific === "")) {
-      url = new URL(url.toString() +"/" + specific);
+  private setConnectionSpecifics(className: string, specific: string): void {
+    this.url = ("http://localhost:8080/" + className.toLowerCase());
+    if (specific !== "") {
+      this.url = (this.url + "/" + specific);
     }
-    // con = (HttpURLConnection) url.openConnection();
-    // con.setRequestProperty("content-type", "application/json; charset=utf8");
-    // con.setRequestMethod(duty);
   }
 }

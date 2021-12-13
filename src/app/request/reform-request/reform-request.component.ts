@@ -1,8 +1,8 @@
 import {JsonArray, JsonObject} from '@angular/compiler-cli/ngcc/src/packages/entry_point';
 import {Component, OnInit} from '@angular/core';
 import {Request} from "../Request.model";
-import {EncryptService} from "../../Services/EncryptService";
-import {DecryptService} from "../../Services/Decrypt.service";
+import {EncryptService} from "../../services/EncryptService";
+import {DecryptService} from "../../services/Decrypt.service";
 import {RequestDAO} from "../DAO/requestDAO";
 
 @Component({
@@ -25,21 +25,21 @@ export class ReformRequestComponent implements OnInit {
    * @param oldRequest
    * @return
    */
-  public RevertToJsonElement(request: string, oldRequest: Request): JsonArray {
+  public RevertToJsonElement(request: any[], oldRequest: Request): any[] {
     if ((oldRequest.duty === "PUT") || ((oldRequest.duty === "GET") && !(oldRequest.specific === "all"))){
-      let item: JsonObject = JSON.parse(request);
-      let jsArray: JsonArray= [];
-      jsArray.push(item);
-      return jsArray;
+      // let item: JsonObject = JSON.parse(request[0]);
+      // let jsArray: JsonArray= [];
+      // jsArray.push(item);
+      // return jsArray;
     }
-    return JSON.parse(request);
+    return request;
 
   }
 
 
   reformToSendRequest(readyToEncryptRequest: Request, className: string) {
     //        encryptedJsonRequest:JsonObject = encryptTheRequest(readyToEncryptRequest);
-    let encryptedJsonAnswer: string =RequestDAO.getInstance().sendRequest(readyToEncryptRequest, className, readyToEncryptRequest.duty, readyToEncryptRequest.specific);
+    let encryptedJsonAnswer: any[] = RequestDAO.getInstance().sendRequest(readyToEncryptRequest, className);
     return this.RevertToJsonElement(encryptedJsonAnswer, readyToEncryptRequest);
   }
 

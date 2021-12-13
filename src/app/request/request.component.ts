@@ -6,7 +6,7 @@ import {Request} from "./Request.model";
 import {Grant} from "./models/Grant.model";
 import {ReformRequestComponent} from "./reform-request/reform-request.component";
 import {JsonArray} from "@angular/compiler-cli/ngcc/src/packages/entry_point";
-import {DeconstructionService} from "../Services/DeconstructionService";
+import {DeconstructionService} from "../services/DeconstructionService";
 
 @Component({
   selector: 'app-request',
@@ -28,16 +28,16 @@ export class RequestComponent implements OnInit {
   }
 
   private getAnswerNewRequest(request: Request, className: string) {
-    let receivedRequest:JsonArray = this.reformRequest.reformToSendRequest(request,className)
+    let receivedRequest: any[] = this.reformRequest.reformToSendRequest(request,className)
     if(request.duty === "GET") {
-      let  requestAnswer :[] = this.decryptReceivedRequest(receivedRequest, className);
+      let  requestAnswer: any[] = this.decryptReceivedRequest(receivedRequest, className);
       return requestAnswer;
     }
     return [];
   }
 
   private decryptReceivedRequest(receivedRequest: JsonArray, className: any) {
-    return this.decryptReceivedRequest(receivedRequest,className);
+    return this.deconstructionService.deConstructJSON(receivedRequest,className);
   }
 
 //    getAnswerNewRequest(request: any, question: string): Answer[] {

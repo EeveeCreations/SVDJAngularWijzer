@@ -1,7 +1,7 @@
 export class Request {
 
 //    Constructor
-  constructor(private _userNr: number, private _duty: string, private _specific: string, private _givenVariables, private _isNewData: boolean) {
+  constructor(private _userNr: number, private _duty: string, private _specific: string, private _givenVariables: any[], private _isNewData: boolean) {
     this._userNr = _userNr;
     this._duty = _duty;
     this._specific = _specific;
