@@ -23,7 +23,7 @@ header > section {
 .section-content > h3 {
     color: #FFFFFF;
     font-weight: 700;
-    padding: 25px 25px 5px 25px;
+    padding: 25px 25px 5px 20px;
     border: solid #FFFFFF;
     border-width: 5px 0px 0px 5px;
     width: 350px;
@@ -34,6 +34,7 @@ header > section {
     font-weight: 700;
     padding: 0px 25px;
     font-size: 4em;
+    font-size: 3vw;
 }
 
 .svdj-button {
@@ -66,4 +67,59 @@ header > section {
 
 .svdj-button:hover > .button-corner {
     border-color: #000000;
+}
+
+/* 1800 */
+
+@media screen and (max-width: 1800px) {
+    header > section {
+        width: 55vw;
+        margin-left: 10vw;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    header > section {
+        width: 60vw;
+    }
+
+    .section-content > h1 {
+        font-size: 3em;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    header {
+        background-position: center;
+    }
+    
+    header > section {
+        width: 100%;
+        margin: 0px;
+        background-color: transparent;
+    }
+
+    .section-content {
+        padding: auto 100px;
+        background-color:#9AC2D5;
+        padding: 0px 7vw;
+    }
+
+    .section-content > h1 {
+        width: inherit;
+    }
+
+    .svdj-button {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .section-content > h1 {
+        font-size: 2em;
+    }    
+
+    .section-content > h3 {
+        font-size: 1.3em;
+    }
 }
