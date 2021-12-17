@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-xs-12">
+    <!-- vraag  -->
+    <app-question [question]="questions[0]"></app-question>
+  </div>
+</div>
+<div class="row">
+  <app-answer [answers]="questions[0].answers"></app-answer>
+</div>
+<div class="row">
+  <button class="btn btn-lg" (click)="onPrevious()">Vorige</button>
+  <button class="btn btn-lg" (click)="onNext()">Volgende</button>
+</div>
