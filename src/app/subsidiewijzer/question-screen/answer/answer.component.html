@@ -1,0 +1,6 @@
+<div class="col-xs-6">
+  <div *ngFor="let answer of answers">
+    <input type="radio" id="{{ answer.answerId }}" name="answer" value="{{ answer.answerText }}">
+    <label [for]=" answer.answerId">{{ answer.answerText }}</label>
+  </div>
+</div>
