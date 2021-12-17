@@ -7,16 +7,20 @@ import { QuestionComponent } from './subsidiewijzer/question-screen/question/que
 import { AnswerComponent } from './subsidiewijzer/question-screen/answer/answer.component';
 import { ExtraInfoComponent } from './subsidiewijzer/question-screen/answer/extra-info/extra-info.component';
 
+import { AppRoutingModule, routingComponents } from './app-routing.module';
+
 @NgModule({
   declarations: [
     AppComponent,
+    routingComponents,
     QuestionScreenComponent,
     QuestionComponent,
     AnswerComponent,
     ExtraInfoComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
