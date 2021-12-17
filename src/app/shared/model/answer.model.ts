@@ -1,13 +1,13 @@
 import {Category} from "./category.model";
 
 export class Answer {
-  answerID: bigint;
+  answerId: bigint;
   answerText: string;
-  category: Category[];
+  categories: Category[];
 
-  constructor(answerID: bigint, answerText: string, category: Category[]) {
-    this.answerID = answerID;
+  constructor(answerId: bigint, answerText: string, categories: Category[]) {
+    this.answerId = answerId;
     this.answerText = answerText;
-    this.category = category;
+    this.categories = categories;
   }
 }

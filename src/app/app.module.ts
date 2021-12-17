@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { QuestionComponent } from './subsidiewijzer/question-screen/question/question.component';
-import { AnswerComponent } from './subsidiewijzer/question-screen/answer/answer.component';
-import { ExtraInfoComponent } from './subsidiewijzer/question-screen/answer/extra-info/extra-info.component';
+import {AppComponent} from './app.component';
+import {QuestionComponent} from './subsidiewijzer/question-screen/question/question.component';
+import {AnswerComponent} from './subsidiewijzer/question-screen/answer/answer.component';
+import {ExtraInfoComponent} from './subsidiewijzer/question-screen/answer/extra-info/extra-info.component';
 
-import { AppRoutingModule, routingComponents } from './app-routing.module';
+import {AppRoutingModule, routingComponents} from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
@@ -15,7 +15,7 @@ import {HttpClientModule} from "@angular/common/http";
     routingComponents,
     QuestionComponent,
     AnswerComponent,
-    ExtraInfoComponent,
+    ExtraInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -25,4 +25,5 @@ import {HttpClientModule} from "@angular/common/http";
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

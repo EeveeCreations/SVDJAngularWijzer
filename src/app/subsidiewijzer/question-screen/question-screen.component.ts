@@ -8,8 +8,8 @@ import {ApiService} from "../../shared/api/api.service";
   styleUrls: ['./question-screen.component.css']
 })
 export class QuestionScreenComponent implements OnInit {
-   prevQuestions: Question[] = [];
-   questions: Question[] = []
+  prevQuestions: Question[] = [];
+  questions: Question[] = []
 
 
   constructor(private apiService: ApiService) {
@@ -24,7 +24,7 @@ export class QuestionScreenComponent implements OnInit {
   onNext() {
     if (this.questions.length !== 1) {
       this.prevQuestions.push(this.questions.shift());
-      console.log(this.questions  )
+      console.log(this.questions)
     } else {
       //should show result page if there are no questions left
       console.log("question array in question-screen.component.ts is empty");
