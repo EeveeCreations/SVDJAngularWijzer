@@ -8,7 +8,6 @@ import { ExtraInfoComponent } from './subsidiewijzer/question-screen/answer/extr
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
-import { QuestionListComponent } from './question-list/question-list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +16,6 @@ import { QuestionListComponent } from './question-list/question-list.component';
     QuestionComponent,
     AnswerComponent,
     ExtraInfoComponent,
-    QuestionListComponent
   ],
   imports: [
     BrowserModule,
