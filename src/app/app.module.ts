@@ -8,16 +8,22 @@ import { RequestComponent } from './request/request.component';
 import { ReformRequestComponent } from './request/reform-request/reform-request.component';
 import { ConfigComponent } from './config/config.component';
 
+import { AppRoutingModule, routingComponents } from './app-routing.module';
+
 @NgModule({
   declarations: [
     AppComponent,
     RequestComponent,
     ReformRequestComponent,
-    ConfigComponent
+    ConfigComponent,
+    AppComponent,
+    routingComponents
   ],
   imports: [
     BrowserModule,
     HttpClientModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
