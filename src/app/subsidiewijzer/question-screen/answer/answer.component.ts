@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AnswerModel} from "../../answer.model";
+import {Answer} from "../../../shared/model/answer.model";
 
 @Component({
   selector: 'app-answer',
@@ -7,7 +7,7 @@ import {AnswerModel} from "../../answer.model";
   styleUrls: ['./answer.component.css']
 })
 export class AnswerComponent implements OnInit {
-  @Input() answers: AnswerModel[];
+  @Input() answers: Answer[];
 
   constructor() { }
 
