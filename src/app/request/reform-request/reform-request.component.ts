@@ -18,29 +18,30 @@ export class ReformRequestComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  /**
-   * Turns the given String to a JsonObject
-   *
-   * @param request
-   * @param oldRequest
-   * @return
-   */
-  public RevertToJsonElement(request: any[], oldRequest: Request): any[] {
-    if ((oldRequest.duty === "PUT") || ((oldRequest.duty === "GET") && !(oldRequest.specific === "all"))){
-      // let item: JsonObject = JSON.parse(request[0]);
-      // let jsArray: JsonArray= [];
-      // jsArray.push(item);
-      // return jsArray;
-    }
-    return request;
+  // /**
+  //  * Turns the given String to a JsonObject
+  //  *
+  //  * @param request
+  //  * @param oldRequest
+  //  * @return
+  //  */
+  // public RevertToJsonElement(request: any[], oldRequest: Request): any[] {
+  //   if ((oldRequest.duty === "PUT") || ((oldRequest.duty === "GET") && !(oldRequest.specific === "all"))){
+  //     let item: JsonObject = JSON.parse(request[0]);
+  //     let jsArray: JsonArray= [];
+  //     jsArray.push(item);
+  //     return jsArray;
+  //   }
+  //   return request;
+  //
+  // }
 
-  }
 
-
-  reformToSendRequest(readyToEncryptRequest: Request, className: string) {
+  reformToSendRequest(readyToEncryptRequest: Request, className: string) :any[] {
     //        encryptedJsonRequest:JsonObject = encryptTheRequest(readyToEncryptRequest);
     let encryptedJsonAnswer: any[] = RequestDAO.getInstance().sendRequest(readyToEncryptRequest, className);
-    return this.RevertToJsonElement(encryptedJsonAnswer, readyToEncryptRequest);
+    // return this.RevertToJsonElement(encryptedJsonAnswer, readyToEncryptRequest);
+  return RequestDAO.getInstance().sendRequest(readyToEncryptRequest, className);
   }
 
 

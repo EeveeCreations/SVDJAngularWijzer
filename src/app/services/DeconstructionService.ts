@@ -11,8 +11,8 @@ export class DeconstructionService {
 
   public deConstructJSON(requestJsonAnswer: JsonArray, className: string): Object[] {
     let deConstructedList: Object[] = [];
-    for (let item: JsonObject of requestJsonAnswer) {
-      deConstructedList.push(this.setToCorrectModel(className, item));
+    for (let item of requestJsonAnswer) {
+      // deConstructedList.push(this.setToCorrectModel(className,  item typeof Object));
     }
     return deConstructedList;
   }

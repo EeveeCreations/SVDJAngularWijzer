@@ -1,6 +1,7 @@
 import {SafeUrl} from "@angular/platform-browser";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Request} from "../Request.model";
+
 // import {errorContext} from "rxjs/dist/types/internal/util/errorContext";
 
 export class RequestDAO {
@@ -30,7 +31,6 @@ export class RequestDAO {
     let newRequest: any[] = null;
     this.setConnectionSpecifics(className, readyRequest.specific);
     newRequest = this.readRequest(readyRequest, className);
-
     return newRequest;
   }
 
@@ -39,11 +39,14 @@ export class RequestDAO {
     if (readyRequest.givenVariables !== null) {
       content = this.addOnToRequest(readyRequest, className)
     }
-    this.http.request(readyRequest.duty, this.url,{
-      headers: this.giveHeadingToRequest(readyRequest)})
-      .subscribe(((response: any[]) => {
-        content = response;
-      }));
+    else {
+      this.http.request(readyRequest.duty, this.url, {
+        headers: this.giveHeadingToRequest(readyRequest)
+      })
+        .subscribe(((response: any[]) => {
+          content = response;
+        }));
+    }
     return content;
   }
 
@@ -56,10 +59,9 @@ export class RequestDAO {
   }
 
   /**
-   * When a request needs  parameters that isnt the header  fo methods other than GET  this function will give those parameters.
+   * When a request needs  parameters that isn't the header  fo methods other than GET  this function will give those parameters.
    * @param readyRequest
    * @param className
-   * @param headerOfRequest
    * @private
    */
   private addOnToRequest(readyRequest: Request, className: string): any[] {
@@ -80,12 +82,12 @@ export class RequestDAO {
   }
 
   /**
-   * Makes parameters for the REquest to send when needed
+   * Makes parameters for the Request to send when needed
    */
   private formRequest(jsonRequest: Request, className: string): HttpParams {
     let parameters: HttpParams = new HttpParams();
     for (let aModel of jsonRequest.givenVariables) {
-      parameters.append(className.toLowerCase(), aModel);
+      parameters.append(className.toLowerCase(), aModel.toString());
     }
     return parameters;
 

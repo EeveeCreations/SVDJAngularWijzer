@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {Question} from "./models/Question.model";
-import {Answer} from "./models/Answer.model";
-import {isEmpty} from "rxjs";
+import {Component, OnInit} from '@angular/core';
 import {Request} from "./Request.model";
 import {Grant} from "./models/Grant.model";
 import {ReformRequestComponent} from "./reform-request/reform-request.component";
@@ -27,13 +24,12 @@ export class RequestComponent implements OnInit {
     return (listOfAnswers.length !=0)
   }
 
-  private getAnswerNewRequest(request: Request, className: string) {
-    let receivedRequest: any[] = this.reformRequest.reformToSendRequest(request,className)
-    if(request.duty === "GET") {
-      let  requestAnswer: any[] = this.decryptReceivedRequest(receivedRequest, className);
-      return requestAnswer;
-    }
-    return [];
+  private getAnswerNewRequest(request: Request, className: string):any[] {
+    // if(request.duty === "GET") {
+    //   let  requestAnswer: any[] = this.decryptReceivedRequest(receivedRequest, className);
+    //   return requestAnswer;
+    // }
+    return this.reformRequest.reformToSendRequest(request, className);
   }
 
   private decryptReceivedRequest(receivedRequest: JsonArray, className: any) {
