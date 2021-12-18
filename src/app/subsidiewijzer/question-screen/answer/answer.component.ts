@@ -9,7 +9,8 @@ import {Answer} from "../../../shared/model/answer.model";
 export class AnswerComponent implements OnInit {
   @Input() answers: Answer[];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
