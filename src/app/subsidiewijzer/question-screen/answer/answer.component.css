@@ -1,8 +1,8 @@
 .answer-box {
-    width: 500px;
+    width: 100%;
     background-color: #F7F7F7;
     margin: 10px auto;
-    padding: 15px;
+    padding: 20px;
     font-size: 1.3em;
 }
 
@@ -10,3 +10,8 @@
     font-weight: normal;
 }
 
+input[type="radio"] {
+    margin-right: 15px;
+    border-radius: 3px solid black;
+    border-radius: 50%;
+}
