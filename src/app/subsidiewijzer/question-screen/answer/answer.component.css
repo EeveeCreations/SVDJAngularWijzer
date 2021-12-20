@@ -1,0 +1,12 @@
+.answer-box {
+    width: 500px;
+    background-color: #F7F7F7;
+    margin: 10px auto;
+    padding: 15px;
+    font-size: 1.3em;
+}
+
+.answer-box > label {
+    font-weight: normal;
+}
+
