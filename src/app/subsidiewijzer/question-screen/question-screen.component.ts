@@ -19,12 +19,10 @@ export class QuestionScreenComponent implements OnInit {
 
   onNext() {
     this.currentQuestion = this.questionService.getNextQuestion();
-    console.log("onnext")
   }
 
   onPrevious() {
     this.currentQuestion = this.questionService.getPreviousQuestion();
-    console.log("onprev")
   }
 
 }

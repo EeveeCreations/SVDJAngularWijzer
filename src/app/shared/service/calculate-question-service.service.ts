@@ -22,8 +22,6 @@ export class CalculateQuestionServiceService {
   getNextQuestion(): Question {
     if (this.questionList.remainingQuestions.length !== 1) {
       this.questionList.previousQuestions.push(this.questionList.remainingQuestions.shift());
-    } else {
-
     }
     return this.questionList.remainingQuestions[0];
   }
@@ -31,8 +29,6 @@ export class CalculateQuestionServiceService {
   getPreviousQuestion(): Question {
     if (this.questionList.previousQuestions.length !== 0) {
       this.questionList.remainingQuestions.unshift(this.questionList.previousQuestions.pop());
-    } else {
-
     }
     return this.questionList.remainingQuestions[0];
   }
