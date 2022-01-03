@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Request} from "./Request.model";
 import {Grant} from "./models/Grant.model";
-import {ReformRequestComponent} from "./reform-request/reform-request.component";
+import {ReformRequestComponent} from "../shared/request/reform-request.service";
 import {JsonArray} from "@angular/compiler-cli/ngcc/src/packages/entry_point";
 import {DeconstructionService} from "../services/DeconstructionService";
 
@@ -11,8 +11,6 @@ import {DeconstructionService} from "../services/DeconstructionService";
   styleUrls: ['./request.component.css']
 })
 export class RequestComponent implements OnInit {
-  reformRequest: ReformRequestComponent = new ReformRequestComponent();
-  deconstructionService: DeconstructionService = new DeconstructionService();
   constructor() { }
 
   ngOnInit(): void {

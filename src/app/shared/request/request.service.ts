@@ -2,7 +2,6 @@ import {SafeUrl} from "@angular/platform-browser";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Request} from "../Request.model";
 
-// import {errorContext} from "rxjs/dist/types/internal/util/errorContext";
 
 export class RequestDAO {
 
@@ -10,13 +9,6 @@ export class RequestDAO {
   private static requestDao;
   private con: SafeUrl;
   private url: string;
-
-  static getInstance(): RequestDAO {
-    if (this.requestDao == null) {
-      // this.requestDao = new RequestDAO(new HttpCli));
-    }
-    return this.requestDao;
-  }
 
   constructor(private http: HttpClient) {
   }

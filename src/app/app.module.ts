@@ -7,11 +7,10 @@ import {QuestionComponent} from './subsidiewijzer/question-screen/question/quest
 import {AnswerComponent} from './subsidiewijzer/question-screen/answer/answer.component';
 import {ExtraInfoComponent} from './subsidiewijzer/question-screen/answer/extra-info/extra-info.component';
 import { RequestComponent } from './request/request.component';
-import { ReformRequestComponent } from './request/reform-request/reform-request.component';
+import { ReformRequestComponent } from './shared/request/reform-request.service';
 import { ConfigComponent } from './config/config.component';
 
 import {AppRoutingModule, routingComponents} from './app-routing.module';
-import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
