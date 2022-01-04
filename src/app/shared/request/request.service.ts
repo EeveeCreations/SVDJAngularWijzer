@@ -7,6 +7,7 @@ import {Question} from "../model/question.model";
 import {Answer} from "../model/answer.model";
 import {GivenAnswer} from "../models/given-answer.model";
 import {Grant} from "../models/grant.model";
+import {Result} from "../models/result.model";
 
 @Injectable({providedIn: 'root'})
 export class RequestService {
