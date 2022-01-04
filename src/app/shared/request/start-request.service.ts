@@ -1,7 +1,5 @@
-import {Component, Injectable, OnInit} from '@angular/core';
+import { Injectable} from '@angular/core';
 import {Request} from "./request.model";
-import {JsonArray} from "@angular/compiler-cli/ngcc/src/packages/entry_point";
-import {DeconstructionService} from "../../services/DeconstructionService";
 import {RequestService} from "./request.service";
 
 @Injectable({providedIn: 'root'})

@@ -122,7 +122,7 @@ export class RequestService {
   }
 
   sendRequestGrant(request: Request) {
-    this.setConnectionSpecifics("grant", request.duty);
+    this.setConnectionSpecifics("grant", request.specific);
     return this.http.request<Grant>(request.duty, this.url, {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
@@ -131,6 +131,7 @@ export class RequestService {
   }
 
   sendRequestQuestion(request: Request) {
+    this.setConnectionSpecifics("question", request.specific);
     return this.http.request<Question>(request.duty, this.url, {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
@@ -139,6 +140,7 @@ export class RequestService {
   }
 
   sendRequestAnswer(request: Request) {
+    this.setConnectionSpecifics("answer", request.specific);
     return this.http.request<Answer>(request.duty, this.url, {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
@@ -147,6 +149,7 @@ export class RequestService {
   }
 
   sendRequestGivenAnswer(request: Request) {
+    this.setConnectionSpecifics("givenanswer", request.specific);
     return this.http.request<GivenAnswer>(request.duty, this.url, {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
@@ -156,6 +159,7 @@ export class RequestService {
   }
 
   sendRequestRoute(request: Request) {
+    this.setConnectionSpecifics("route", request.specific);
     return this.http.request<Route>(request.duty, this.url, {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
@@ -165,6 +169,7 @@ export class RequestService {
   }
 
   sendRequestResult(request: Request) {
+    this.setConnectionSpecifics("result", request.specific);
     return this.http.request<Result>(request.duty, this.url, {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
@@ -174,6 +179,7 @@ export class RequestService {
   }
 
   sendRequestCategory(request: Request) {
+    this.setConnectionSpecifics("category", request.specific);
     return this.http.request<Category>(request.duty, this.url, {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
