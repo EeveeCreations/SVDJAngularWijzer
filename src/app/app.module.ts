@@ -6,21 +6,17 @@ import {AppComponent} from './app.component';
 import {QuestionComponent} from './subsidiewijzer/question-screen/question/question.component';
 import {AnswerComponent} from './subsidiewijzer/question-screen/answer/answer.component';
 import {ExtraInfoComponent} from './subsidiewijzer/question-screen/answer/extra-info/extra-info.component';
-import { RequestComponent } from './request/request.component';
-import { ReformRequestComponent } from './shared/request/reform-request.service';
 import { ConfigComponent } from './config/config.component';
 
 import {AppRoutingModule, routingComponents} from './app-routing.module';
+import {RequestService} from "./shared/request/request.service";
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents,
     QuestionComponent,
     AnswerComponent,
     ExtraInfoComponent,
-    RequestComponent,
-    ReformRequestComponent,
     ConfigComponent,
     AppComponent,
     routingComponents
@@ -30,7 +26,7 @@ import {AppRoutingModule, routingComponents} from './app-routing.module';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [RequestService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

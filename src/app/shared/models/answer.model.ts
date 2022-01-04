@@ -1,5 +1,6 @@
-import {Question} from "./Question.model";
-import {Category} from "./Category.model";
+import {Category} from "../model/category.model";
+import {Question} from "../model/question.model";
+
 
 export class Answer{
 
