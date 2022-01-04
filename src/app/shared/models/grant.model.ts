@@ -1,8 +1,9 @@
 export class Grant {
 
-  constructor(private GrantID: bigint, private _name: string, private _description: string) {
+  constructor(private GrantID: bigint, private _name: string, private _description: string,private _adviseUrl) {
     this._name = _name;
     this._description = _description;
+    this._adviseUrl =_adviseUrl;
   }
 
 //  Getters and Setters
