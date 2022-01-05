@@ -13,99 +13,7 @@ import {Result} from "../models/result.model";
 export class RequestService {
   private url: string;
 
-  constructor(private http: HttpClient) {
-  }
-
-  // /**
-  //  * Sends request in different Methods
-  //  * @return requestAnswer
-  //  * @throws IOException
-  //  * @author Eefje | AntiEevee
-  //  */
-  // sendRequest(readyRequest: Request, className: string): any[] {
-  //   let newRequest: any[] = null;
-  //   this.setConnectionSpecifics(className, readyRequest.specific);
-  //   newRequest = this.selectCorrectRequest( className,readyRequest);
-  //   return newRequest;
-  // }
-  // /**
-  //  * When a request needs  parameters that isn't the header  fo methods other than GET  this function will give those parameters.
-  //  * @param readyRequest
-  //  * @param className
-  //  * @  //  */
-  // addOnToRequest(readyRequest: Request, className: string): any[] {
-  //   let content: any[];
-  //   let parameters: HttpParams = this.formRequest(readyRequest, className)
-  //   this.http.request(readyRequest.duty, this.url, readyRequest.givenVariables)
-  //     .pipe()
-  //     .subscribe((response) => {
-  //       content = response;
-  //     }, (error) => {
-  //       // throw errorContext(
-  //       alert(JSON.stringify(error));
-  //     });
-  //
-  //   return content;
-  // }
-  // readRequest(readyRequest: Request, className: string): any[] {
-  //   let content: any[];
-  //   if (readyRequest.givenVariables !== null) {
-  //     content = this.addOnToRequest(readyRequest, className)
-  //   }
-  //   else {
-  //     this.http.request(readyRequest.duty, this.url, {
-  //       headers: this.giveHeadingToRequest(readyRequest)
-  //     })
-  //       .pipe(map( response =>{
-  //         const responseArray =[];
-  //         //Change to needed Data.
-  //         return responseArray;
-  //       }))
-  //       .subscribe(((response: any[]) => {
-  //         content = response;
-  //       }));
-  //   }
-  //   return content;
-  // }
-  // /**
-  //  * Makes parameters for the Request to send when needed
-  //  */
-  // formRequest(jsonRequest: Request, className: string): HttpParams {
-  //   let parameters: HttpParams = new HttpParams();
-  //   for (let aModel of jsonRequest.givenVariables) {
-  //     parameters.append(className.toLowerCase(), aModel.toString());
-  //   }
-  //   return parameters;
-  //
-  //
-// //  Send Requests specifically for classes______________________________________________________________________________
-//   selectCorrectRequest(className: string, request: Request): any[] {
-//     let newObject: Object = null;
-//     switch (className.toLowerCase()) {
-//       case "grant" :
-//         newObject = this.sendRequestGrant(request);
-//         break;
-//       case "question" :
-//         newObject = this.sendRequestQuestion(request);
-//         break;
-//       case "answer" :
-//         newObject = this.sendRequestAnswer(request);
-//         break;
-//       case "givenanswer" :
-//         newObject = this.sendRequestGivenAnswer(request);
-//         break;
-//       case "route" :
-//         newObject = this.sendRequestRoute(request);
-//         break;
-//       case "result" :
-//         newObject = this.sendRequestResult(request);
-//         break;
-//       case "category" :
-//         newObject = this.sendRequestCategory(request);
-//         break;
-//     }
-//     return newObject;
-//   }
+  constructor(private http: HttpClient) {}
 
   giveCorrectHeadingToRequest(readyRequest: Request): HttpHeaders {
     const headerOfRequest: HttpHeaders = new HttpHeaders();
@@ -115,7 +23,7 @@ export class RequestService {
   }
 
   setConnectionSpecifics(className: string, specific: string): void {
-    this.url = ("http://localhost:8080/" + className.toLowerCase());
+    this.url = ("https://localhost:8443/" + className.toLowerCase());
     if (specific !== "") {
       this.url = (this.url + "/" + specific);
     }

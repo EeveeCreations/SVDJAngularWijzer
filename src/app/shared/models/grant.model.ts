@@ -1,8 +1,10 @@
 export class Grant {
 
-  constructor(private GrantID: bigint, private _name: string, private _description: string,private _adviseUrl) {
+  constructor(private GrantID: bigint, private _name: string, private _description: string,private _beginDate:string,private _endDate:string,private _adviseUrl) {
     this._name = _name;
     this._description = _description;
+    this._beginDate = _beginDate;
+    this._endDate = _endDate;
     this._adviseUrl =_adviseUrl;
   }
 
