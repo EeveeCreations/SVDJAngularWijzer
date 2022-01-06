@@ -1,0 +1,22 @@
+.result{
+ text-align: center;
+}
+hr{
+  width: 80%;
+  border:1px solid rgb(239, 239, 123); /*gold*/
+}
+.topOfResult{
+ font-size: 18px;
+
+}
+.extraInformation{
+}
+.options{
+  justify-content: space-evenly;
+}
+.date{
+  font-weight: 900;
+}
+.disclaimer{
+ font-style: italic;
+}

@@ -1,0 +1,31 @@
+<section class="container col-xs-12 result">
+  <section class="container-fluid col-xs-12">
+    <section class="topOfResult">
+      <h2>{{grant.name}}</h2>
+      <hr>
+      <p>{{grant.description}}</p>
+    </section>
+    <br>
+    <br>
+    <section class="extraInformation">
+      Deze subsdie {{isDateNow() ? 'is nu al open' : 'gaat binnenkort open'}}.<br>
+      Wees er dus op alert dat mogelijkheden beperkt zijn.<br>
+      De subsdie is open van:<br>
+      <span class="date">{{grant.beginDate}} - {{grant.endDate}}</span>
+      <br>
+      <br>
+      <section class="btn-group options">
+        <button class="btn btn-success">Meer informatie</button>
+        <button class="btn btn-primary">Pdf Printen 🖶</button>
+        <button class="btn btn-success">Opnieuw Proberen</button>
+      </section>
+      <br>
+      <br>
+    </section>
+    <hr>
+    <section class="disclaimer">
+      This is the big disclaimer
+    </section>
+  </section>
+
+</section>
