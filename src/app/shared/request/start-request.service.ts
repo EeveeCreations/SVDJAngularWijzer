@@ -1,52 +1,55 @@
-import { Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Request} from "./request.model";
 import {RequestService} from "./request.service";
+import {User} from "../models/user.model";
 
 @Injectable({providedIn: 'root'})
 export class StartRequestService {
-  constructor( private requestService:RequestService) { }
+  currentUser: User;
 
-
-  public establishConnection(){
-    let request: Request = new Request(1,"GET","all",null,false)
-    this.requestService.sendRequestGrant(request)
-      .subscribe(response =>{
-        console.log(response)
-      });
-
+  constructor(private requestService: RequestService) {
   }
 
-  //
-  // private getAnswerNewRequest(request: Request, className: string):any[] {
-  //   // if(request.duty === "GET") {
-  //   //   let  requestAnswer: any[] = this.decryptReceivedRequest(receivedRequest, className);
-  //   //   return requestAnswer;
-  //   // }
-  //   return this.reformRequest.reformToSendRequest(request, className);
-  // }
-  //
-  // private decryptReceivedRequest(receivedRequest: JsonArray, className: any) {
-  //   return this.deconstructionService.deConstructJSON(receivedRequest,className);
-  // }
-//
-//    getAnswerNewRequest(request: any, question: string): Answer[] {
-//     return  [];
-//   }
-//
-//   makeRequestWithQuestion(variables :Question[], specific: string , duty: string) :Question[] {
-//     function createNewRequest(variables: Question[], specific: string, duty: string) {
-//       return {prototype: undefined};
-//     }
-//
-//     request :Request = createNewRequest(variables, specific, duty);
-//
-//
-//     answer :[] = getAnswerNewRequest(request, "Question");
-//   if (answer.size() > 1) {
-//   return answer;
-// // }
-// return null;
-// }
 
+  public establishConnection() {
+    let request: Request = new Request(1, "GET", "all", null, false)
+    this.requestService.sendRequestGrant(request)
+      .subscribe(response => {
+      });
+  }
 
+  public makeRequestOfGrant(duty: string, specific: string, variables?: []) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestGrant(request);
+  }
+
+  public makeRequestOfAnswer(duty: string, specific: string, variables?: []) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestAnswer(request);
+  }
+
+  public makeRequestOfQuestion(duty: string, specific: string, variables?: []) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestQuestion(request);
+  }
+
+  public makeRequestOfRoute(duty: string, specific: string, variables?: []) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestRoute(request);
+  }
+
+  public makeRequestOfResult(duty: string, specific: string, variables?: []) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestResult(request);
+  }
+
+  public makeRequestOfGivenAnswer(duty: string, specific: string, variables?: []) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestGivenAnswer(request);
+  }
+
+  public makeRequestOfCategory(duty: string, specific: string, variables?: []) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestCategory(request);
+  }
 }

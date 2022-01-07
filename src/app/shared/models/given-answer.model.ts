@@ -3,19 +3,19 @@ import {Answer} from "../model/answer.model";
 
 export class GivenAnswer {
 
-  constructor(private _givenAnswerID: bigint, private _elapsedSeconds: number, private _questionID: Question, private _answerID: Answer) {
-    this._givenAnswerID = _givenAnswerID;
+  constructor(private _givenAnswerId: bigint, private _elapsedSeconds: number, private _question: Question, private _answer: Answer) {
+    this._givenAnswerId = _givenAnswerId;
     this._elapsedSeconds = _elapsedSeconds;
-    this._questionID = _questionID;
-    this._answerID = _answerID;
+    this._question = _question;
+    this._answer = _answer;
   }
   //Getters and Setters
-  get givenAnswerID(): bigint {
-    return this._givenAnswerID;
+  get givenAnswerId(): bigint {
+    return this._givenAnswerId;
   }
 
-  set givenAnswerID(value: bigint) {
-    this._givenAnswerID = value;
+  set givenAnswerId(value: bigint) {
+    this._givenAnswerId = value;
   }
 
   get elapsedSeconds(): number {
@@ -26,19 +26,19 @@ export class GivenAnswer {
     this._elapsedSeconds = value;
   }
 
-  get questionID(): Question {
-    return this._questionID;
+  get question(): Question {
+    return this._question;
   }
 
-  set questionID(value: Question) {
-    this._questionID = value;
+  set question(value: Question) {
+    this._question = value;
   }
 
-  get answerID(): Answer {
-    return this._answerID;
+  get answer(): Answer {
+    return this._answer;
   }
 
-  set answerID(value: Answer) {
-    this._answerID = value;
+  set answer(value: Answer) {
+    this._answer = value;
   }
 }
