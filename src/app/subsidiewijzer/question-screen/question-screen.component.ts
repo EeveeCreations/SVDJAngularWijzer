@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {Question} from "../../shared/model/question.model";
 import {ApiService} from "../../shared/api/api.service";
+import {RouteService} from "../../shared/route/route.service";
 
 @Component({
   selector: 'app-question-screen',
   templateUrl: './question-screen.component.html',
-  styleUrls: ['./question-screen.component.css']
+  styleUrls: ['./question-screen.component.css'],
+  providers: [RouteService]
 })
 export class QuestionScreenComponent implements OnInit {
   prevQuestions: Question[] = [];
