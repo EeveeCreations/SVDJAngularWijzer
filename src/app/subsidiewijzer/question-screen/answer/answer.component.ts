@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Answer} from "../../../shared/model/answer.model";
+import {Answer} from "../../../shared/models/answer.model";
 
 @Component({
   selector: 'app-answer',

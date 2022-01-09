@@ -1,10 +1,13 @@
-import {Category} from "../model/category.model";
-import {Question} from "../model/question.model";
+import {Category} from "./category.model";
+import {Question} from "./question.model";
 
 
 export class Answer{
 
-  constructor(private _answerID:bigint, private _answerText: string, private _categories: Category[], private _questionID: Question) {
+  constructor(private _answerID: number,
+              private _answerText: string,
+              private _categories: Category[],
+              private _questionID: Question) {
     this._answerID = _answerID;
     this._answerText = _answerText;
     this._categories = _categories;
@@ -12,11 +15,11 @@ export class Answer{
   }
 
   //Getters And setters
-  get answerID(): bigint {
+  get answerID(): number {
     return this._answerID;
   }
 
-  set answerID(value: bigint) {
+  set answerID(value: number) {
     this._answerID = value;
   }
 

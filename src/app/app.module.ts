@@ -8,6 +8,8 @@ import {ExtraInfoComponent} from './subsidiewijzer/question-screen/answer/extra-
 
 import {AppRoutingModule, routingComponents} from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
+import {ResultScreenComponent} from "./subsidiewijzer/result-screen/result-screen.component";
+import {RequestService} from "./shared/request/request.service";
 
 @NgModule({
   declarations: [
@@ -17,7 +19,6 @@ import {HttpClientModule} from "@angular/common/http";
     AnswerComponent,
     ExtraInfoComponent,
     AppComponent,
-    routingComponents
     ExtraInfoComponent,
     ResultScreenComponent
   ],

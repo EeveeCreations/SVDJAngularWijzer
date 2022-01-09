@@ -1,18 +1,20 @@
 export class Category {
 
-  constructor(private _categoryID: bigint, private _name: string, private _description: string) {
-    this._categoryID = _categoryID;
+  constructor(private _categoryId: number,
+              private _name: string,
+              private _description: string) {
+    this._categoryId = _categoryId;
     this._name = _name;
     this._description = _description;
   }
 //  Getters and Setters
 
-  get categoryID(): bigint {
-    return this._categoryID;
+  get categoryID(): number {
+    return this._categoryId;
   }
 
-  set categoryID(value: bigint) {
-    this._categoryID = value;
+  set categoryID(value: number) {
+    this._categoryId = value;
   }
 
   get name(): string {

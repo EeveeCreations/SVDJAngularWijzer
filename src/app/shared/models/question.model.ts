@@ -1,7 +1,12 @@
 export class Question {
 
-  public constructor(private _questionID: bigint, private _questionText: string, private _answers: [], private _extraInfoTile: string, private _extraInfoDescription: string, private _extraInfoVideoURL: string) {
-    this._questionID = _questionID;
+  public constructor(private _questionId: number,
+                     private _questionText: string,
+                     private _answers: [],
+                     private _extraInfoTile: string,
+                     private _extraInfoDescription: string,
+                     private _extraInfoVideoURL: string) {
+    this._questionId = _questionId;
     this._questionText = _questionText;
     this._answers = _answers;
     this._extraInfoTile = _extraInfoTile;
@@ -10,12 +15,12 @@ export class Question {
   }
 
 //  Getters and Setters
-  get questionID(): bigint {
-    return this._questionID;
+  get questionID(): number {
+    return this._questionId;
   }
 
-  set questionID(value: bigint) {
-    this._questionID = value;
+  set questionID(value: number) {
+    this._questionId = value;
   }
 
   get questionText(): string {
