@@ -6,7 +6,6 @@ import {AppComponent} from './app.component';
 import {QuestionComponent} from './subsidiewijzer/question-screen/question/question.component';
 import {AnswerComponent} from './subsidiewijzer/question-screen/answer/answer.component';
 import {ExtraInfoComponent} from './subsidiewijzer/question-screen/answer/extra-info/extra-info.component';
-import { ConfigComponent } from './config/config.component';
 
 import {AppRoutingModule, routingComponents} from './app-routing.module';
 import {RequestService} from "./shared/request/request.service";
@@ -17,7 +16,6 @@ import {RequestService} from "./shared/request/request.service";
     QuestionComponent,
     AnswerComponent,
     ExtraInfoComponent,
-    ConfigComponent,
     AppComponent,
     routingComponents
   ],
