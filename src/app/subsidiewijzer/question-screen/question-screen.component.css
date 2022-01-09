@@ -1,3 +1,57 @@
-button {
-  margin: 2px;
+.form-holder {
+  width: 50vw;
+  margin: auto;
+  display: flexbox;
+  align-content: flex-end;
+}
+
+app-answer {
+  display: block;
+  min-height: 300px;
+}
+
+.svdj-button {
+  display: block;
+  float: right;
+  margin: 15px 0px 0px 15px;
+  background-color: #000000;
+  padding: 10px 15px;
+  transition: 0.3s;
+  width: auto;
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: normal;
+  font-size: 1.4em;
+  border: none;
+}
+
+.svdj-button > .button-corner {
+  display: inline-block;
+  width: 50px;
+  height: 15px;
+  border: solid #FFFFFF;
+  border-width: 2px 2px 0px 0px;
+  margin-left: 15px;
+  transition: 0.3s;
+}
+
+.svdj-button:hover {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+.svdj-button:hover > .button-corner {
+  border-color: #000000;
+}
+
+@media screen and (max-width: 1000px) {
+  .answer-holder {
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .answer-holder {
+    width: 95vw;
+  }
 }

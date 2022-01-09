@@ -1,0 +1,55 @@
+import {Injectable} from '@angular/core';
+import {Request} from "./request.model";
+import {RequestService} from "./request.service";
+import {User} from "../models/user.model";
+
+@Injectable({providedIn: 'root'})
+export class StartRequestService {
+  currentUser: User;
+
+  constructor(private requestService: RequestService) {
+  }
+
+
+  public establishConnection() {
+    let request: Request = new Request(1, "GET", "all", null, false)
+    this.requestService.sendRequestGrant(request)
+      .subscribe(response => {
+      });
+  }
+
+  public makeRequestOfGrant(duty: string, specific: string, variables?: []) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestGrant(request);
+  }
+
+  public makeRequestOfAnswer(duty: string, specific: string, variables?: []) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestAnswer(request);
+  }
+
+  public makeRequestOfQuestion(duty: string, specific: string, variables?: []) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestQuestion(request);
+  }
+
+  public makeRequestOfRoute(duty: string, specific: string, variables?: []) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestRoute(request);
+  }
+
+  public makeRequestOfResult(duty: string, specific: string, variables?: []) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestResult(request);
+  }
+
+  public makeRequestOfGivenAnswer(duty: string, specific: string, variables?: []) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestGivenAnswer(request);
+  }
+
+  public makeRequestOfCategory(duty: string, specific: string, variables?: []) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestCategory(request);
+  }
+}

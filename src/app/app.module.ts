@@ -8,7 +8,6 @@ import {ExtraInfoComponent} from './subsidiewijzer/question-screen/answer/extra-
 
 import {AppRoutingModule, routingComponents} from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
-import { ResultScreenComponent } from './subsidiewijzer/result-screen/result-screen.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +16,9 @@ import { ResultScreenComponent } from './subsidiewijzer/result-screen/result-scr
     QuestionComponent,
     AnswerComponent,
     ExtraInfoComponent,
+    AppComponent,
+    routingComponents
+    ExtraInfoComponent,
     ResultScreenComponent
   ],
   imports: [
@@ -24,7 +26,7 @@ import { ResultScreenComponent } from './subsidiewijzer/result-screen/result-scr
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [RequestService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
