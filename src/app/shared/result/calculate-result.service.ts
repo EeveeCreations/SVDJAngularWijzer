@@ -2,11 +2,12 @@ import {Subject, Subscription} from "rxjs";
 import {Grant} from "../models/grant.model";
 import {Injectable, OnDestroy, OnInit} from "@angular/core";
 import {UserRouteService} from "../route/user-route.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Route} from "../models/route.model";
 import {Category} from "../models/category.model";
 import {Answer} from "../models/answer.model";
 import {GivenAnswer} from "../models/given-answer.model";
+import {relativeFrom} from "@angular/compiler-cli";
 
 @Injectable({providedIn: 'root'})
 export class CalculateResultService implements OnInit, OnDestroy {
@@ -18,7 +19,8 @@ export class CalculateResultService implements OnInit, OnDestroy {
   currentRoute: Route;
 
   constructor(private routeService: UserRouteService,
-              private router: Router) {
+              private router: Router,
+              private activeRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -74,6 +76,6 @@ export class CalculateResultService implements OnInit, OnDestroy {
   }
 
   private openResultPage(result: Grant) {
-    this.router.navigate(['result/'+ Grant.name]);
+    this.router.navigate(['result/'+ result.GrantID], {relativeTo: this.activeRoute});
   }
 }

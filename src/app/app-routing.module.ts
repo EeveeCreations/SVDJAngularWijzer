@@ -7,7 +7,7 @@ import {ResultScreenComponent} from "./subsidiewijzer/result-screen/result-scree
 const routes: Routes = [
   { path: 'subsidiewijzer', component: BeginComponent},
   { path: 'subsidiewijzer/vragen', component: QuestionScreenComponent},
-  { path: 'subsidiewijzer/result', component: ResultScreenComponent}
+  { path: 'subsidiewijzer/result/:id', component: ResultScreenComponent}
   ];
 
 @NgModule({

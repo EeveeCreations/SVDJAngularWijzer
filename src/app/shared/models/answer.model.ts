@@ -4,11 +4,11 @@ import {Question} from "./question.model";
 
 export class Answer{
 
-  constructor(private _answerID: number,
+  constructor(private _answerId: number,
               private _answerText: string,
               private _categories: Category[],
               private _questionID: Question) {
-    this._answerID = _answerID;
+    this._answerId = _answerId;
     this._answerText = _answerText;
     this._categories = _categories;
     this._questionID = _questionID;
@@ -16,11 +16,11 @@ export class Answer{
 
   //Getters And setters
   get answerID(): number {
-    return this._answerID;
+    return this._answerId;
   }
 
   set answerID(value: number) {
-    this._answerID = value;
+    this._answerId = value;
   }
 
   get answerText(): string {
