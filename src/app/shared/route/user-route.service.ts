@@ -1,11 +1,11 @@
 import {Injectable, OnInit} from "@angular/core";
 import {Subject} from "rxjs";
-import {Grant} from "../models/grant";
+import {Grant} from "../models/grant.model";
+import {Route} from "../models/route.model";
 
-@Injectable()
-export class RouteService implements OnInit{
-  // updatedRoute: Subject<Route>;
-  updatedRoute: Subject<any>;
+@Injectable({providedIn: 'root'})
+export class UserRouteService implements OnInit{
+  updatedRoute: Subject<Route>;
   private possibleEndings: Grant[];
 
   ngOnInit(): void {

@@ -11,8 +11,8 @@ hr{
 }
 .extraInformation{
 }
-.options{
-  justify-content: space-evenly;
+.options > button, .options > a{
+  margin: 20px;
 }
 .date{
   font-weight: 900;

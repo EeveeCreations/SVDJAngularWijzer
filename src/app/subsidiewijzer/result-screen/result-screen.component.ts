@@ -1,7 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Grant} from "../../shared/model/grant.model";
 import {PrintResultService} from "./print-result.service";
-import {CalculateResultService} from "../../shared/result/calculate-result.service";
+import {Grant} from "../../shared/models/grant.model";
+import {Category} from "../../shared/models/category.model";
+import {ActivatedRoute} from "@angular/router";
+import {UserRouteService} from "../../shared/route/user-route.service";
+import {GrantService} from "../../shared/grant/grant.service";
 
 @Component({
   selector: 'app-result-screen',
@@ -10,12 +13,20 @@ import {CalculateResultService} from "../../shared/result/calculate-result.servi
   providers: [PrintResultService]
 })
 export class ResultScreenComponent implements OnInit {
-  // @Input() grant: Grant;
-  grant: Grant = new Grant("Cool Grant","This is one of the coolest grants you have ever seen.","02-01-2022","23-04-2022","https://www.svdj.nl/regeling/exploitatieregeling/");
-
-  constructor() { }
+  grant: Grant;
+  constructor(private activeRoute: ActivatedRoute,
+              private routeService: UserRouteService,
+              private grantService: GrantService) { }
 
   ngOnInit(): void {
+    this.getGrant();
+  }
+
+  private getGrant() {
+    this.activeRoute.params.subscribe( param =>{
+        const id: number = +param['id'];
+        this.grant = this.grantService.getGrant(id);
+    })
   }
 
   isDateNow() {

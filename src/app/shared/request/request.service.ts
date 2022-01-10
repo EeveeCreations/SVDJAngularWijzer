@@ -1,13 +1,13 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Request} from "./request.model";
 import {Injectable} from "@angular/core";
-import {Category} from "../model/category.model";
 import {Route} from "@angular/router";
-import {Question} from "../model/question.model";
-import {Answer} from "../model/answer.model";
 import {GivenAnswer} from "../models/given-answer.model";
 import {Grant} from "../models/grant.model";
 import {Result} from "../models/result.model";
+import {Question} from "../models/question.model";
+import {Answer} from "../models/answer.model";
+import {Category} from "../models/category.model";
 
 @Injectable({providedIn: 'root'})
 export class RequestService {

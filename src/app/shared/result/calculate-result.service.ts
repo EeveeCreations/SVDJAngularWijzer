@@ -1,48 +1,57 @@
 import {Subject, Subscription} from "rxjs";
-import {Grant} from "../model/grant.model";
-import {Injectable, OnChanges, OnDestroy, OnInit} from "@angular/core";
-import {RouteService} from "../route/route.service";
-import {Category} from "../model/category.model";
+import {Grant} from "../models/grant.model";
+import {Injectable, OnDestroy, OnInit} from "@angular/core";
+import {UserRouteService} from "../route/user-route.service";
 import {Router} from "@angular/router";
-
-class GivenAnswer {
-}
+import {Route} from "../models/route.model";
+import {Category} from "../models/category.model";
+import {Answer} from "../models/answer.model";
+import {GivenAnswer} from "../models/given-answer.model";
 
 @Injectable({providedIn: 'root'})
-export class CalculateResultService implements OnInit, OnDestroy, OnChanges {
+export class CalculateResultService implements OnInit, OnDestroy {
 
   private MIN_AMOUNT_OF_CATEGORIES: number = 5;
   possibleGrants: Grant[];
-  resultHasBeenCalculated: Subject<Grant> = new Subject<Grant>();
+  resultOptionsChanged: Subject<Grant> = new Subject<Grant>();
   givenAnswerSubscription: Subscription;
   currentRoute: Route;
 
-  constructor(private routeService: RouteService,
+  constructor(private routeService: UserRouteService,
               private router: Router) {
   }
 
   ngOnInit(): void {
-    this.possibleGrants = this.routeService.getPossibleRoutes();
+    this.possibleGrants = this.routeService.getPossibleEndings();
     // this.givenAnswerSubscription = this.routeService.updatedRoute.subscribe;
   }
 
+  private getNameOfOptions(amountOfSpecificCategory: { category: string; amount: number }[]): string[] {
+    return amountOfSpecificCategory.map((options => {
+      return options.category;
+    }));
+  }
 
-  onAddedGivenAnswer():Grant{
-    let amountOfSpecificCategory: {category: string, amount: number}[] = []
-    for (let answer of this.currentRoute.givenAnswers) {
+  onAddedGivenAnswer():Grant {
+    let amountOfSpecificCategory: { category: string, amount: number }[] = [];
+    const givenAnswers: GivenAnswer[] = this.currentRoute.givenAnswers;
+    let answer: Answer;
+
+    for (const givenAnswer of givenAnswers) {
+      answer = givenAnswer.answer;
       for (let grant of this.possibleGrants) {
-        for (let grCategory of grant.categories) {
-          for (let anCategory of answer) {
-            if(grCategory === anCategory ){
-              if(amountOfSpecificCategory.indexOf(grCategory.name) !== -1){
-                const i = amountOfSpecificCategory.indexOf(grCategory.name);
-                amountOfSpecificCategory[i].amount ++;
-                if(amountOfSpecificCategory[i].amount == this.MIN_AMOUNT_OF_CATEGORIES){
+        const grCategories: Category[] = grant.categories;
+        for (let grCategory of grCategories) {
+          for (let anCategory of answer.categories) {
+            if (grCategory === anCategory) {
+              if (this.getNameOfOptions(amountOfSpecificCategory).indexOf(anCategory.name) !== -1) {
+                const i = this.getNameOfOptions(amountOfSpecificCategory).indexOf(anCategory.name);
+                amountOfSpecificCategory[i].amount++;
+                if (amountOfSpecificCategory[i].amount == this.MIN_AMOUNT_OF_CATEGORIES) {
                   return grant;
                 }
-              }
-              else{
-                amountOfSpecificCategory.push({category: grCategory.name, amount:1})
+              } else {
+                amountOfSpecificCategory.push({category: grCategory.name, amount: 1})
               }
             }
           }
@@ -57,7 +66,7 @@ export class CalculateResultService implements OnInit, OnDestroy, OnChanges {
     this.givenAnswerSubscription.unsubscribe();
   }
 
-  ngOnChanges(changes: GivenAnswer): void {
+ checkIfResultISCalculated(){
     const result:Grant= this.onAddedGivenAnswer();
     if(result != null || result !=undefined){
       this.openResultPage(result)
