@@ -15,4 +15,11 @@ export class MoreInfoComponent implements OnInit {
     
   }
 
+  openInfo() {
+    document.getElementById("side-extra-info").style.right = "0";
+  }
+  
+  closeInfo() {
+    document.getElementById("side-extra-info").style.right = "-800px";
+  }
 }

@@ -1,14 +1,15 @@
-.side-menu {
+#side-extra-info {
     height: 100vh;
     width: 750px;
-    position: absolute;
+    position: fixed;
     top: 0;
-    right: 0;
+    right: -800px;
     z-index: 3;
     background-color: white;
     padding: 50px;
     overflow-x: hidden;
     overflow-y: scroll;
+    transition: 0.5s;
 }
 
 h1 {
@@ -30,32 +31,51 @@ h3 {
     font-size: 1.4em;
 }
 
-iframe {
+.video-container {
     width: 100%;
-    height: auto;
+    padding-top: 56.25%;
+}
+
+.iframe-holder {
+    max-width: 100%;
+    margin: 0px auto;
+}
+
+.iframe-holder > div {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0px;
+}
+
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: black;
 }
 
 @media screen and (max-width: 1550px) {
-    .side-menu {
+    #side-extra-info {
         width: 50%;
     }
 }
 
 @media screen and (max-width: 1250px) {
-    .side-menu {
+    #side-extra-info {
         width: 600px;
     }
 }
 
 @media screen and (max-width: 750px) {
-    .side-menu {
+    #side-extra-info {
         width: 100%;
     }
 }
 
 @media screen and (max-width: 600px) {
-    .side-menu {
+    #side-extra-info {
         padding: 15px;
     }
 }
