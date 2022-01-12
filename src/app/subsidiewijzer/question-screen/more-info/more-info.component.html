@@ -1,1 +1,13 @@
-<p>{{question.extraInfoTile}}</p>
+<div class="side-menu">
+
+    <h1>{{question.extraInfoTile}}</h1>
+    <h3>{{question.extraInfoDescription}}</h3>
+
+    
+    <h2>Informatie Video</h2>
+    
+    <!-- Youtube Embeded when there is a video available -->
+    <!-- TODO: change width and height in css not here -->
+    <iframe src="{{question.extraInfoVideoURL}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    
+</div>
