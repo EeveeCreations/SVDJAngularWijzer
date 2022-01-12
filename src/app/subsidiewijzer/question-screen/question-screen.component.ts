@@ -11,6 +11,8 @@ export class QuestionScreenComponent implements OnInit {
   prevQuestions: Question[] = [];
   questions: Question[] = []
 
+  // This should be the progress in percent
+  progress: number = 0;
 
   constructor(private apiService: ApiService) {
   }
