@@ -1,9 +1,10 @@
-<button (click)="openInfo()">Open</button>
-
-<button (click)="closeInfo()">Close</button>
+<div class="more-info-button-holder">
+    <button (click)="openInfo()" class="more-info-button">Meer informatie <i class="button-corner"></i></button>
+</div>
 
 <div id="side-extra-info">
-
+    <button (click)="closeInfo()" class="close-button">&#10006;</button>
+    
     <h1>{{question.extraInfoTile}}</h1>
     <h3>{{question.extraInfoDescription}}</h3>
 

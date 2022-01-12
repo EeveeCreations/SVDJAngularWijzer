@@ -56,6 +56,46 @@ iframe {
     background-color: black;
 }
 
+.more-info-button-holder {
+    width: 50vw;
+    height: 10px;
+    margin: auto;
+    display: block;
+    align-content: flex-end;
+}
+
+.more-info-button {
+    float: right;
+    display: block;
+    padding: 10px;
+    width: auto;
+    background-color: #FFFFFF;
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    font-size: 1.2em;
+    border: none;
+}
+  
+.more-info-button > .button-corner {
+    display: inline-block;
+    width: 40px;
+    height: 12px;
+    border: solid #000000;
+    border-width: 2px 2px 0px 0px;
+    margin-left: 15px;
+    transition: 0.3s;
+}
+
+.close-button {
+    font-size: 3em;
+    font-weight: bold;
+    top: 10px;
+    left: 10px;
+    background-color: transparent;
+    border: none;
+}
+
 @media screen and (max-width: 1550px) {
     #side-extra-info {
         width: 50%;
