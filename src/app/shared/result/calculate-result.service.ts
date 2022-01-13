@@ -68,7 +68,7 @@ export class CalculateResultService implements OnInit, OnDestroy {
     this.givenAnswerSubscription.unsubscribe();
   }
 
- checkIfResultISCalculated(){
+ checkIfResultIsCalculated(){
     const result:Grant= this.onAddedGivenAnswer();
     if(result != null || result !=undefined){
       this.openResultPage(result)

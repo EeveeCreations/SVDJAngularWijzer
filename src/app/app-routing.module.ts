@@ -7,8 +7,10 @@ import {ResultScreenComponent} from "./subsidiewijzer/result-screen/result-scree
 const routes: Routes = [
   { path: 'subsidiewijzer', component: BeginComponent},
   { path: 'subsidiewijzer/vragen', component: QuestionScreenComponent},
-  { path: 'subsidiewijzer/result/:id', component: ResultScreenComponent}
-  ];
+  { path: 'subsidiewijzer/result/:id', component: ResultScreenComponent},
+  { path: '**', redirectTo: 'subsidiewijzer'}
+
+];
 
 @NgModule({
   declarations: [],
@@ -19,5 +21,5 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class AppRoutingModule { }
-export const routingComponents = [BeginComponent, QuestionScreenComponent]
+export class AppRoutingModule {}
+export const routingComponents = [BeginComponent, QuestionScreenComponent, ResultScreenComponent]
