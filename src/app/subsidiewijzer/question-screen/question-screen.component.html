@@ -1,13 +1,21 @@
-<div class="row">
-  <div class="col-xs-12">
-    <app-question [question]="currentQuestion"></app-question>
-  </div>
-</div>
-<div class="row">
-  <app-answer [answers]="currentQuestion.answers"></app-answer>
-</div>
-<div class="row">
-  <button class="btn btn-lg" (click)="onPrevious()">Vorige <</button>
-  <button class="btn btn-lg" (click)="onNext()">Volgende ></button>
+<app-more-info [question]="currentQuestion"></app-more-info>
 
+<app-question [question]="currentQuestion"></app-question>
+
+<div class="form-holder">
+
+  <app-answer [answers]="currentQuestion.answers"></app-answer>
+
+  <button class="svdj-button" (click)="onNext()">Volgende <i class="button-corner"></i></button>
+  <button class="svdj-button" (click)="onPrevious()">Vorige <i class="button-corner"></i></button>
+
+</div>
+
+<div class="progress-section">
+  <h4>Voortgang</h4>
+
+  <div class="progress-bar">
+    <!-- This code gives an error in my IDE but works, looking for alternative later -->
+    <!-- <div class="bar" style="width:{{progress}}%;"></div> -->
+  </div>
 </div>

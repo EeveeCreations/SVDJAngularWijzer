@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import {AppComponent} from './app.component';
 import {QuestionComponent} from './subsidiewijzer/question-screen/question/question.component';
@@ -7,22 +8,25 @@ import {AnswerComponent} from './subsidiewijzer/question-screen/answer/answer.co
 import {ExtraInfoComponent} from './subsidiewijzer/question-screen/answer/extra-info/extra-info.component';
 
 import {AppRoutingModule, routingComponents} from './app-routing.module';
-import {HttpClientModule} from "@angular/common/http";
+import {RequestService} from "./shared/request/request.service";
+import { MoreInfoComponent } from './subsidiewijzer/question-screen/more-info/more-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents,
     QuestionComponent,
     AnswerComponent,
-    ExtraInfoComponent
+    ExtraInfoComponent,
+    AppComponent,
+    routingComponents,
+    MoreInfoComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [RequestService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
