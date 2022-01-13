@@ -1,8 +1,13 @@
 .form-holder {
   width: 50vw;
   margin: auto;
-  display: flexbox;
-  align-content: flex-end;
+  display: block;
+}
+
+.form-holder::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
 app-answer {
@@ -42,6 +47,28 @@ app-answer {
 
 .svdj-button:hover > .button-corner {
   border-color: #000000;
+}
+
+.progress-section {
+  margin-top: 100px;
+  width: 100vw;
+  text-align: center;
+  font-weight: bold;
+}
+
+.progress-bar {
+  background-color: #F7F7F7;
+  width: 50vw;
+  height: 10px;
+  margin: auto 25vw;
+  display: block;
+  transition: 0ms;
+}
+
+.bar {
+  background-color: black;
+  height: 100%;
+  transition: 0.3s;
 }
 
 @media screen and (max-width: 1000px) {
