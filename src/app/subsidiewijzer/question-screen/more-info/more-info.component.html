@@ -1,0 +1,22 @@
+<div class="more-info-button-holder">
+    <button (click)="openInfo()" class="more-info-button">Meer informatie <i class="button-corner"></i></button>
+</div>
+
+<div id="side-extra-info">
+    <button (click)="closeInfo()" class="close-button">&#10006;</button>
+    
+    <h1>{{question.extraInfoTile}}</h1>
+    <h3>{{question.extraInfoDescription}}</h3>
+
+
+    <h2>Informatie Video</h2>
+    
+    <!-- Youtube Embeded when there is a video available -->
+    <div class="iframe-holder">
+        <div>
+            <!-- TODO: change src to {{question.extraInfoVideoURL}} -->
+            <iframe src="https://www.youtube.com/embed/WPyOl4Equpw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+     </div>
+    
+</div>

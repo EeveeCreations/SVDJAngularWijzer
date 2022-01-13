@@ -9,6 +9,7 @@ import {ExtraInfoComponent} from './subsidiewijzer/question-screen/answer/extra-
 
 import {AppRoutingModule, routingComponents} from './app-routing.module';
 import {RequestService} from "./shared/request/request.service";
+import { MoreInfoComponent } from './subsidiewijzer/question-screen/more-info/more-info.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {RequestService} from "./shared/request/request.service";
     AnswerComponent,
     ExtraInfoComponent,
     AppComponent,
-    routingComponents
+    routingComponents,
+    MoreInfoComponent
   ],
   imports: [
     BrowserModule,
