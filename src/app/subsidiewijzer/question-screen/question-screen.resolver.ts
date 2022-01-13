@@ -1,18 +1,18 @@
 import {Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
-import {CalculateQuestionServiceService} from "../../shared/service/calculate-question-service.service";
-import {Observable} from "rxjs";
-import {QuestionScreenComponent} from "./question-screen.component";
+import {CalculateQuestionService} from "../../shared/service/calculate-question.service";
+import {Question} from "../../shared/model/question.model";
 
 @Injectable({providedIn: 'root'})
-export class QuestionScreenResolver implements Resolve<QuestionScreenComponent> {
-  constructor(private service: CalculateQuestionServiceService) {
+export class QuestionScreenResolver implements Resolve<Question[]> {
+
+  constructor(private service: CalculateQuestionService) {
   }
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<any> | Promise<any> | any {
+  ) {
     return this.service.getQuestionsFromApi();
   }
 }

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Question} from "../../shared/model/question.model";
-import {CalculateQuestionServiceService} from "../../shared/service/calculate-question-service.service";
+import {CalculateQuestionService} from "../../shared/service/calculate-question.service";
 
 @Component({
   selector: 'app-question-screen',
@@ -10,11 +10,12 @@ import {CalculateQuestionServiceService} from "../../shared/service/calculate-qu
 export class QuestionScreenComponent implements OnInit {
   currentQuestion: Question;
 
-  constructor(private questionService: CalculateQuestionServiceService) {
+  constructor(private questionService: CalculateQuestionService) {
   }
 
   ngOnInit(): void {
     this.currentQuestion = this.questionService.getFirstQuestion();
+    this.questionService.getQuestionsFromApi().subscribe();
   }
 
   onNext() {

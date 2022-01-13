@@ -2,21 +2,21 @@ import {Injectable} from '@angular/core';
 import {Question} from "../model/question.model";
 import {QuestionList} from "../model/questionList.model";
 import {ApiService} from "../api/api.service";
-import {firstValueFrom} from "rxjs";
+import {tap} from "rxjs";
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class CalculateQuestionServiceService {
+export class CalculateQuestionService {
 
   questionList: QuestionList;
 
   constructor(private apiService: ApiService) {
     this.questionList = new QuestionList();
-    this.apiService.getFromApi('question/all').subscribe((data: Question[]) => {
-      this.questionList.remainingQuestions = data;
-    });
+    // this.apiService.getFromApi('question/all').subscribe((data: Question[]) => {
+    //   this.questionList.remainingQuestions = data;
+    // });
   }
 
   getNextQuestion(): Question {
@@ -37,7 +37,16 @@ export class CalculateQuestionServiceService {
     return this.questionList.remainingQuestions[0];
   }
 
-  async getQuestionsFromApi() {
-    return await firstValueFrom(this.apiService.getFromApi('question/all'));
+  getQuestionsFromApi() {
+    return this.apiService.getQuestions('question/all')
+      .pipe(
+        tap(
+          (
+            (questions: Question[]) => {
+              this.questionList.remainingQuestions = questions.slice();
+            }
+          )
+        )
+      );
   }
 }
