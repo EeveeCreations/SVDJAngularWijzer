@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Question} from "../../shared/model/question.model";
-import {ApiService} from "../../shared/api/api.service";
+import {CalculateQuestionService} from "../../shared/service/calculate-question.service";
 
 @Component({
   selector: 'app-question-screen',
@@ -8,42 +8,22 @@ import {ApiService} from "../../shared/api/api.service";
   styleUrls: ['./question-screen.component.css']
 })
 export class QuestionScreenComponent implements OnInit {
-  prevQuestions: Question[] = [];
-  questions: Question[] = []
+  currentQuestion: Question;
 
-  // This should be the progress in percent
-  progress: number = 0;
-
-  constructor(private apiService: ApiService) {
+  constructor(private questionService: CalculateQuestionService) {
   }
 
   ngOnInit(): void {
-    this.apiService.getFromApi("question/all").subscribe((data: Question[]) => {
-      this.setQuestions(data)
-    })
+    this.currentQuestion = this.questionService.getFirstQuestion();
+    this.questionService.getQuestionsFromApi().subscribe();
   }
 
   onNext() {
-    if (this.questions.length !== 1) {
-      this.prevQuestions.push(this.questions.shift());
-      console.log(this.questions)
-    } else {
-      //should show result page if there are no questions left
-      console.log("question array in question-screen.component.ts is empty");
-      //TODO: link to resultpage
-    }
+    this.currentQuestion = this.questionService.getNextQuestion();
   }
 
   onPrevious() {
-    if (this.prevQuestions.length !== 0) {
-      this.questions.unshift(this.prevQuestions.pop());
-    } else {
-      console.log("prevQuestion array in question-screen.component.ts is empty");
-    }
-  }
-
-  private setQuestions(value: Question[]) {
-    this.questions = value;
+    this.currentQuestion = this.questionService.getPreviousQuestion();
   }
 
 }

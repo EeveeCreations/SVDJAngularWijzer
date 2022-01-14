@@ -1,14 +1,14 @@
-<app-more-info [question]="questions[0]"></app-more-info>
+<app-more-info [question]="currentQuestion"></app-more-info>
 
-<app-question [question]="questions[0]"></app-question>
+<app-question [question]="currentQuestion"></app-question>
 
 <div class="form-holder">
 
-  <app-answer [answers]="questions[0].answers"></app-answer>
+  <app-answer [answers]="currentQuestion.answers"></app-answer>
 
   <button class="svdj-button" (click)="onNext()">Volgende <i class="button-corner"></i></button>
   <button class="svdj-button" (click)="onPrevious()">Vorige <i class="button-corner"></i></button>
-  
+
 </div>
 
 <div class="progress-section">
