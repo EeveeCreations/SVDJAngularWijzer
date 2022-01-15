@@ -1,14 +1,15 @@
 import {Time} from "@angular/common";
+import { Advice } from "./advice.model";
 
 export class Result {
 
-  constructor(private _resultID: bigint, private _amountQuestions: number, private _totalTime: Time) {
+  constructor(private _resultID: bigint, private _amountQuestions: number, private _totalTime: Time, private _advice: Advice) {
     this._resultID = _resultID;
     this._amountQuestions = _amountQuestions;
     this._totalTime = _totalTime;
+    this._advice = _advice;
   }
 
-  //Getters And setters
   get resultID(): bigint {
     return this._resultID;
   }
@@ -31,5 +32,12 @@ export class Result {
 
   set totalTime(value: Time) {
     this._totalTime = value;
+  }
+
+  public get advice() : Advice {
+    return this._advice;
+  }
+  public set advice(v : Advice) {
+    this._advice = v;
   }
 }
