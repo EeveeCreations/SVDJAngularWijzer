@@ -1,14 +1,13 @@
+import { GivenAnswer } from "./given-answer.model";
 import {Result} from "./Result.model";
 
 export class Route{
-  private givenAnswers:[];
 
-  constructor(private _routeID: bigint, private _totalTime: number, private _resultID: Result) {
+  constructor(private _routeID: bigint, private _totalTime: number, private _resultID: Result, private _givenAnswers: GivenAnswer[]) {
     this._routeID = _routeID;
     this._totalTime = _totalTime;
     this._resultID = _resultID;
-    this.givenAnswers = []
-    //TODO: wait for backend to export givenAnswers and implement this
+    this._givenAnswers = _givenAnswers;
   }
 
   public get routeID() : bigint {
@@ -31,4 +30,11 @@ export class Route{
   public set resultID(v : Result) {
     this._resultID = v;
   }
+  public get givenAnswers() : GivenAnswer[] {
+    return this._givenAnswers;
+  }
+  public set givenAnswers(v : GivenAnswer[]) {
+    this._givenAnswers = v;
+  }
+  
 }
