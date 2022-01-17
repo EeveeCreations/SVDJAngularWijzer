@@ -10,6 +10,10 @@ import {ExtraInfoComponent} from './subsidiewijzer/question-screen/answer/extra-
 import {AppRoutingModule, routingComponents} from './app-routing.module';
 import {RequestService} from "./shared/request/request.service";
 import { MoreInfoComponent } from './subsidiewijzer/question-screen/more-info/more-info.component';
+import { AdminNavComponent } from './admin/admin-nav/admin-nav.component';
+import { ResetPasswordComponent } from './admin/forgot-password/reset-password/reset-password.component';
+import { SendTokenComponent } from './admin/forgot-password/send-token/send-token.component';
+import { VerifyTokenComponent } from './admin/forgot-password/verify-token/verify-token.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { MoreInfoComponent } from './subsidiewijzer/question-screen/more-info/mo
     ExtraInfoComponent,
     AppComponent,
     routingComponents,
-    MoreInfoComponent
+    MoreInfoComponent,
+    AdminNavComponent,
+    ResetPasswordComponent,
+    SendTokenComponent,
+    VerifyTokenComponent
   ],
   imports: [
     BrowserModule,
