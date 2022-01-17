@@ -12,4 +12,11 @@ export class AdminNavComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  openMenu() {
+    document.getElementById("sideNav").style.left = "0";
+  }
+  
+  closeMenu() {
+    document.getElementById("sideNav").style.left = "-400px";
+  }
 }
