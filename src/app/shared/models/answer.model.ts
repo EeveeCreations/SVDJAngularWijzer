@@ -1,46 +1,49 @@
-import {Category} from "../model/category.model";
-import {Question} from "../model/question.model";
+import {Question} from "../models/question.model";
+import { Advice } from "./advice.model";
 
 
 export class Answer{
 
-  constructor(private _answerID:bigint, private _answerText: string, private _categories: Category[], private _questionID: Question) {
+  constructor(private _answerID: bigint, private _answerText: string, private _parentQuestionID: Question, private _nextQuestionID: Question, private _advice: Advice) {
     this._answerID = _answerID;
     this._answerText = _answerText;
-    this._categories = _categories;
-    this._questionID = _questionID;
+    this._parentQuestionID = _parentQuestionID;
+    this._nextQuestionID = _nextQuestionID;
+    this._advice = _advice;
   }
 
-  //Getters And setters
-  get answerID(): bigint {
+  public get answerID() : bigint {
     return this._answerID;
   }
-
-  set answerID(value: bigint) {
-    this._answerID = value;
+  public set answerID(v : bigint) {
+    this._answerID = v;
   }
-
-  get answerText(): string {
+  
+  public get answerText() : string {
     return this._answerText;
   }
-
-  set answerText(value: string) {
-    this._answerText = value;
+  public set answerText(v : string) {
+    this._answerText = v;
   }
-
-  get categories(): Category[] {
-    return this._categories;
+  
+  public get parentQuestionID() : Question {
+    return this._parentQuestionID;
   }
-
-  set categories(value: Category[]) {
-    this._categories = value;
+  public set parentQuestionID(v : Question) {
+    this._parentQuestionID = v;
   }
-
-  get questionID(): Question {
-    return this._questionID;
+ 
+  public get nextQuestionID() : Question {
+    return this._nextQuestionID;
   }
-
-  set questionID(value: Question) {
-    this._questionID = value;
+  public set nextQuestionID(v : Question) {
+    this._nextQuestionID = v;
+  }
+  
+  public get advice() : Advice {
+    return this._advice;
+  }
+  public set advice(v : Advice) {
+    this._advice = v;
   }
 }

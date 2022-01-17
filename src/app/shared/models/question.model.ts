@@ -9,7 +9,6 @@ export class Question {
     this._extraInfoVideoURL = _extraInfoVideoURL;
   }
 
-//  Getters and Setters
   get questionID(): bigint {
     return this._questionID;
   }
