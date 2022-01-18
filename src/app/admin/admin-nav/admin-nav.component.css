@@ -19,6 +19,7 @@
     font-weight: 700;
     color: #000000;
     text-decoration: none;
+    transition: 0.3s;
 }
 
 .sidenav a:hover {
@@ -47,8 +48,9 @@
 }
 
 .open-button {
+    position: fixed;
     display: block;
-    margin: 20px auto auto 10px;
+    margin: 10px auto auto 10px;
     font-size: 3em;
     font-weight: bold;
     width: 50px;

@@ -12,4 +12,8 @@ export class EditGrantComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  newGrant() {
+    
+  }
+
 }
