@@ -7,6 +7,7 @@ import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { LoginComponent } from './admin/login/login.component';
 import { EditAdviceComponent } from './admin/edit-advice/edit-advice.component';
 import { ForgotPasswordComponent } from './admin/forgot-password/forgot-password.component';
+import { EditGrantComponent } from './admin/edit-grant/edit-grant.component';
 
 const routes: Routes = [
   { path: 'subsidiewijzer', component: BeginComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'admin', component: AdminPanelComponent},
   { path: 'login', component: LoginComponent},
   { path: 'forgot-password', component: ForgotPasswordComponent},
-  { path: 'edit-advice', component: EditAdviceComponent}
+  { path: 'admin/advies', component: EditAdviceComponent},
+  { path: 'admin/subsidie', component: EditGrantComponent}
 ];
 
 @NgModule({
@@ -27,4 +29,4 @@ const routes: Routes = [
   ]
 })
 export class AppRoutingModule { }
-export const routingComponents = [BeginComponent, QuestionScreenComponent, AdminPanelComponent, LoginComponent, ForgotPasswordComponent, EditAdviceComponent]
+export const routingComponents = [BeginComponent, QuestionScreenComponent, AdminPanelComponent, LoginComponent, ForgotPasswordComponent, EditAdviceComponent, EditGrantComponent]
