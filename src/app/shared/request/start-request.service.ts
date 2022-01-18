@@ -19,7 +19,7 @@ export class StartRequestService {
   }
 
   public makeRequestOfGrant(duty: string, specific: string, variables?: []) {
-    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    const request: Request = new Request(/*this.currentUser.id* TODO: FIX CURRENTUSER */1, duty, specific, variables, false);
     return this.requestService.sendRequestGrant(request);
   }
 

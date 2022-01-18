@@ -8,6 +8,7 @@ import { LoginComponent } from './admin/login/login.component';
 import { EditAdviceComponent } from './admin/edit-advice/edit-advice.component';
 import { ForgotPasswordComponent } from './admin/forgot-password/forgot-password.component';
 import { EditGrantComponent } from './admin/edit-grant/edit-grant.component';
+import { GrantComponent } from './admin/edit-grant/grant/grant.component';
 
 const routes: Routes = [
   { path: 'subsidiewijzer', component: BeginComponent},

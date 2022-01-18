@@ -31,7 +31,7 @@ export class RequestService {
 
   sendRequestGrant(request: Request) {
     this.setConnectionSpecifics("grant", request.specific);
-    return this.http.request<Grant>(request.duty, this.url, {
+    return this.http.request<Grant[]>(request.duty, this.url, {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }

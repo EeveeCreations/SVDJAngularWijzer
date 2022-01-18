@@ -1,0 +1,26 @@
+.grant-item {
+    background-color: #F7F7F7;
+    width: 100%;
+    padding: 0px 15px 15px 15px;
+    margin: 25px auto;
+    position: relative;
+    transition: 0.3s;
+}
+
+h4 {
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    color: #808080;
+    font-weight: 700;
+}
+
+h3 {
+    display: inline-block;
+    color: #000000;
+}
+
+.grant-item:hover {
+    background-color: #F0F0F0;
+}
