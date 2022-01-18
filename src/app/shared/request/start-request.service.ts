@@ -5,7 +5,8 @@ import {User} from "../models/user.model";
 
 @Injectable({providedIn: 'root'})
 export class StartRequestService {
-  currentUser: User;
+  //TODO: Remove the part after =
+  currentUser: User = new User(1, "brandon", "password", "yes");
 
   constructor(private requestService: RequestService) {
   }
@@ -19,7 +20,7 @@ export class StartRequestService {
   }
 
   public makeRequestOfGrant(duty: string, specific: string, variables?: []) {
-    const request: Request = new Request(/*this.currentUser.id* TODO: FIX CURRENTUSER */1, duty, specific, variables, false);
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
     return this.requestService.sendRequestGrant(request);
   }
 
