@@ -14,6 +14,7 @@ import { AdminNavComponent } from './admin/admin-nav/admin-nav.component';
 import { ResetPasswordComponent } from './admin/forgot-password/reset-password/reset-password.component';
 import { SendTokenComponent } from './admin/forgot-password/send-token/send-token.component';
 import { VerifyTokenComponent } from './admin/forgot-password/verify-token/verify-token.component';
+import { GrantComponent } from './admin/edit-grant/grant/grant.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { VerifyTokenComponent } from './admin/forgot-password/verify-token/verif
     AdminNavComponent,
     ResetPasswordComponent,
     SendTokenComponent,
-    VerifyTokenComponent
+    VerifyTokenComponent,
+    GrantComponent
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,10 @@ export class EditGrantComponent implements OnInit {
   }
 
   newGrant() {
+
+  }
+
+  getGrants() {
     
   }
 
