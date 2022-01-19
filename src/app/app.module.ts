@@ -15,6 +15,7 @@ import { ResetPasswordComponent } from './admin/forgot-password/reset-password/r
 import { SendTokenComponent } from './admin/forgot-password/send-token/send-token.component';
 import { VerifyTokenComponent } from './admin/forgot-password/verify-token/verify-token.component';
 import { GrantComponent } from './admin/edit-grant/grant/grant.component';
+import { AdviceComponent } from './admin/edit-advice/advice/advice.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { GrantComponent } from './admin/edit-grant/grant/grant.component';
     ResetPasswordComponent,
     SendTokenComponent,
     VerifyTokenComponent,
-    GrantComponent
+    GrantComponent,
+    AdviceComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import {Answer} from "../model/answer.model";
 import {GivenAnswer} from "../models/given-answer.model";
 import {Grant} from "../models/grant.model";
 import {Result} from "../models/result.model";
+import { Advice } from "../models/advice.model";
 
 @Injectable({providedIn: 'root'})
 export class RequestService {
@@ -93,5 +94,13 @@ export class RequestService {
         body: request.givenVariables,
       }
     )
+  }
+
+  sendRequestAdvice(request: Request) {
+    this.setConnectionSpecifics("advice", request.specific);
+    return this.http.request<Advice[]>(request.duty, this.url, {
+        headers: this.giveCorrectHeadingToRequest(request),
+        body: request.givenVariables,
+    })
   }
 }
