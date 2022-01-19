@@ -1,21 +1,25 @@
-<app-more-info [question]="currentQuestion"></app-more-info>
+<div class="question-screen">
+  
+  <app-more-info [question]="currentQuestion"></app-more-info>
 
-<app-question [question]="currentQuestion"></app-question>
-
-<div class="form-holder">
-
-  <app-answer [answers]="currentQuestion.answers"></app-answer>
-
-  <button class="svdj-button" (click)="onNext()">Volgende <i class="button-corner"></i></button>
-  <button class="svdj-button" (click)="onPrevious()">Vorige <i class="button-corner"></i></button>
-
-</div>
-
-<div class="progress-section">
-  <h4>Voortgang</h4>
-
-  <div class="progress-bar">
-    <!-- This code gives an error in my IDE but works, looking for alternative later -->
-    <!-- <div class="bar" style="width:{{progress}}%;"></div> -->
+  <app-question [question]="currentQuestion"></app-question>
+  
+  <div class="form-holder">
+  
+    <app-answer [answers]="currentQuestion.answers"></app-answer>
+  
+    <button class="svdj-button" (click)="onNext()">Volgende <i class="button-corner"></i></button>
+    <button class="svdj-button" (click)="onPrevious()">Vorige <i class="button-corner"></i></button>
+  
   </div>
+  
+  <div class="progress-section">
+    <h4>Voortgang</h4>
+  
+    <div class="progress-bar">
+      <!-- This code gives an error in my IDE but works, looking for alternative later -->
+      <!-- <div class="bar" style="width:{{progress}}%;"></div> -->
+    </div>
+  </div>
+
 </div>

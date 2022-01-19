@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'subsidiewijzer/vragen', component: QuestionScreenComponent, resolve: { questionList: QuestionScreenResolver}},
   { path: 'admin', component: AdminPanelComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'forgot-password', component: ForgotPasswordComponent},
+  { path: 'wachtwoord-vergeten', component: ForgotPasswordComponent},
   { path: 'admin/advies', component: EditAdviceComponent},
   { path: 'admin/subsidie', component: EditGrantComponent}
 ];
