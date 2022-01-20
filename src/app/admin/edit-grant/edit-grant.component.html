@@ -13,6 +13,9 @@
     <section class="right-form">
 
         <form *ngIf="currentGrant">
+
+            <button type="button" (click)="deleteGrant()" class="delete-button" *ngIf="currentGrant.grantID">Delete <i class="svdj-corner-delete"></i></button>
+
             <p class="error">{{errorLabel}}</p>
 
             <input type="text" placeholder="Naam subsidie" [(ngModel)]="currentGrant.name" name="name"/>

@@ -122,3 +122,35 @@ textarea {
     height: 20px;
     color: #e74c3c;
 }
+
+.delete-button {
+    position: absolute;
+    top: 70px;
+    right: 5%;
+    border: none;
+    display: block;
+    text-align: right;
+    color: #000000;
+    text-decoration: none;
+    font-size: 1.3em;
+    background-color: transparent;
+    transition: 0.3s;
+}
+
+.svdj-corner-delete {
+    display: inline-block;
+    border: solid #000000;
+    border-width: 2px 2px 0px 0px;
+    margin-left: 10px;
+    height: 12px;
+    width: 35px;
+    transition: 0.3s;
+}
+
+.delete-button:hover {
+    color: #e74c3c;
+}
+
+.delete-button:hover > .svdj-corner-delete {
+    border-color: #e74c3c;
+}
