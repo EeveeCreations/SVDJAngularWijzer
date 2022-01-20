@@ -35,7 +35,18 @@ export class EditAdviceComponent implements OnInit {
   }
 
   saveAdvice() {
-    // TODO: save
+    if (!this.currentAdvice._name || this.currentAdvice._name === "") {
+      this.errorLabel = "Het invullen van een naam is verplicht";
+      return;
+    }
+
+    let specific = "";
+    if (this.currentAdvice._adviceID != null) {
+      specific = this.currentAdvice._adviceID.toString();
+    }
+    this.startRequestService.makeRequestOfAdvice("put", specific, this.currentAdvice).subscribe(response => {
+      location.reload();
+    })
   }
 
   deleteAdvice() {
