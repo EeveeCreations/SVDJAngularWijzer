@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Advice } from 'src/app/shared/models/advice.model';
+import { Grant } from 'src/app/shared/models/grant.model';
 import { StartRequestService } from 'src/app/shared/request/start-request.service';
 
 @Component({
@@ -9,7 +10,11 @@ import { StartRequestService } from 'src/app/shared/request/start-request.servic
 })
 export class EditAdviceComponent implements OnInit {
   advices : Advice[] = [];
+
   currentAdvice: Advice;
+  errorLabel: String;
+
+  popup: boolean = false;
 
   constructor(private startRequestService : StartRequestService) { }
 
@@ -20,10 +25,28 @@ export class EditAdviceComponent implements OnInit {
   }
 
   newAdvice() {
+    this.errorLabel = "";
+    this.currentAdvice = new Advice(null, null, null, null)
+  }
 
+  editAdvice(advice: Advice) {
+    this.errorLabel = "";
+    this.currentAdvice = advice;
   }
 
   saveAdvice() {
+    // TODO: save
+  }
 
+  deleteAdvice() {
+    this.popup = true;
+  }
+
+  closePopup() {
+    this.popup = false;
+  }
+
+  confirmDeletion() {
+    // TODO: delete
   }
 }
