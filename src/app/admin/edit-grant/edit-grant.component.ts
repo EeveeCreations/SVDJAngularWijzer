@@ -9,6 +9,7 @@ import { StartRequestService } from 'src/app/shared/request/start-request.servic
 })
 export class EditGrantComponent implements OnInit {
   grants: Grant[] = [];
+  currentGrant: Grant;
 
   constructor(private startRequestService: StartRequestService) { }
 

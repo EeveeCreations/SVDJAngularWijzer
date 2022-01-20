@@ -9,6 +9,7 @@ import { StartRequestService } from 'src/app/shared/request/start-request.servic
 })
 export class EditQuestionComponent implements OnInit {
   questions: Question[] = [];
+  currentQuestion: Question;
 
   constructor(private startRequestService: StartRequestService) { }
 

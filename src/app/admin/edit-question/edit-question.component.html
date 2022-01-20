@@ -12,7 +12,7 @@
 
     <section class="right-form">
 
-        <form>
+        <form *ngIf="currentQuestion">
             <input type="text" placeholder="Vraag" />
 
             <button type="button" (click)="saveQuestion()" class="svdj-button">
