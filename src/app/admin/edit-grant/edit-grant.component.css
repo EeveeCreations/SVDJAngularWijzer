@@ -117,3 +117,8 @@ textarea {
 .svdj-button:hover > .button-corner {
     border-color: #000000;
 }
+
+.error {
+    height: 20px;
+    color: #e74c3c;
+}

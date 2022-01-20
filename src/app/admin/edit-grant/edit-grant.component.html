@@ -13,9 +13,11 @@
     <section class="right-form">
 
         <form *ngIf="currentGrant">
-            <input type="text" placeholder="Naam subsidie" />
+            <p class="error">{{errorLabel}}</p>
 
-            <textarea type="text" placeholder="Beschrijving"></textarea>
+            <input type="text" placeholder="Naam subsidie" [(ngModel)]="currentGrant.name" name="name"/>
+
+            <textarea type="text" placeholder="Beschrijving" [(ngModel)]="currentGrant.description" name="description"></textarea>
 
             <button type="button" (click)="saveGrant()" class="svdj-button">
                 Opslaan <i class="button-corner"></i>

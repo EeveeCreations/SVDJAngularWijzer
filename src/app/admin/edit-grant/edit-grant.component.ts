@@ -10,6 +10,8 @@ import { StartRequestService } from 'src/app/shared/request/start-request.servic
 export class EditGrantComponent implements OnInit {
   grants: Grant[] = [];
   currentGrant: Grant;
+  someText: String;
+  errorLabel: String;
 
   constructor(private startRequestService: StartRequestService) { }
 
@@ -20,10 +22,21 @@ export class EditGrantComponent implements OnInit {
   }
 
   newGrant() {
-
+    this.currentGrant = new Grant(null, null, null, null, null, null);
   }
 
   saveGrant() {
-    
+    if (this.currentGrant._name == null) {
+      this.errorLabel = "Het invullen van een naam is verplicht";
+      return;
+    }
+
+    let specific = "";
+    if (this.currentGrant._grantID != null) {
+      specific = this.currentGrant._grantID.toString();
+    }
+    this.startRequestService.makeRequestOfGrant("put", specific, this.currentGrant).subscribe(response => {
+      location.reload();
+    });
   }
 }

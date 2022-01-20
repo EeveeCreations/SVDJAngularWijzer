@@ -17,6 +17,7 @@ import { VerifyTokenComponent } from './admin/forgot-password/verify-token/verif
 import { GrantComponent } from './admin/edit-grant/grant/grant.component';
 import { AdviceComponent } from './admin/edit-advice/advice/advice.component';
 import { QuestionItemComponent } from './admin/edit-question/question-item/question-item.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { QuestionItemComponent } from './admin/edit-question/question-item/quest
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [RequestService],
   bootstrap: [AppComponent]
