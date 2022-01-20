@@ -9,8 +9,8 @@ import { StartRequestService } from 'src/app/shared/request/start-request.servic
 })
 export class EditGrantComponent implements OnInit {
   grants: Grant[] = [];
+
   currentGrant: Grant;
-  someText: String;
   errorLabel: String;
 
   constructor(private startRequestService: StartRequestService) { }
@@ -25,7 +25,12 @@ export class EditGrantComponent implements OnInit {
     this.currentGrant = new Grant(null, null, null, null, null, null);
   }
 
+  editGrant(grant: Grant) {
+    this.currentGrant = grant;
+  }
+
   saveGrant() {
+    
     if (this.currentGrant._name == null) {
       this.errorLabel = "Het invullen van een naam is verplicht";
       return;

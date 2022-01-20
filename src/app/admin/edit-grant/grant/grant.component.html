@@ -1,5 +1,5 @@
 <div>
-    <div *ngFor="let grant of grants" class="grant-item">
+    <div *ngFor="let grant of grants" class="grant-item" (click)="setCurrentGrant(grant.grantID, grant.name, grant.description)">
         <h4>Subsidie #{{grant.grantID}}</h4>
         <h3>{{grant.name}}</h3>
         <p>{{grant.description}}</p>

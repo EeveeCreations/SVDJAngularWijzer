@@ -23,4 +23,5 @@ h3 {
 
 .grant-item:hover {
     background-color: #F0F0F0;
+    cursor: pointer;
 }

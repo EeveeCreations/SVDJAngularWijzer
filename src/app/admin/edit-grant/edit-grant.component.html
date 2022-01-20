@@ -7,7 +7,7 @@
             +
         </button>
 
-        <app-grant [grants]="grants"></app-grant>
+        <app-grant [grants]="grants" (onGrantSelected)="editGrant($event)"></app-grant>
     </section>
 
     <section class="right-form">
