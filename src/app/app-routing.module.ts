@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'wachtwoord-vergeten', component: ForgotPasswordComponent},
   { path: 'admin/advies', component: EditAdviceComponent},
   { path: 'admin/subsidie', component: EditGrantComponent},
-  { path: 'admin/vragen', component: EditQuestionComponent}
+  { path: 'admin/vraag', component: EditQuestionComponent}
 ];
 
 @NgModule({

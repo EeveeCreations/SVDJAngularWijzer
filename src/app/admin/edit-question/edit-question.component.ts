@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Question } from 'src/app/shared/model/question.model';
+import { StartRequestService } from 'src/app/shared/request/start-request.service';
 
 @Component({
   selector: 'app-edit-question',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-question.component.css']
 })
 export class EditQuestionComponent implements OnInit {
+  questions: Question[] = [];
 
-  constructor() { }
+  constructor(private startRequestService: StartRequestService) { }
 
   ngOnInit(): void {
+    this.startRequestService.makeRequestOfQuestion("get", "all", null).subscribe(response => {
+      this.questions = response;
+    })
   }
 
+  newQuestion() {
+
+  }
+
+  saveQuestion() {
+    
+  }
 }

@@ -16,6 +16,7 @@ import { SendTokenComponent } from './admin/forgot-password/send-token/send-toke
 import { VerifyTokenComponent } from './admin/forgot-password/verify-token/verify-token.component';
 import { GrantComponent } from './admin/edit-grant/grant/grant.component';
 import { AdviceComponent } from './admin/edit-advice/advice/advice.component';
+import { QuestionItemComponent } from './admin/edit-question/question-item/question-item.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AdviceComponent } from './admin/edit-advice/advice/advice.component';
     SendTokenComponent,
     VerifyTokenComponent,
     GrantComponent,
-    AdviceComponent
+    AdviceComponent,
+    QuestionItemComponent
   ],
   imports: [
     BrowserModule,
