@@ -154,3 +154,103 @@ textarea {
 .delete-button:hover > .svdj-corner-delete {
     border-color: #e74c3c;
 }
+
+/* POPUP */
+
+.block-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000070;
+    z-index: 5;
+}
+
+.popup {
+    position: relative;
+    background-color: #FFFFFF;
+    width: 60vw;
+    height: 80vh;
+    margin: 10vh auto;
+    text-align: center;
+    padding: 100px;
+}
+
+.close-popup-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: block;
+    font-size: 3em;
+    font-weight: bold;
+    width: 50px;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+
+.popup-card {
+    background-color: #F7F7F7;
+    width: 100%;
+    padding: 15px;
+    text-align: left;
+    position: relative;
+    margin-top: 50px;
+    max-height: 450px;
+    overflow: hidden;
+}
+
+.popup-card > h3 {
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    color: #AAAAAA;
+    font-weight: 700;
+}
+
+.delete-buttons {
+    position: absolute;
+    bottom: 25px;
+    right: 15px;
+    display: block;
+}
+
+.svdj-button-del {
+    display: inline-block;
+    margin: auto 15px auto auto;
+    background-color: #000000;
+    padding: 15px 20px;
+    transition: 0.3s;
+    width: auto;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 1.3em;
+    border: none;
+}
+
+.svdj-button-del > .button-corner {
+    display: inline-block;
+    width: 60px;
+    height: 15px;
+    border: solid #FFFFFF;
+    border-width: 3px 3px 0px 0px;
+    margin-left: 15px;
+    transition: 0.3s;
+}
+
+.svdj-button-del:hover {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.svdj-button-del:hover > .button-corner {
+    border-color: #000000;
+}
+
+#red:hover {
+    background-color: #e74c3c;
+}

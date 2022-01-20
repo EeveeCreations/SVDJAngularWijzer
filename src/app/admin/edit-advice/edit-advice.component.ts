@@ -58,6 +58,8 @@ export class EditAdviceComponent implements OnInit {
   }
 
   confirmDeletion() {
-    // TODO: delete
+    this.startRequestService.makeRequestOfAdvice("delete", this.currentAdvice._adviceID.toString(), this.currentAdvice).subscribe(response => {
+      location.reload();
+    })
   }
 }
