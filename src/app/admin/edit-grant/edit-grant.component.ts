@@ -57,6 +57,8 @@ export class EditGrantComponent implements OnInit {
   }
 
   confirmDeletion() {
-
+    this.startRequestService.makeRequestOfGrant("delete", this.currentGrant._grantID.toString(), this.currentGrant).subscribe(response => {
+      location.reload();
+    })
   }
 }
