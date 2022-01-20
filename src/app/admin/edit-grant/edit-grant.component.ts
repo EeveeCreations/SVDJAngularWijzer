@@ -22,16 +22,17 @@ export class EditGrantComponent implements OnInit {
   }
 
   newGrant() {
+    this.errorLabel = "";
     this.currentGrant = new Grant(null, null, null, null, null, null);
   }
 
   editGrant(grant: Grant) {
+    this.errorLabel = "";
     this.currentGrant = grant;
   }
 
   saveGrant() {
-    
-    if (this.currentGrant._name == null) {
+    if (!this.currentGrant._name || this.currentGrant._name === "") {
       this.errorLabel = "Het invullen van een naam is verplicht";
       return;
     }
