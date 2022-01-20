@@ -33,3 +33,20 @@
     </section>
 
 </section>
+
+<section class="block-screen" *ngIf="popup">
+    <section class="popup">
+        <b class="close-popup-btn" (click)="closePopup()">&#10006;</b>
+        <h4> Weet u zeker dat u deze subsidie wilt verwijderen?</h4>
+        <div class="popup-card">
+            <h3> Subsidie #{{currentGrant.grantID}} </h3>
+            <h1> {{currentGrant.name}} </h1>
+            <h2> {{currentGrant.description}} </h2>
+        </div>
+
+        <div class="delete-buttons">
+            <button type="button" class="svdj-button-del" (click)="closePopup()">Anuleren<i class="button-corner"></i></button>
+            <button type="button" class="svdj-button-del" id="red" (click)="confirmDeletion()">Bevestig verwijderen<i class="button-corner"></i></button>
+        </div>
+    </section>
+</section>

@@ -13,6 +13,8 @@ export class EditGrantComponent implements OnInit {
   currentGrant: Grant;
   errorLabel: String;
 
+  popup: boolean = false;
+
   constructor(private startRequestService: StartRequestService) { }
 
   ngOnInit(): void {
@@ -47,6 +49,14 @@ export class EditGrantComponent implements OnInit {
   }
 
   deleteGrant() {
-    
+    this.popup = true;
+  }
+
+  closePopup() {
+    this.popup = false;
+  }
+
+  confirmDeletion() {
+
   }
 }
