@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Advice } from 'src/app/shared/models/advice.model';
+import { Grant } from 'src/app/shared/models/grant.model';
 
 @Component({
   selector: 'app-advice',
@@ -14,4 +15,10 @@ export class AdviceComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  setCurrentAdvice(adviceID: bigint, name: string, description: string, grants: Grant[]) {
+    let advice: Advice = new Advice(adviceID, name, description, grants);
+    this.onAdviceSelected.emit(advice);
+  }
+
+  @Output() onAdviceSelected = new EventEmitter<Advice>();
 }

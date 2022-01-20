@@ -7,15 +7,20 @@
             +
         </button>
 
-        <app-advice [advices]="advices"></app-advice>
+        <app-advice [advices]="advices" (onAdviceSelected)="editAdvice($event)"></app-advice>
     </section>
 
     <section class="right-form">
 
         <form *ngIf="currentAdvice">
-            <input type="text" placeholder="Naam advies" />
 
-            <textarea type="text" placeholder="Beschrijving"></textarea>
+            <button type="button" (click)="deleteAdvice()" class="delete-button" *ngIf="currentAdvice.adviceID">Delete <i class="svdj-corner-delete"></i></button>
+
+            <p class="error">{{errorLabel}}</p>
+
+            <input type="text" placeholder="Naam advies" [(ngModel)]="currentAdvice.name" name="name" />
+
+            <textarea type="text" placeholder="Beschrijving" [(ngModel)]="currentAdvice.description" name="description"></textarea>
 
             <!-- TODO: add grants to this advice -->
 

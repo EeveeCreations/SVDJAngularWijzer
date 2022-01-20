@@ -5,6 +5,7 @@
     margin: 25px auto;
     position: relative;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 h4 {
