@@ -2,10 +2,13 @@ import {Injectable} from '@angular/core';
 import {Request} from "./request.model";
 import {RequestService} from "./request.service";
 import {User} from "../models/user.model";
+import { Grant } from '../models/grant.model';
+import { Advice } from '../models/advice.model';
 
 @Injectable({providedIn: 'root'})
 export class StartRequestService {
-  currentUser: User;
+  //TODO: Remove the part after =
+  currentUser: User = new User(1, "brandon", "password", "yes");
 
   constructor(private requestService: RequestService) {
   }
@@ -18,7 +21,7 @@ export class StartRequestService {
       });
   }
 
-  public makeRequestOfGrant(duty: string, specific: string, variables?: []) {
+  public makeRequestOfGrant(duty: string, specific: string, variables?: Grant) {
     const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
     return this.requestService.sendRequestGrant(request);
   }
@@ -51,5 +54,10 @@ export class StartRequestService {
   public makeRequestOfCategory(duty: string, specific: string, variables?: []) {
     const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
     return this.requestService.sendRequestCategory(request);
+  }
+
+  public makeRequestOfAdvice(duty: string, specific: string, variables?: Advice) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestAdvice(request);
   }
 }

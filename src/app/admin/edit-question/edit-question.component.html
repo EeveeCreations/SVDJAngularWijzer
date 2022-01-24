@@ -1,0 +1,28 @@
+<app-admin-nav></app-admin-nav>
+
+<section class="center-view-box">
+
+    <section class="left-list">
+        <button (click)="newQuestion()" class="new">
+            +
+        </button>
+
+        <app-question-item [questions]="questions"></app-question-item>
+    </section>
+
+    <section class="right-form">
+
+        <form *ngIf="currentQuestion">
+            <input type="text" placeholder="Vraag" />
+
+            <button type="button" (click)="saveQuestion()" class="svdj-button">
+                Opslaan <i class="button-corner"></i>
+            </button>
+        </form>
+
+        <section class="nothing-selected">
+            Niks geselecteerd
+        </section>
+    </section>
+
+</section>

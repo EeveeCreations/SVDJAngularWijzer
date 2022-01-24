@@ -1,0 +1,52 @@
+<app-admin-nav></app-admin-nav>
+
+<section class="center-view-box">
+
+    <section class="left-list">
+        <button (click)="newGrant()" class="new">
+            +
+        </button>
+
+        <app-grant [grants]="grants" (onGrantSelected)="editGrant($event)"></app-grant>
+    </section>
+
+    <section class="right-form">
+
+        <form *ngIf="currentGrant">
+
+            <button type="button" (click)="deleteGrant()" class="delete-button" *ngIf="currentGrant.grantID">Delete <i class="svdj-corner-delete"></i></button>
+
+            <p class="error">{{errorLabel}}</p>
+
+            <input type="text" placeholder="Naam subsidie" [(ngModel)]="currentGrant.name" name="name"/>
+
+            <textarea type="text" placeholder="Beschrijving" [(ngModel)]="currentGrant.description" name="description"></textarea>
+
+            <button type="button" (click)="saveGrant()" class="svdj-button">
+                Opslaan <i class="button-corner"></i>
+            </button>
+        </form>
+
+        <section class="nothing-selected">
+            Niks geselecteerd
+        </section>
+    </section>
+
+</section>
+
+<section class="block-screen" *ngIf="popup">
+    <section class="popup">
+        <b class="close-popup-btn" (click)="closePopup()">&#10006;</b>
+        <h4> Weet u zeker dat u deze subsidie wilt verwijderen?</h4>
+        <div class="popup-card">
+            <h3> Subsidie #{{currentGrant.grantID}} </h3>
+            <h1> {{currentGrant.name}} </h1>
+            <h2> {{currentGrant.description}} </h2>
+        </div>
+
+        <div class="delete-buttons">
+            <button type="button" class="svdj-button-del" (click)="closePopup()">Annuleren<i class="button-corner"></i></button>
+            <button type="button" class="svdj-button-del" id="red" (click)="confirmDeletion()">Bevestig verwijderen<i class="button-corner"></i></button>
+        </div>
+    </section>
+</section>

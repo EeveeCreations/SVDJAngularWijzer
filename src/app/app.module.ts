@@ -10,6 +10,14 @@ import {ExtraInfoComponent} from './subsidiewijzer/question-screen/answer/extra-
 import {AppRoutingModule, routingComponents} from './app-routing.module';
 import {RequestService} from "./shared/request/request.service";
 import { MoreInfoComponent } from './subsidiewijzer/question-screen/more-info/more-info.component';
+import { AdminNavComponent } from './admin/admin-nav/admin-nav.component';
+import { ResetPasswordComponent } from './admin/forgot-password/reset-password/reset-password.component';
+import { SendTokenComponent } from './admin/forgot-password/send-token/send-token.component';
+import { VerifyTokenComponent } from './admin/forgot-password/verify-token/verify-token.component';
+import { GrantComponent } from './admin/edit-grant/grant/grant.component';
+import { AdviceComponent } from './admin/edit-advice/advice/advice.component';
+import { QuestionItemComponent } from './admin/edit-question/question-item/question-item.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,12 +27,20 @@ import { MoreInfoComponent } from './subsidiewijzer/question-screen/more-info/mo
     ExtraInfoComponent,
     AppComponent,
     routingComponents,
-    MoreInfoComponent
+    MoreInfoComponent,
+    AdminNavComponent,
+    ResetPasswordComponent,
+    SendTokenComponent,
+    VerifyTokenComponent,
+    GrantComponent,
+    AdviceComponent,
+    QuestionItemComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [RequestService],
   bootstrap: [AppComponent]

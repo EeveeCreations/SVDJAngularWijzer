@@ -2,38 +2,38 @@ import { Grant } from "./grant.model";
 
 export class Advice{
 
-    constructor(private _adviceID:bigint, private _name: string, private _description: string, private _grants: Grant[]) {
-      this._adviceID = _adviceID;
-      this._name = _name;
-      this._description = _description;
-      this._grants = _grants;
+    constructor(private adviceID:bigint, private name: string, private description: string, private grants: Grant[]) {
+      this.adviceID = adviceID;
+      this.name = name;
+      this.description = description;
+      this.grants = grants;
     }
 
-    public get adviceID() : bigint {
-        return this._adviceID;
+    public get _adviceID() : bigint {
+        return this.adviceID;
     }
-    public set adviceID(v : bigint) {
-        this._adviceID = v;
-    }
-
-    public get name() : string {
-        return this._name;
-    }
-    public set name(v : string) {
-        this._name = v;
+    public set _adviceID(v : bigint) {
+        this.adviceID = v;
     }
 
-    public get description() : string {
-        return this._description;
+    public get _name() : string {
+        return this.name;
     }
-    public set description(v : string) {
-        this._description = v;
+    public set _name(v : string) {
+        this.name = v;
     }
 
-    public get grants() : Grant[] {
-        return this._grants;
+    public get _description() : string {
+        return this.description;
     }
-    public set grants(v : Grant[]) {
-        this._grants = v;
+    public set _description(v : string) {
+        this.description = v;
+    }
+
+    public get _grants() : Grant[] {
+        return this.grants;
+    }
+    public set _grants(v : Grant[]) {
+        this.grants = v;
     }
   }
