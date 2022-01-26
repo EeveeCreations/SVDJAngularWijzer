@@ -241,4 +241,5 @@ select {
     outline: none;
     border: none;
     height: 30px;
+    width: calc(100% - 10px);
 }

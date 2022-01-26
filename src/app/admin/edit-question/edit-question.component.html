@@ -21,21 +21,28 @@
             <h2>Antwoorden</h2>
 
             <div class="answer-container">
-                <div class="answer-item" *ngFor="let answer of currentQuestion.answers">
+                <div class="answer-item" *ngFor="let answer of currentQuestion.answers; let i = index">
                     <input type="text" placeholder="Antwoord" [(ngModel)]="answer.answerText" name="{{answer.answerID}}" class="smaller-field"/>
                     <!-- Next question of advice koppelen -->
 
                     <div class="reference-point">
                         <b>vraag</b>
                         <label class="switch">
-                            <input type="checkbox" title="questionOrAdvice" >
+                            <input  id="{{i}}" type="checkbox" title="questionOrAdvice" (change)="true" #checkBox>
                             <span class="slider"></span>
                         </label>
                         <b>advies</b>
 
-                        <select title="nextQuestionBox" name="nextQuestion">
-                            <option *ngFor="let question of questions">Vraag #{{question.questionID}}: {{question.questionText}}</option>
-                        </select>
+                        <div class="select-boxes">
+                            <select title="nextQuestionBox" name="nextQuestion" *ngIf="!checkBox.checked">
+                                <option *ngFor="let question of questions">Vraag #{{question.questionID}}: {{question.questionText}}</option>
+                            </select>
+                            <select title="nextAdviceBox" name="nextAdvice" *ngIf="checkBox.checked">
+                                <option *ngFor="let advice of advices">Advies #{{advice.adviceID}}: {{advice.name}}</option>
+                            </select>
+                        </div>
+                        
+
                     </div>
                 </div>
 
