@@ -28,21 +28,23 @@
                     <div class="reference-point">
                         <b>vraag</b>
                         <label class="switch">
-                            <input  id="{{i}}" type="checkbox" title="questionOrAdvice" (change)="true" #checkBox>
+                            <input  id="{{i}}" type="checkbox" title="questionOrAdvice" (change)="true" #checkBox [checked]="answer.advice !== null">
                             <span class="slider"></span>
                         </label>
                         <b>advies</b>
 
                         <div class="select-boxes">
                             <select title="nextQuestionBox" name="nextQuestion" *ngIf="!checkBox.checked">
+                                <option *ngIf="answer.nextQuestion !== null" selected>Origineel: Vraag #{{answer.nextQuestion.questionID}}: {{answer.nextQuestion.questionText}}</option>
+                                <option *ngIf="answer.nextQuestion === null" disabled selected>Selecteer graag een volgende vraag</option>
                                 <option *ngFor="let question of questions">Vraag #{{question.questionID}}: {{question.questionText}}</option>
                             </select>
                             <select title="nextAdviceBox" name="nextAdvice" *ngIf="checkBox.checked">
+                                <option *ngIf="answer.advice !== null" selected>Origineel: Advies #{{answer.advice.adviceID}}: {{answer.advice.name}}</option>
+                                <option *ngIf="answer.advice === null" disabled selected>Selecteer graag een advies</option>
                                 <option *ngFor="let advice of advices">Advies #{{advice.adviceID}}: {{advice.name}}</option>
                             </select>
                         </div>
-                        
-
                     </div>
                 </div>
 
