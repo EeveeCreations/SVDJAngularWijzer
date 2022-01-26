@@ -9,7 +9,9 @@ import { StartRequestService } from 'src/app/shared/request/start-request.servic
 })
 export class EditQuestionComponent implements OnInit {
   questions: Question[] = [];
+
   currentQuestion: Question;
+  errorLabel: String;
 
   constructor(private startRequestService: StartRequestService) { }
 
@@ -21,6 +23,11 @@ export class EditQuestionComponent implements OnInit {
 
   newQuestion() {
 
+  }
+
+  editQuestion(question: Question) {
+    this.errorLabel = "";
+    this.currentQuestion = question;
   }
 
   saveQuestion() {

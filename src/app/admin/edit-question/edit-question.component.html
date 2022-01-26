@@ -7,13 +7,16 @@
             +
         </button>
 
-        <app-question-item [questions]="questions"></app-question-item>
+        <app-question-item [questions]="questions" (onQuestionSelected)="editQuestion($event)"></app-question-item>
     </section>
 
     <section class="right-form">
 
         <form *ngIf="currentQuestion">
-            <input type="text" placeholder="Vraag" />
+
+            <p class="error">{{errorLabel}}</p>
+
+            <input type="text" placeholder="Vraag" [(ngModel)]="currentQuestion.questionText" name="Question"/>
 
             <button type="button" (click)="saveQuestion()" class="svdj-button">
                 Opslaan <i class="button-corner"></i>

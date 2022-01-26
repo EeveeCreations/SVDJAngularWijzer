@@ -1,5 +1,5 @@
 <div>
-    <div *ngFor="let question of questions" class="question-item">
+    <div *ngFor="let question of questions" class="question-item" (click)="setCurrentQuestion(question.questionID, question.questionText, question.answers, question.extraInfoTile, question.extraInfoDescription, question.extraInfoVideoURL)">
         <h4>Vraag #{{question.questionID}}</h4>
         <h3>{{question.questionText}}</h3>
         
