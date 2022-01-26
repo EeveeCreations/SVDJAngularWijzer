@@ -18,7 +18,6 @@ export class AuthService {
       if (this.admin != null) {
         this.router.navigate(['/admin/advies']);
       }
-      this.router.navigate(['./login']);
     });
     this.autoLogIn();
   }
@@ -83,7 +82,6 @@ export class AuthService {
     if (!currentAdmin) {
       return;
     }
-    console.log(currentAdmin)
     return new Admin("admin", currentAdmin.role, currentAdmin._token, currentAdmin._refreshToken);
   }
 
@@ -114,6 +112,7 @@ export class AuthService {
 
   logOut() {
     this.admin.next(null);
+    this.router.navigate(['./login']);
     if (this.tokenExpirationTimer) {
       clearTimeout();
     }
