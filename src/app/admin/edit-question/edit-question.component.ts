@@ -22,7 +22,8 @@ export class EditQuestionComponent implements OnInit {
   }
 
   newQuestion() {
-
+    this.errorLabel = "";
+    this.currentQuestion = new Question(null, null, null, null, null, null);
   }
 
   editQuestion(question: Question) {
@@ -31,6 +32,18 @@ export class EditQuestionComponent implements OnInit {
   }
 
   saveQuestion() {
+    
+  }
+
+  deleteQuestion() {
+
+  }
+
+  closePopup() {
+
+  }
+
+  confirmDeletion() {
     
   }
 }
