@@ -15,20 +15,37 @@ export class AuthService {
   constructor(private http: HttpClient,
               private router: Router) {
     this.admin.subscribe(() => {
-      this.router.navigate(['/admin']);
-    })
+      if (this.admin != null) {
+        this.router.navigate(['/admin/advies']);
+      }
+      this.router.navigate(['./login']);
+    });
+    this.autoLogIn();
   }
 
   prepareURL(currentAuthenticationMethod: string) {
     this.url = "https://localhost:8443/" + currentAuthenticationMethod;
-    //178.62.233.221/
     return this.url;
   }
 
   prepareHeader() {
     const headerOfRequest: HttpHeaders = new HttpHeaders();
-    headerOfRequest.set('origin', 'http://localhost:4200');
+    headerOfRequest.append('Content-Type', 'application/json');
+    headerOfRequest.append('Accept', 'application/json');
+    headerOfRequest.set('Origin', 'http://localhost:4200');
     return headerOfRequest;
+  }
+
+  autoLogIn() {
+    const loadedAdmin: Admin = this.getAdminFromsessionStorage()
+    if (!loadedAdmin) {
+      return;
+    }
+    console.log("logged in!")
+    this.autoLogOut()
+    if (loadedAdmin.token) {
+      this.admin.next(loadedAdmin);
+    }
   }
 
   passwordHash(password: string): string {
@@ -41,14 +58,13 @@ export class AuthService {
       this.url, {}, {
         headers: this.prepareHeader(),
         params: {
-          userName: adminName,
+          username: adminName,
           password: this.passwordHash(password)
         }
       }
     ).pipe(
       catchError(this.handleError)
       , map(dataRes => {
-          console.log(dataRes);
           return this.handleAuth(
             dataRes.name,
             dataRes.role,
@@ -58,27 +74,38 @@ export class AuthService {
       ));
   }
 
+  getAdminFromsessionStorage(): Admin {
+    const currentAdmin: {
+      role: string,
+      _token: string,
+      _refreshToken: string
+    } = JSON.parse(sessionStorage.getItem('currentAdmin'));
+    if (!currentAdmin) {
+      return;
+    }
+    console.log(currentAdmin)
+    return new Admin("admin", currentAdmin.role, currentAdmin._token, currentAdmin._refreshToken);
+  }
+
   private handleAuth(
     name: string,
     role: string,
     token: string,
     refreshToken: string) {
-    const admin = new Admin(name,role, token, refreshToken)
+    const admin = new Admin(name, role.replace("[", '').replace("]", ''), token, refreshToken)
+    sessionStorage.setItem("admin", JSON.stringify(admin));
     this.admin.next(admin);
     return admin;
 
   }
 
   private handleError(errorRes: HttpErrorResponse) {
-    let errorMessage = 'Niet gerigistreede error';
-    if (!errorRes.error || !errorRes.error.error) {
-      return throwError(errorMessage);
-    }
-    switch (errorRes.error.error.message) {
-      case 'EMAIL_NOT_FOUND':
+    let errorMessage = 'Onbekende error';
+    switch (errorRes.status) {
+      case 418:
         errorMessage = 'Deze email bestaat niet';
         break;
-      case 'INVALID_PASSWORD':
+      case 401:
         errorMessage = 'Het wachtwoord gaat niet met de email';
         break;
     }
@@ -86,11 +113,16 @@ export class AuthService {
   }
 
   logOut() {
-    this.router.navigate(['./login']);
     this.admin.next(null);
     if (this.tokenExpirationTimer) {
       clearTimeout();
     }
   }
 
+  autoLogOut() {
+    const MAX_MINUTES = 10 * 60 * 1000// Minutes - seconds - miliseconds
+    this.tokenExpirationTimer = setTimeout(() => {
+      this.logOut();
+    }, MAX_MINUTES)
+  }
 }

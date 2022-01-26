@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
     if (!this.loginForm.valid) {
       return;
     }
+    this.error = null;
     this.checkAuthentication();
   }
 
@@ -45,7 +46,6 @@ export class LoginComponent implements OnInit {
       console.log(answer)
     }));
     authObs.subscribe(answer => {
-
     }, errorMes => {
       this.error = errorMes;
     });
