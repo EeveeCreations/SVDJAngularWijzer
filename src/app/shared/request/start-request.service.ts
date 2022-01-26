@@ -51,11 +51,6 @@ export class StartRequestService {
     return this.requestService.sendRequestGivenAnswer(request);
   }
 
-  public makeRequestOfCategory(duty: string, specific: string, variables?: []) {
-    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
-    return this.requestService.sendRequestCategory(request);
-  }
-
   public makeRequestOfAdvice(duty: string, specific: string, variables?: Advice) {
     const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
     return this.requestService.sendRequestAdvice(request);

@@ -39,7 +39,7 @@
                     </div>
                 </div>
 
-                <button type="button" (click)="addAnswerToQuestion()" class="add-answer">
+                <button type="button" (click)="addAnswerToQuestion()" class="add-answer" *ngIf="currentQuestion.answers.length < 4">
                     +
                 </button>
             </div>

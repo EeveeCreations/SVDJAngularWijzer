@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Question } from 'src/app/shared/model/question.model';
+import { Answer } from 'src/app/shared/models/answer.model';
+import { Question } from 'src/app/shared/models/question.model';
 import { StartRequestService } from 'src/app/shared/request/start-request.service';
 
 @Component({
@@ -23,7 +24,7 @@ export class EditQuestionComponent implements OnInit {
 
   newQuestion() {
     this.errorLabel = "";
-    this.currentQuestion = new Question(null, null, null, null, null, null);
+    this.currentQuestion = new Question(null, null, [], null, null, null);
   }
 
   editQuestion(question: Question) {
@@ -32,7 +33,7 @@ export class EditQuestionComponent implements OnInit {
   }
 
   addAnswerToQuestion() {
-    
+    this.currentQuestion._answers.push(new Answer(null, null, null, null, null));
   }
 
   saveQuestion() {

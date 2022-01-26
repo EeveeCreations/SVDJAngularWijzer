@@ -1,6 +1,8 @@
+import { Answer } from "./answer.model";
+
 export class Question {
 
-  public constructor(private questionID: bigint, private questionText: string, private answers: [], private extraInfoTile: string, private extraInfoDescription: string, private extraInfoVideoURL: string) {
+  public constructor(private questionID: bigint, private questionText: string, private answers: Answer[], private extraInfoTile: string, private extraInfoDescription: string, private extraInfoVideoURL: string) {
     this.questionID = questionID;
     this.questionText = questionText;
     this.answers = answers;
@@ -25,11 +27,11 @@ export class Question {
     this.questionText = value;
   }
 
-  get _answers(): [] {
+  get _answers(): Answer[] {
     return this.answers;
   }
 
-  set _answers(value: []) {
+  set _answers(value: Answer[]) {
     this.answers = value;
   }
 
