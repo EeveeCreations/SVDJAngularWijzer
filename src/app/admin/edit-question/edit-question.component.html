@@ -18,6 +18,41 @@
 
             <input type="text" placeholder="Vraag" [(ngModel)]="currentQuestion.questionText" name="Question"/>
 
+            <h2>Antwoorden</h2>
+
+            <div class="answer-container">
+                <div class="answer-item" *ngFor="let answer of currentQuestion.answers">
+                    <input type="text" placeholder="Antwoord" [(ngModel)]="answer.answerText" name="{{answer.answerID}}" class="smaller-field"/>
+                    <!-- Next question of advice koppelen -->
+
+                    <div class="reference-point">
+                        <b>vraag</b>
+                        <label class="switch">
+                            <input type="checkbox" title="questionOrAdvice" >
+                            <span class="slider"></span>
+                        </label>
+                        <b>advies</b>
+
+                        <select title="nextQuestionBox" name="nextQuestion">
+                            <option *ngFor="let question of questions">Vraag #{{question.questionID}}: {{question.questionText}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="button" (click)="addAnswerToQuestion()" class="add-answer">
+                    +
+                </button>
+            </div>
+
+            <h2>Meer Informatie<b>(niet verplicht)</b></h2>
+
+            <input type="text" placeholder="Titel" [(ngModel)]="currentQuestion.extraInfoTile" name="extraInfoTitle"/>
+
+            <textarea type="text" placeholder="Extra info" [(ngModel)]="currentQuestion.extraInfoDescription" name="extraInfoDescription"></textarea>
+
+            <input type="text" placeholder="Info Video URL" [(ngModel)]="currentQuestion.extraInfoVideoURL" name="extraInfoTitle"/>
+
+
             <button type="button" (click)="saveQuestion()" class="svdj-button">
                 Opslaan <i class="button-corner"></i>
             </button>

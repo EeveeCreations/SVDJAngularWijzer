@@ -31,6 +31,10 @@ export class EditQuestionComponent implements OnInit {
     this.currentQuestion = question;
   }
 
+  addAnswerToQuestion() {
+    
+  }
+
   saveQuestion() {
     
   }
@@ -44,6 +48,6 @@ export class EditQuestionComponent implements OnInit {
   }
 
   confirmDeletion() {
-    
+
   }
 }
