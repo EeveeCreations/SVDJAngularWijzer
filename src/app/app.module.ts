@@ -17,7 +17,7 @@ import { VerifyTokenComponent } from './admin/forgot-password/verify-token/verif
 import { GrantComponent } from './admin/edit-grant/grant/grant.component';
 import { AdviceComponent } from './admin/edit-advice/advice/advice.component';
 import { QuestionItemComponent } from './admin/edit-question/question-item/question-item.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,12 +36,13 @@ import { FormsModule } from '@angular/forms';
     AdviceComponent,
     QuestionItemComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
   providers: [RequestService],
   bootstrap: [AppComponent]
 })

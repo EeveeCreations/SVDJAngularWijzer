@@ -13,9 +13,9 @@ import { EditQuestionComponent } from './admin/edit-question/edit-question.compo
 const routes: Routes = [
   { path: 'subsidiewijzer', component: BeginComponent},
   { path: 'subsidiewijzer/vragen', component: QuestionScreenComponent, resolve: { questionList: QuestionScreenResolver}},
-  { path: 'admin', component: AdminPanelComponent},
   { path: 'login', component: LoginComponent},
   { path: 'wachtwoord-vergeten', component: ForgotPasswordComponent},
+  { path: 'admin', component: AdminPanelComponent},
   { path: 'admin/advies', component: EditAdviceComponent},
   { path: 'admin/subsidie', component: EditGrantComponent},
   { path: 'admin/vraag', component: EditQuestionComponent}
