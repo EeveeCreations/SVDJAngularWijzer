@@ -36,11 +36,10 @@ export class AuthService {
   }
 
   autoLogIn() {
-    const loadedAdmin: Admin = this.getAdminFromsessionStorage()
+    const loadedAdmin: Admin = this.getAdminFromSessionStorage()
     if (!loadedAdmin) {
       return;
     }
-    console.log("logged in!")
     this.autoLogOut()
     if (loadedAdmin.token) {
       this.admin.next(loadedAdmin);
@@ -53,7 +52,7 @@ export class AuthService {
 
   logIn(adminName: string, password: string) {
     this.prepareURL('login');
-    return this.http.post<{ name: string, role: string, accessToken: string, refreshToken: string }>(
+    return this.http.post<{ username: string, role: string, accessToken: string, refreshToken: string }>(
       this.url, {}, {
         headers: this.prepareHeader(),
         params: {
@@ -65,7 +64,7 @@ export class AuthService {
       catchError(this.handleError)
       , map(dataRes => {
           return this.handleAuth(
-            dataRes.name,
+            dataRes.username,
             dataRes.role,
             dataRes.accessToken,
             dataRes.refreshToken);
@@ -73,16 +72,17 @@ export class AuthService {
       ));
   }
 
-  getAdminFromsessionStorage(): Admin {
+  getAdminFromSessionStorage(): Admin {
     const currentAdmin: {
-      role: string,
-      _token: string,
       _refreshToken: string
-    } = JSON.parse(sessionStorage.getItem('currentAdmin'));
+      _role: string,
+      _token: string,
+      _username: string
+    } = JSON.parse(sessionStorage.getItem('admin'));
     if (!currentAdmin) {
       return;
     }
-    return new Admin("admin", currentAdmin.role, currentAdmin._token, currentAdmin._refreshToken);
+    return new Admin(currentAdmin._username, currentAdmin._role, currentAdmin._token, currentAdmin._refreshToken);
   }
 
   private handleAuth(

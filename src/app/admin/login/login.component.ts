@@ -43,7 +43,6 @@ export class LoginComponent implements OnInit {
     let authObs: Observable<Admin>;
 
     authObs = this.authService.logIn(name, pass).pipe(tap(answer => {
-      console.log(answer)
     }));
     authObs.subscribe(answer => {
     }, errorMes => {

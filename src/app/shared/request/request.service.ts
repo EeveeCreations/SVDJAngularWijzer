@@ -14,11 +14,18 @@ import { Advice } from "../models/advice.model";
 export class RequestService {
   private url: string;
 
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient,
+  ){
+  }
+
 
   giveCorrectHeadingToRequest(readyRequest: Request): HttpHeaders {
     const headerOfRequest: HttpHeaders = new HttpHeaders();
-    headerOfRequest.set("userNumber", readyRequest.userNr.toString());
+    headerOfRequest.append('Content-Type', 'application/json');
+    headerOfRequest.append('Accept', 'application/json');
+    headerOfRequest.append('Origin', 'http://localhost:4200/');
+    headerOfRequest.set("Authorization", "Bearer " + readyRequest.adminToken);
     return headerOfRequest
 
   }
