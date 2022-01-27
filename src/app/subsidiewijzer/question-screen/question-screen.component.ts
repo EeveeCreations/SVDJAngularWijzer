@@ -46,11 +46,8 @@ export class QuestionScreenComponent implements OnInit {
 
   onPrevious() {
     if(this.previousQuestions.length < 2) {
-      this.startRequestService.makeRequestOfQuestion("get", "all", null).subscribe(response => {
-        this.questions = response;
-        this.currentQuestion = response[0];
-        this.previousQuestions = [];
-      })
+      this.currentQuestion = this.questions[0];
+      this.previousQuestions = [];
       return;
     }
 
