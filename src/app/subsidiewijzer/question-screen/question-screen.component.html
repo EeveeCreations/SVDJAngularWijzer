@@ -6,6 +6,7 @@
   
   <div class="form-holder">
   
+    <p class="error">{{errorLabel}}</p>
     <app-answer [answers]="currentQuestion.answers" (onSelect)="selectAnswer($event)"></app-answer>
   
     <button class="svdj-button" (click)="onNext()">Volgende <i class="button-corner"></i></button>
