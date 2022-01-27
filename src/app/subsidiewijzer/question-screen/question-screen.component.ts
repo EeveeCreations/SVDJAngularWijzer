@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import { Answer } from 'src/app/shared/models/answer.model';
 import { Question } from 'src/app/shared/models/question.model';
 import { StartRequestService } from 'src/app/shared/request/start-request.service';
@@ -17,7 +18,7 @@ export class QuestionScreenComponent implements OnInit {
   selectedAnswer: Answer = null;
   errorLabel: string = "";
 
-  constructor(private startRequestService: StartRequestService) {
+  constructor(private startRequestService: StartRequestService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -40,8 +41,8 @@ export class QuestionScreenComponent implements OnInit {
       this.selectedAnswer = null;
       return;
     }
-    // TODO: redirect to advice page
     
+    this.router.navigate(['subsidiewijzer/advies/' + this.selectedAnswer.advice.adviceID])    
   }
 
   onPrevious() {
