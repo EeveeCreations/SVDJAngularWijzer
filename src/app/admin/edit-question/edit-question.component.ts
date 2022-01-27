@@ -56,6 +56,20 @@ export class EditQuestionComponent implements OnInit {
     this.currentQuestion.answers.push(new Answer(null, null, null, null, null));
   }
 
+  removeAnswer(i: number) {
+    if (this.currentQuestion.answers.length < 3) {
+      this.errorLabel = "Er moeten minimaal 2 antwoorden in een vraag zitten, pas deze aan";
+      return;
+    }
+
+    if (this.currentQuestion.answers[i].answerID !== null) {
+      this.startRequestService.makeRequestOfAnswer("delete", this.currentQuestion.answers[i].answerID.toString(), this.currentQuestion.answers[i]).subscribe(response => {
+      })
+    }
+    
+    this.currentQuestion.answers.splice(i, 1);
+  }
+
   saveQuestion() {
     if (this.checkFields()) {
       return;
