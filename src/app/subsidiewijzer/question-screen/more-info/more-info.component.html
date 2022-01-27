@@ -1,4 +1,4 @@
-<div class="more-info-button-holder">
+<div class="more-info-button-holder" *ngIf="question.extraInfoTile !== null && question.extraInfoTile !== ''">
     <button (click)="openInfo()" class="more-info-button">Meer informatie <i class="button-corner"></i></button>
 </div>
 
