@@ -1,1 +1,25 @@
-<p>advice works!</p>
+<div class="container">
+    <h4 class="disclaimer top">U bent op dit advies uitgekomen</h4>
+    <div class="advice-item">
+        <h1>{{advice.name}}</h1>
+
+        <p>{{advice.description}}</p>
+
+        <div class="grant-container" *ngFor="let grant of advice.grants">
+            <div class="grant-item">
+                <div class="grant-item-corner"></div>
+                <h4>Subsidie #{{grant.grantID}}</h4>
+                <h3>{{grant.name}}</h3>
+                <p>{{grant.description}}</p>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button type="button" routerLink="/subsidiewijzer/vragen" class="svdj-button">
+                Opnieuw <i class="button-corner"></i>
+            </button>
+        </div>
+
+    </div>
+    <h4 class="disclaimer">Dit is geen bindend advies en of garantie dat u toegang heeft tot de bovengenoemde fondsen</h4>
+</div>
