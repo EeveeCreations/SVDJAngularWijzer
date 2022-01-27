@@ -31,7 +31,7 @@ export class AuthService {
     const headerOfRequest: HttpHeaders = new HttpHeaders();
     headerOfRequest.append('Content-Type', 'application/json');
     headerOfRequest.append('Accept', 'application/json');
-    headerOfRequest.set('Origin', 'http://localhost:4200');
+    headerOfRequest.append('Origin', 'http://localhost:4200');
     return headerOfRequest;
   }
 

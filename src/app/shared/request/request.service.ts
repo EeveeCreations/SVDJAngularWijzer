@@ -25,8 +25,9 @@ export class RequestService {
     headerOfRequest.append('Content-Type', 'application/json');
     headerOfRequest.append('Accept', 'application/json');
     headerOfRequest.append('Origin', 'http://localhost:4200/');
-    headerOfRequest.set("Authorization", "Bearer " + readyRequest.adminToken);
-    return headerOfRequest
+    headerOfRequest.append('Authorization', "Bearer " + readyRequest.adminToken);
+    console.log(headerOfRequest);
+    return headerOfRequest;
 
   }
 
