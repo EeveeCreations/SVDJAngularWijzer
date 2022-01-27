@@ -71,9 +71,12 @@
 
             <input type="text" placeholder="Info Video URL" [(ngModel)]="currentQuestion.extraInfoVideoURL" name="extraInfoTitle"/>
 
-            <button type="button" (click)="saveQuestion()" class="svdj-button">
-                Opslaan <i class="button-corner"></i>
-            </button>
+            <div class="button-container">
+                <button type="button" (click)="saveQuestion()" class="svdj-button">
+                    Opslaan <i class="button-corner"></i>
+                </button>
+            </div>
+
         </form>
 
         <section class="nothing-selected">
