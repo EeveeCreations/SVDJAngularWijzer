@@ -36,6 +36,8 @@ export class QuestionScreenComponent implements OnInit {
 
     if (this.selectedAnswer.nextQuestion !== null) {
       this.currentQuestion = this.selectedAnswer.nextQuestion;
+      this.previousQuestions.push(this.selectedAnswer.nextQuestion);
+      this.selectedAnswer = null;
       return;
     }
     // TODO: redirect to advice page
@@ -43,7 +45,17 @@ export class QuestionScreenComponent implements OnInit {
   }
 
   onPrevious() {
-    
+    if(this.previousQuestions.length < 2) {
+      this.startRequestService.makeRequestOfQuestion("get", "all", null).subscribe(response => {
+        this.questions = response;
+        this.currentQuestion = response[0];
+        this.previousQuestions = [];
+      })
+      return;
+    }
+
+    this.previousQuestions.splice(-1);
+    this.currentQuestion = this.previousQuestions[this.previousQuestions.length -1];
   }
 
   selectAnswer(id: bigint) {
