@@ -12,10 +12,10 @@ export class QuestionScreenComponent implements OnInit {
   currentQuestion: Question;
   questions: Question[];
 
-  currentIndex: number;
   previousQuestions: Question[] = [];
 
   selectedAnswer: Answer = null;
+  errorLabel: string = "";
 
   constructor(private startRequestService: StartRequestService) {
   }
@@ -29,7 +29,16 @@ export class QuestionScreenComponent implements OnInit {
   }
 
   onNext() {
-    
+    if (this.selectedAnswer === null) {
+      this.errorLabel = "Selecteer graag eerst een antwoord"
+      return;
+    }
+
+    if (this.selectedAnswer.nextQuestion !== null) {
+      this.currentQuestion = this.selectedAnswer.nextQuestion;
+      return;
+    }
+    // TODO: redirect to advice page
     
   }
 
