@@ -1,8 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { Advice } from 'src/app/shared/models/advice.model';
-import { Answer } from 'src/app/shared/models/answer.model';
-import { Question } from 'src/app/shared/models/question.model';
-import { StartRequestService } from 'src/app/shared/request/start-request.service';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  Advice
+} from 'src/app/shared/models/advice.model';
+import {
+  Answer
+} from 'src/app/shared/models/answer.model';
+import {
+  Question
+} from 'src/app/shared/models/question.model';
+import {
+  StartRequestService
+} from 'src/app/shared/request/start-request.service';
 
 @Component({
   selector: 'app-edit-question',
@@ -12,11 +23,12 @@ import { StartRequestService } from 'src/app/shared/request/start-request.servic
 export class EditQuestionComponent implements OnInit {
   questions: Question[] = [];
   advices: Advice[] = [];
+  returnValue: boolean = false;
 
   currentQuestion: Question;
   errorLabel: String;
 
-  constructor(private startRequestService: StartRequestService) { }
+  constructor(private startRequestService: StartRequestService) {}
 
   ngOnInit(): void {
     this.startRequestService.makeRequestOfQuestion("get", "all", null).subscribe(response => {
@@ -43,49 +55,69 @@ export class EditQuestionComponent implements OnInit {
   }
 
   saveQuestion() {
-    if(this.checkFields) {
+    if (this.checkFields()) {
       return;
     }
-    
-    
+
+    let specific = "";
+    if (this.currentQuestion.questionID != null) {
+      specific = this.currentQuestion.questionID.toString();
+    }
+
+    this.currentQuestion.answers.forEach((answer, i) => {
+      this.currentQuestion.answers[i] = new Answer(answer.answerID, answer.answerText, answer.parentQuestionID, answer.nextQuestion, answer.advice);
+
+      let specificAns = "";
+      if (answer.answerID!= null) {
+        specificAns = answer.answerID.toString();
+      }
+      this.startRequestService.makeRequestOfAnswerItem("put", specificAns, this.currentQuestion.answers[i]).subscribe(response => {
+        this.currentQuestion.answers[i] = new Answer(response.answerID, response.answerText, response.parentQuestionID, response.nextQuestion, response.advice);
+      });
+    });
+
+    this.startRequestService.makeRequestOfQuestion("put", specific, this.currentQuestion).subscribe(response => {
+      location.reload();
+    });
   }
 
-  checkFields() : boolean {
+  checkFields(): boolean {
     this.errorLabel = "";
+    this.returnValue = false;
 
     if (this.currentQuestion.questionText === null || this.currentQuestion.questionText === "") {
       this.errorLabel = "Vul graag een vraag in";
-      return true;
+      this.returnValue = true;
     }
 
     if (this.currentQuestion.answers.length < 2) {
       this.errorLabel = "Een vraag moet minimaal 2 antwoorden bevatten";
-      return true;
+      this.returnValue = true;
     }
 
     this.currentQuestion.answers.forEach(answer => {
 
       if (answer.answerText === null || answer.answerText === "") {
         this.errorLabel = "Vul graag een antwoord in";
-        return true;
+        this.returnValue = true;
       }
 
       if (answer.nextQuestion === null) {
         if (answer.advice === null) {
           this.errorLabel = "Geef graag een referentie mee"
-          return true;
+          this.returnValue = true;
         }
       }
     });
 
     if ((((this.currentQuestion.extraInfoDescription === null) === (this.currentQuestion.extraInfoDescription === "")) ||
-       ((this.currentQuestion.extraInfoVideoURL === null) === (this.currentQuestion.extraInfoVideoURL === ""))) 
-       && ((this.currentQuestion.extraInfoTile === null) !== (this.currentQuestion.extraInfoTile === ""))) {
+        ((this.currentQuestion.extraInfoVideoURL === null) === (this.currentQuestion.extraInfoVideoURL === ""))) &&
+      ((this.currentQuestion.extraInfoTile === null) !== (this.currentQuestion.extraInfoTile === ""))) {
       this.errorLabel = "Een titel is verplicht als er extra informatie word meegegeven"
-      return true;
+      this.returnValue = true;
     }
 
-    return false;
+    return this.returnValue;
   }
 
   changeNextQuestion(i: number, questionID: bigint) {
@@ -97,8 +129,8 @@ export class EditQuestionComponent implements OnInit {
 
   changeNextAdvice(i: number, adviceID: bigint) {
     this.startRequestService.makeRequestOfAdviceItem("get", adviceID.toString(), null).subscribe(response => {
-    this.currentQuestion.answers[i].advice = response;
-    this.currentQuestion.answers[i].nextQuestion = null;
+      this.currentQuestion.answers[i].advice = response;
+      this.currentQuestion.answers[i].nextQuestion = null;
     });
   }
 
