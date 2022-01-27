@@ -4,11 +4,11 @@ import { Advice } from 'src/app/shared/models/advice.model';
 import { StartRequestService } from 'src/app/shared/request/start-request.service';
 
 @Component({
-  selector: 'app-advice',
+  selector: 'app-adviceUser',
   templateUrl: './advice.component.html',
   styleUrls: ['./advice.component.css']
 })
-export class AdviceComponent implements OnInit {
+export class AdviceComponentUser implements OnInit {
   advice: Advice;
 
   constructor(private activatedRoute: ActivatedRoute, private startRequestService: StartRequestService) { }
