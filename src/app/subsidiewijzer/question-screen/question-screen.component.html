@@ -6,10 +6,10 @@
   
   <div class="form-holder">
   
-    <app-answer [answers]="currentQuestion.answers"></app-answer>
+    <app-answer [answers]="currentQuestion.answers" (onSelect)="selectAnswer($event)"></app-answer>
   
     <button class="svdj-button" (click)="onNext()">Volgende <i class="button-corner"></i></button>
-    <button class="svdj-button" (click)="onPrevious()">Vorige <i class="button-corner"></i></button>
+    <button class="svdj-button" (click)="onPrevious()" *ngIf="previousQuestions.length > 0">Vorige <i class="button-corner"></i></button>
   
   </div>
   

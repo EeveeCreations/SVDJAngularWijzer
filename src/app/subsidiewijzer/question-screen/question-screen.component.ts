@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { Answer } from 'src/app/shared/models/answer.model';
 import { Question } from 'src/app/shared/models/question.model';
 import { StartRequestService } from 'src/app/shared/request/start-request.service';
 
@@ -12,7 +13,9 @@ export class QuestionScreenComponent implements OnInit {
   questions: Question[];
 
   currentIndex: number;
-  previousQuestions: Question[];
+  previousQuestions: Question[] = [];
+
+  selectedAnswer: Answer = null;
 
   constructor(private startRequestService: StartRequestService) {
   }
@@ -27,10 +30,17 @@ export class QuestionScreenComponent implements OnInit {
 
   onNext() {
     
+    
   }
 
   onPrevious() {
     
   }
 
+  selectAnswer(id: bigint) {
+    this.startRequestService.makeRequestOfAnswerItem("get", id.toString(), null).subscribe(response => {
+      this.selectedAnswer = response;
+    })
+    
+  }
 }
