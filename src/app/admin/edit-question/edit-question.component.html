@@ -13,6 +13,8 @@
     <section class="right-form">
 
         <form *ngIf="currentQuestion">
+            
+            <button type="button" (click)="deleteQuestion()" class="delete-button" *ngIf="currentQuestion.questionID">Delete <i class="svdj-corner-delete"></i></button>
 
             <p class="error">{{errorLabel}}</p>
 
@@ -74,4 +76,24 @@
         </section>
     </section>
 
+</section>
+
+<section class="block-screen" *ngIf="popup">
+    <section class="popup">
+        <b class="close-popup-btn" (click)="closePopup()">&#10006;</b>
+        <h4> Weet u zeker dat u deze vraag wilt verwijderen?</h4>
+        <div class="popup-card">
+            <h3> Vraag #{{currentQuestion.questionID}} </h3>
+            <h1> {{currentQuestion.questionText}} </h1>
+            <h2 *ngFor="let answer of currentQuestion.answers"> {{answer.answerText}}
+                <i *ngIf="answer.nextQuestion">&#8680; Vraag #{{answer.nextQuestion.questionID}}</i>
+                <i *ngIf="answer.advice">&#8680; Advies #{{answer.advice.adviceID}}</i>
+            </h2>
+        </div>
+
+        <div class="delete-buttons">
+            <button type="button" class="svdj-button-del" (click)="closePopup()">Annuleren<i class="button-corner"></i></button>
+            <button type="button" class="svdj-button-del" id="red" (click)="confirmDeletion()">Bevestig verwijderen<i class="button-corner"></i></button>
+        </div>
+    </section>
 </section>

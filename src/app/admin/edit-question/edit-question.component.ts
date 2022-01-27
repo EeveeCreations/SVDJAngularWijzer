@@ -28,6 +28,8 @@ export class EditQuestionComponent implements OnInit {
   currentQuestion: Question;
   errorLabel: String;
 
+  popup: boolean = false;
+
   constructor(private startRequestService: StartRequestService) {}
 
   ngOnInit(): void {
@@ -135,14 +137,16 @@ export class EditQuestionComponent implements OnInit {
   }
 
   deleteQuestion() {
-
+    this.popup = true;
   }
 
   closePopup() {
-
+    this.popup = false;
   }
 
   confirmDeletion() {
-
+    this.startRequestService.makeRequestOfQuestion("delete", this.currentQuestion.questionID.toString(), this.currentQuestion).subscribe(response => {
+      location.reload();
+    })
   }
 }
