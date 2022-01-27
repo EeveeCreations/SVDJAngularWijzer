@@ -5,8 +5,8 @@
         
         <div *ngFor="let answer of question.answers">
             <p>{{answer.answerText}}
-                <b *ngIf="answer.nextQuestion">====> Vraag #{{answer.nextQuestion.questionID}}</b>
-                <b *ngIf="answer.advice">====> Advies #{{answer.advice.adviceID}}</b>
+                <b *ngIf="answer.nextQuestion">&#8680; Vraag #{{answer.nextQuestion.questionID}}</b>
+                <b *ngIf="answer.advice">&#8680; Advies #{{answer.advice.adviceID}}</b>
             </p>
         </div>
         
