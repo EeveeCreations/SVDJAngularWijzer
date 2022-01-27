@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Question } from 'src/app/shared/models/question.model';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-more-info',
@@ -9,7 +10,7 @@ import { Question } from 'src/app/shared/models/question.model';
 export class MoreInfoComponent implements OnInit {
   @Input() question: Question;
 
-  constructor() { }
+  constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     
@@ -21,5 +22,9 @@ export class MoreInfoComponent implements OnInit {
   
   closeInfo() {
     document.getElementById("side-extra-info").style.right = "-800px";
+  }
+
+  getUrl(post) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.question.extraInfoVideoURL);
   }
 }
