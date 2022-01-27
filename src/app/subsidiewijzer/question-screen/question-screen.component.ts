@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Question} from "../../shared/model/question.model";
-import {CalculateQuestionService} from "../../shared/service/calculate-question.service";
+import { Question } from 'src/app/shared/models/question.model';
+import { StartRequestService } from 'src/app/shared/request/start-request.service';
 
 @Component({
   selector: 'app-question-screen',
@@ -9,21 +9,28 @@ import {CalculateQuestionService} from "../../shared/service/calculate-question.
 })
 export class QuestionScreenComponent implements OnInit {
   currentQuestion: Question;
+  questions: Question[];
 
-  constructor(private questionService: CalculateQuestionService) {
+  currentIndex: number;
+  previousQuestions: Question[];
+
+  constructor(private startRequestService: StartRequestService) {
   }
 
   ngOnInit(): void {
-    this.currentQuestion = this.questionService.getFirstQuestion();
-    this.questionService.getQuestionsFromApi().subscribe();
+    this.startRequestService.makeRequestOfQuestion("get", "all", null).subscribe(response => {
+      this.questions = response;
+      this.currentQuestion = response[0];
+    })
+
   }
 
   onNext() {
-    this.currentQuestion = this.questionService.getNextQuestion();
+    
   }
 
   onPrevious() {
-    this.currentQuestion = this.questionService.getPreviousQuestion();
+    
   }
 
 }

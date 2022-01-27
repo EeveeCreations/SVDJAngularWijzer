@@ -1,6 +1,8 @@
 <div>
-  <div *ngFor="let answer of answers" class="answer-box">
-    <input title="{{ answer.answerId }}" type="radio" id="{{ answer.answerId }}" name="answer" value="{{ answer.answerText }}">
-    <label [for]=" answer.answerId">{{ answer.answerText }}</label>
+  <div *ngFor="let answer of answers" for="{{answer.answerID}}">
+    <label class="answer-box">
+      <input title="{{ answer.answerID }}" type="radio" id="{{ answer.answerID }}" name="answer" value="{{answer.answerText}}">
+      {{ answer.answerText }}
+    </label>
   </div>
 </div>
