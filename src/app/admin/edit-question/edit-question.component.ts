@@ -43,37 +43,49 @@ export class EditQuestionComponent implements OnInit {
   }
 
   saveQuestion() {
+    if(this.checkFields) {
+      return;
+    }
+    
+    
+  }
+
+  checkFields() : boolean {
     this.errorLabel = "";
 
     if (this.currentQuestion.questionText === null || this.currentQuestion.questionText === "") {
       this.errorLabel = "Vul graag een vraag in";
-      return;
+      return true;
     }
 
     if (this.currentQuestion.answers.length < 2) {
       this.errorLabel = "Een vraag moet minimaal 2 antwoorden bevatten";
-      return;
+      return true;
     }
 
     this.currentQuestion.answers.forEach(answer => {
 
       if (answer.answerText === null || answer.answerText === "") {
         this.errorLabel = "Vul graag een antwoord in";
-        return;
+        return true;
       }
 
       if (answer.nextQuestion === null) {
         if (answer.advice === null) {
           this.errorLabel = "Geef graag een referentie mee"
-          return;
+          return true;
         }
-        console.log(answer.answerText + " : " + answer.advice.name);
-        return;
       }
-      console.log(answer.answerText + " : " + JSON.stringify(answer.nextQuestion));
     });
 
-    
+    if ((((this.currentQuestion.extraInfoDescription === null) === (this.currentQuestion.extraInfoDescription === "")) ||
+       ((this.currentQuestion.extraInfoVideoURL === null) === (this.currentQuestion.extraInfoVideoURL === ""))) 
+       && ((this.currentQuestion.extraInfoTile === null) !== (this.currentQuestion.extraInfoTile === ""))) {
+      this.errorLabel = "Een titel is verplicht als er extra informatie word meegegeven"
+      return true;
+    }
+
+    return false;
   }
 
   changeNextQuestion(i: number, questionID: bigint) {

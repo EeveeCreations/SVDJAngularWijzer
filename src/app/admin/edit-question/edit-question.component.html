@@ -22,7 +22,7 @@
 
             <div class="answer-container">
                 <div class="answer-item" *ngFor="let answer of currentQuestion.answers; let i = index">
-                    <input type="text" placeholder="Antwoord" [(ngModel)]="answer.answerText" name="{{answer.answerID}}" class="smaller-field"/>
+                    <input type="text" placeholder="Antwoord" [(ngModel)]="currentQuestion.answers[i].answerText" name="{{answer.answerID}}" class="smaller-field"/>
                     <!-- Next question of advice koppelen -->
 
                     <div class="reference-point">
