@@ -243,3 +243,8 @@ select {
     height: 30px;
     width: calc(100% - 10px);
 }
+
+.error {
+    height: 20px;
+    color: #e74c3c;
+}

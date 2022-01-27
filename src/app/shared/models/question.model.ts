@@ -2,7 +2,7 @@ import { Answer } from "./answer.model";
 
 export class Question {
 
-  public constructor(private questionID: bigint, private questionText: string, private answers: Answer[], private extraInfoTile: string, private extraInfoDescription: string, private extraInfoVideoURL: string) {
+  public constructor(public questionID: bigint, public questionText: string, public answers: Answer[], public extraInfoTile: string, public extraInfoDescription: string, public extraInfoVideoURL: string) {
     this.questionID = questionID;
     this.questionText = questionText;
     this.answers = answers;

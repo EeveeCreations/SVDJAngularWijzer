@@ -39,11 +39,55 @@ export class EditQuestionComponent implements OnInit {
   }
 
   addAnswerToQuestion() {
-    this.currentQuestion._answers.push(new Answer(null, null, null, null, null));
+    this.currentQuestion.answers.push(new Answer(null, null, null, null, null));
   }
 
   saveQuestion() {
+    this.errorLabel = "";
+
+    if (this.currentQuestion.questionText === null || this.currentQuestion.questionText === "") {
+      this.errorLabel = "Vul graag een vraag in";
+      return;
+    }
+
+    if (this.currentQuestion.answers.length < 2) {
+      this.errorLabel = "Een vraag moet minimaal 2 antwoorden bevatten";
+      return;
+    }
+
+    this.currentQuestion.answers.forEach(answer => {
+
+      if (answer.answerText === null || answer.answerText === "") {
+        this.errorLabel = "Vul graag een antwoord in";
+        return;
+      }
+
+      if (answer.nextQuestion === null) {
+        if (answer.advice === null) {
+          this.errorLabel = "Geef graag een referentie mee"
+          return;
+        }
+        console.log(answer.answerText + " : " + answer.advice.name);
+        return;
+      }
+      console.log(answer.answerText + " : " + JSON.stringify(answer.nextQuestion));
+    });
+
     
+  }
+
+  changeNextQuestion(i: number, questionID: bigint) {
+    this.startRequestService.makeRequestOfQuestionItem("get", questionID.toString(), null).subscribe(response => {
+      this.currentQuestion.answers[i].nextQuestion = response;
+      this.currentQuestion.answers[i].advice = null;
+    });
+  }
+
+  changeNextAdvice(i: number, adviceID: bigint) {
+    this.startRequestService.makeRequestOfAdviceItem("get", adviceID.toString(), null).subscribe(response => {
+    this.currentQuestion.answers[i].advice = response;
+    this.currentQuestion.answers[i].nextQuestion = null;
+    });
   }
 
   deleteQuestion() {

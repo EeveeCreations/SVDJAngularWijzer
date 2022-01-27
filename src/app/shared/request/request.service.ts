@@ -47,6 +47,15 @@ export class RequestService {
     )
   }
 
+  sendRequestQuestionItem(request: Request) {
+    this.setConnectionSpecifics("question", request.specific);
+    return this.http.request<Question>(request.duty, this.url, {
+        headers: this.giveCorrectHeadingToRequest(request),
+        body: request.givenVariables,
+      }
+    )
+  }
+
   sendRequestAnswer(request: Request) {
     this.setConnectionSpecifics("answer", request.specific);
     return this.http.request<Answer[]>(request.duty, this.url, {
@@ -92,5 +101,14 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
     })
+  }
+  
+  sendRequestAdviceItem(request: Request) {
+    this.setConnectionSpecifics("advice", request.specific);
+    return this.http.request<Advice>(request.duty, this.url, {
+        headers: this.giveCorrectHeadingToRequest(request),
+        body: request.givenVariables,
+      }
+    )
   }
 }
