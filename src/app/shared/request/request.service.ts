@@ -8,7 +8,7 @@ import {Answer} from "../model/answer.model";
 import {GivenAnswer} from "../models/given-answer.model";
 import {Grant} from "../models/grant.model";
 import {Result} from "../models/result.model";
-import { Advice } from "../models/advice.model";
+import {Advice} from "../models/advice.model";
 
 @Injectable({providedIn: 'root'})
 export class RequestService {
@@ -19,13 +19,14 @@ export class RequestService {
   ){
   }
 
-
   giveCorrectHeadingToRequest(readyRequest: Request): HttpHeaders {
-    const headerOfRequest: HttpHeaders = new HttpHeaders();
-    headerOfRequest.append('Content-Type', 'application/json');
-    headerOfRequest.append('Accept', 'application/json');
-    headerOfRequest.append('Origin', 'http://localhost:4200/');
-    headerOfRequest.append('Authorization', "Bearer " + readyRequest.adminToken);
+    const headerOfRequest: HttpHeaders = new HttpHeaders({
+      contentType: 'application/json',
+      accept: 'application/json',
+      origin: 'http://localhost:4200/',
+      authorization: 'Bearer ' + readyRequest.adminToken
+    });
+    headerOfRequest.append("origin", 'http://localhost:4200/');
     console.log(headerOfRequest);
     return headerOfRequest;
 
