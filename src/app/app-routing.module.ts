@@ -3,8 +3,8 @@ import {PreloadAllModules, PreloadingStrategy, RouterModule, RouterPreloader, Ro
 const routes: Routes = [
   {path: '', redirectTo: '/subsidiewijzer', pathMatch: 'full'},
   {path: 'subsidiewijzer', loadChildren: () =>
-      import('./subsidiewijzer/subsidiewijzer.module')
-        .then(m => m.SubsidiewijzerModule)},
+      import('./subsidiewijzer/subsidie-wijzer.module')
+        .then(m => m.SubsidieWijzerModule)},
   {path: 'admin', loadChildren: () =>
       import('./admin/admin.module')
         .then(m => m.AdminModule)},

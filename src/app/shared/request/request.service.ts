@@ -16,9 +16,12 @@ export class RequestService {
   constructor(private http: HttpClient) {}
 
   giveCorrectHeadingToRequest(readyRequest: Request): HttpHeaders {
-    const headerOfRequest: HttpHeaders = new HttpHeaders();
-    headerOfRequest.set("userNumber", readyRequest.userNr.toString());
-    return headerOfRequest
+    const headerOfRequest: HttpHeaders = new HttpHeaders({
+      contentType: 'application/json',
+      accept: 'application/json',
+      origin: 'http://localhost:4200/'
+    });
+    return headerOfRequest;
 
   }
 

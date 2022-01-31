@@ -5,11 +5,10 @@ import {QuestionComponent} from "./question-screen/question/question.component";
 import {AnswerComponent} from "./question-screen/answer/answer.component";
 import {MoreInfoComponent} from "./question-screen/more-info/more-info.component";
 import {FormsModule} from "@angular/forms";
-import {SubsidiewijzerRoutingModule} from "./subsidiewijzer-routing.module";
+import {SubsidieWijzerRoutingModule} from "./subsidie-wijzer-routing.module";
 import {QuestionScreenComponent} from "./question-screen/question-screen.component";
 import {BeginComponent} from "./begin/begin.component";
-import {RouterModule} from "@angular/router";
-import { MainScreenComponent } from './main-screen/main-screen.component';
+import {MainScreenComponent} from './main-screen/main-screen.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,7 @@ import { MainScreenComponent } from './main-screen/main-screen.component';
   imports: [
     CommonModule,
     FormsModule,
-    SubsidiewijzerRoutingModule,
+    SubsidieWijzerRoutingModule,
   ],
   exports: [
     BeginComponent,
@@ -33,7 +32,8 @@ import { MainScreenComponent } from './main-screen/main-screen.component';
     ExtraInfoComponent,
     MoreInfoComponent,
     QuestionScreenComponent,
+    MainScreenComponent,
   ]
 })
-export class SubsidiewijzerModule {
+export class SubsidieWijzerModule {
 }

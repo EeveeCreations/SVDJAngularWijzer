@@ -3,12 +3,14 @@ import {QuestionScreenComponent} from "./question-screen/question-screen.compone
 import {QuestionScreenResolver} from "../shared/resolvers/question-screen.resolver";
 import {RouterModule} from "@angular/router";
 import {NgModule} from "@angular/core";
+import {MainScreenComponent} from "./main-screen/main-screen.component";
 
 const routes = [
   {
-    path: '', component: BeginComponent, children: [
+    path: '', component: MainScreenComponent, children: [
       {path: '', component: BeginComponent, pathMatcher: 'full'},
-      {path: 'vragen', component: QuestionScreenComponent, resolve: {questionList: QuestionScreenResolver},
+      {path: 'vragenlijst', component: QuestionScreenComponent,
+        resolve: {questionList: QuestionScreenResolver},
         // { path: 'result', component: ResultScreenComponent}
       },
     ]
@@ -19,4 +21,4 @@ const routes = [
   imports:[RouterModule.forChild(routes)],
   exports:[RouterModule]
 })
-export class SubsidiewijzerRoutingModule{}
+export class SubsidieWijzerRoutingModule {}
