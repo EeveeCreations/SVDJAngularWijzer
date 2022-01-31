@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Advice } from 'src/app/shared/models/advice.model';
-import { Grant } from 'src/app/shared/models/grant.model';
 import { StartRequestService } from 'src/app/shared/request/start-request.service';
 
 @Component({
