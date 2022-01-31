@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
-import {CalculateQuestionService} from "../../shared/service/calculate-question.service";
-import {Question} from "../../shared/models/question.model";
+import {CalculateQuestionService} from "../service/calculate-question.service";
+import {Question} from "../models/question.model";
 
 @Injectable({providedIn: 'root'})
 export class QuestionScreenResolver implements Resolve<Question[]> {

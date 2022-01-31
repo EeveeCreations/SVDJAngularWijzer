@@ -1,17 +1,28 @@
 import {Question} from "./question.model";
 
 export class QuestionList{
-  get questions(): Question[] {
-    return this._questions;
+  private _remainingQuestions: Question[];
+  private _previousQuestions: Question[];
+
+  constructor() {
+    this._remainingQuestions = [];
+    this._previousQuestions = [];
   }
 
-  set questions(value: Question[]) {
-    this._questions = value;
-  }
-  private _questions :Question[]
 
-  constructor(questions: Question[]) {
-    this._questions = questions;
+  get remainingQuestions(): Question[] {
+    return this._remainingQuestions;
   }
 
+  set remainingQuestions(value: Question[]) {
+    this._remainingQuestions = value;
+  }
+
+  get previousQuestions(): Question[] {
+    return this._previousQuestions;
+  }
+
+  set previousQuestions(value: Question[]) {
+    this._previousQuestions = value;
+  }
 }

@@ -1,16 +1,18 @@
-import {BeginComponent} from "../begin/begin.component";
+import {BeginComponent} from "./begin/begin.component";
 import {QuestionScreenComponent} from "./question-screen/question-screen.component";
-import {QuestionScreenResolver} from "./question-screen/question-screen.resolver";
+import {QuestionScreenResolver} from "../shared/resolvers/question-screen.resolver";
 import {RouterModule} from "@angular/router";
 import {NgModule} from "@angular/core";
 
 const routes = [
-  {path: 'subsidiewijzer', component: BeginComponent, children: [
-      {
-        path: 'vragen', component: QuestionScreenComponent, resolve: {questionList: QuestionScreenResolver},
+  {
+    path: '', component: BeginComponent, children: [
+      {path: '', component: BeginComponent, pathMatcher: 'full'},
+      {path: 'vragen', component: QuestionScreenComponent, resolve: {questionList: QuestionScreenResolver},
         // { path: 'result', component: ResultScreenComponent}
       },
-    ]}
+    ]
+  }
 ];
 
 @NgModule({

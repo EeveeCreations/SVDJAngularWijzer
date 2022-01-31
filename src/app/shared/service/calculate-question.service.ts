@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {ApiService} from "../api/api.service";
 import {tap} from "rxjs";
 import {Question} from "../models/question.model";
+import {QuestionList} from "../models/question-list.model";
 
 
 @Injectable({

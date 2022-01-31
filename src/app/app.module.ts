@@ -4,21 +4,18 @@ import {HttpClientModule} from '@angular/common/http';
 
 import {AppComponent} from './app.component';
 
-import {AppRoutingModule, routingComponents} from './app-routing.module';
-import {AdminModule} from "./admin/admin.module";
-import {SubsidiewijzerModule} from "./subsidiewijzer/subsidiewijzer.module";
+import {AppRoutingModule} from './app-routing.module';
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    SharedModule,
     AppRoutingModule,
-    AdminModule,
-    SubsidiewijzerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

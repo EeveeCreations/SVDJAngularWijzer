@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Question } from 'src/app/shared/model/question.model';
+import { Question } from 'src/app/shared/models/question.model';
 import { StartRequestService } from 'src/app/shared/request/start-request.service';
 
 @Component({
@@ -24,6 +24,6 @@ export class EditQuestionComponent implements OnInit {
   }
 
   saveQuestion() {
-    
+
   }
 }

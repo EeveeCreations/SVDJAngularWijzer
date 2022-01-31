@@ -11,7 +11,7 @@
     display: block;
 }
 
-.sidenav a {
+.sidenav a ,.logout{
     display: inline-block;
     width: 100%;
     padding: 25px 15px;
@@ -29,9 +29,9 @@
     width: 50px;
     height: 20px;
     border: solid #000000;
-    border-width: 3px 3px 0px 0px;
+    border-width: 3px 3px 0 0;
     display: block;
-    margin: auto 0px auto auto;
+    margin: auto 0 auto auto;
     float: right;
 }
 
@@ -44,6 +44,12 @@
     background-color: transparent;
     border: none;
     margin-bottom: 25px;
+}
+
+.logout{
+  background: none;
+  padding: 25px 0;
+  text-align: left;
 }
 
 .open-button {

@@ -1,14 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { BeginComponent } from './begin/begin.component';
-import { QuestionScreenComponent } from "./subsidiewijzer/question-screen/question-screen.component";
-import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
-import { LoginComponent } from './admin/login/login.component';
-import { EditAdviceComponent } from './admin/edit-advice/edit-advice.component';
-import { ForgotPasswordComponent } from './admin/forgot-password/forgot-password.component';
-import { EditGrantComponent } from './admin/edit-grant/edit-grant.component';
-import { EditQuestionComponent } from './admin/edit-question/edit-question.component';
-
+import {PreloadAllModules, PreloadingStrategy, RouterModule, RouterPreloader, Routes} from '@angular/router';
 const routes: Routes = [
   {path: '', redirectTo: '/subsidiewijzer', pathMatch: 'full'},
   {path: 'subsidiewijzer', loadChildren: () =>
@@ -24,11 +15,15 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes,
+      {preloadingStrategy:
+        PreloadAllModules
+        // RouterPreloader
+      }
+    )
   ],
   exports: [
     RouterModule
   ]
 })
 export class AppRoutingModule { }
-export const routingComponents = [BeginComponent, QuestionScreenComponent, AdminPanelComponent, LoginComponent, ForgotPasswordComponent, EditAdviceComponent, EditGrantComponent, EditQuestionComponent]

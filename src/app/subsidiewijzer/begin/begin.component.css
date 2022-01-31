@@ -1,6 +1,6 @@
 header {
     height: 100vh;
-    background-image: url(../../assets/images/begin-background.jpeg);
+    background-image: url(../../../assets/images/begin-background.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -92,7 +92,7 @@ header > section {
     header {
         background-position: center;
     }
-    
+
     header > section {
         width: 100%;
         margin: 0px;
@@ -117,7 +117,7 @@ header > section {
 @media screen and (max-width: 650px) {
     .section-content > h1 {
         font-size: 2em;
-    }    
+    }
 
     .section-content > h3 {
         font-size: 1.3em;

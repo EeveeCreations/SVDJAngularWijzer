@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Question } from 'src/app/shared/model/question.model';
+import { Question } from 'src/app/shared/models/question.model';
 
 @Component({
   selector: 'app-question-item',
