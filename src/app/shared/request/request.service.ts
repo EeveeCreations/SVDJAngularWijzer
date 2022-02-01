@@ -2,12 +2,12 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Request} from "./request.model";
 import {Injectable} from "@angular/core";
 import {Route} from "@angular/router";
-import {Question} from "../models/question.model";
-import {Answer} from "../models/answer.model";
 import {GivenAnswer} from "../models/given-answer.model";
 import {Grant} from "../models/grant.model";
 import {Result} from "../models/result.model";
-import { Advice } from "../models/advice.model";
+import {Advice} from "../models/advice.model";
+import {Answer} from "../models/answer.model";
+import {Question} from "../models/question.model";
 
 @Injectable({providedIn: 'root'})
 export class RequestService {
@@ -16,9 +16,12 @@ export class RequestService {
   constructor(private http: HttpClient) {}
 
   giveCorrectHeadingToRequest(readyRequest: Request): HttpHeaders {
-    const headerOfRequest: HttpHeaders = new HttpHeaders();
-    headerOfRequest.set("userNumber", readyRequest.userNr.toString());
-    return headerOfRequest
+    const headerOfRequest: HttpHeaders = new HttpHeaders({
+      contentType: 'application/json',
+      accept: 'application/json',
+      origin: 'http://localhost:4200/'
+    });
+    return headerOfRequest;
 
   }
 

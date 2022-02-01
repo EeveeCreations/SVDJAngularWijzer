@@ -1,5 +1,5 @@
-import {Question} from "../model/question.model";
-import {Answer} from "../model/answer.model";
+import {Question} from "./question.model";
+import {Answer} from "./answer.model";
 
 export class GivenAnswer {
 

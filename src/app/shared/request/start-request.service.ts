@@ -53,11 +53,6 @@ export class StartRequestService {
     return this.requestService.sendRequestRoute(request);
   }
 
-  public makeRequestOfResult(duty: string, specific: string, variables?: []) {
-    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
-    return this.requestService.sendRequestResult(request);
-  }
-
   public makeRequestOfGivenAnswer(duty: string, specific: string, variables?: []) {
     const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
     return this.requestService.sendRequestGivenAnswer(request);
