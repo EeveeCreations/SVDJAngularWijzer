@@ -7,7 +7,9 @@
 
             <input type="password" id="passwordField" placeholder="Wachtwoord" />
 
-            <a routerLink="/wachtwoord-vergeten" class="small-button">
+            <a [routerLink]="['../wachtwoord-vergeten']"
+               [routerLinkActive]="['is-active']"
+               class="small-button">
                 wachtwoord vergeten
                 <i class="svdj-small-corner"></i>
             </a>
@@ -16,7 +18,7 @@
                 Log in
                 <i class="button-corner"></i>
             </button>
-            
+
         </form>
     </section>
 </body>

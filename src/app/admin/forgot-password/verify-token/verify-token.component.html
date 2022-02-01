@@ -5,7 +5,9 @@
 
         <input type="text" id="tokenField" name="tokenField" placeholder="Token" />
 
-        <a routerLink="/login" class="small-button">
+        <a [routerLink]="['login']"
+           [routerLinkActive]="['is-active']"
+           class="small-button">
             terug naar login scherm
             <i class="svdj-small-corner"></i>
         </a>
@@ -14,6 +16,6 @@
             Verifieer Token
             <i class="button-corner"></i>
         </button>
-        
+
     </form>
 </section>

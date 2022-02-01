@@ -1,14 +1,13 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Request} from "./request.model";
 import {Injectable} from "@angular/core";
-import {Category} from "../model/category.model";
 import {Route} from "@angular/router";
-import {Question} from "../model/question.model";
-import {Answer} from "../model/answer.model";
 import {GivenAnswer} from "../models/given-answer.model";
 import {Grant} from "../models/grant.model";
 import {Result} from "../models/result.model";
 import { Advice } from "../models/advice.model";
+import {Answer} from "../models/answer.model";
+import {Question} from "../models/question.model";
 
 @Injectable({providedIn: 'root'})
 export class RequestService {
@@ -17,9 +16,12 @@ export class RequestService {
   constructor(private http: HttpClient) {}
 
   giveCorrectHeadingToRequest(readyRequest: Request): HttpHeaders {
-    const headerOfRequest: HttpHeaders = new HttpHeaders();
-    headerOfRequest.set("userNumber", readyRequest.userNr.toString());
-    return headerOfRequest
+    const headerOfRequest: HttpHeaders = new HttpHeaders({
+      contentType: 'application/json',
+      accept: 'application/json',
+      origin: 'http://localhost:4200/'
+    });
+    return headerOfRequest;
 
   }
 
@@ -85,15 +87,6 @@ export class RequestService {
       }
     )
 
-  }
-
-  sendRequestCategory(request: Request) {
-    this.setConnectionSpecifics("category", request.specific);
-    return this.http.request<Category[]>(request.duty, this.url, {
-        headers: this.giveCorrectHeadingToRequest(request),
-        body: request.givenVariables,
-      }
-    )
   }
 
   sendRequestAdvice(request: Request) {

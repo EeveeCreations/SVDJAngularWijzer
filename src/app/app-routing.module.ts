@@ -1,34 +1,29 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { BeginComponent } from './begin/begin.component';
-import { QuestionScreenComponent } from "./subsidiewijzer/question-screen/question-screen.component";
-import { QuestionScreenResolver } from "./subsidiewijzer/question-screen/question-screen.resolver";
-import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
-import { LoginComponent } from './admin/login/login.component';
-import { EditAdviceComponent } from './admin/edit-advice/edit-advice.component';
-import { ForgotPasswordComponent } from './admin/forgot-password/forgot-password.component';
-import { EditGrantComponent } from './admin/edit-grant/edit-grant.component';
-import { EditQuestionComponent } from './admin/edit-question/edit-question.component';
-
+import {PreloadAllModules, PreloadingStrategy, RouterModule, RouterPreloader, Routes} from '@angular/router';
 const routes: Routes = [
-  { path: 'subsidiewijzer', component: BeginComponent},
-  { path: 'subsidiewijzer/vragen', component: QuestionScreenComponent, resolve: { questionList: QuestionScreenResolver}},
-  { path: 'admin', component: AdminPanelComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'wachtwoord-vergeten', component: ForgotPasswordComponent},
-  { path: 'admin/advies', component: EditAdviceComponent},
-  { path: 'admin/subsidie', component: EditGrantComponent},
-  { path: 'admin/vraag', component: EditQuestionComponent}
+  {path: '', redirectTo: '/subsidiewijzer', pathMatch: 'full'},
+  {path: 'subsidiewijzer', loadChildren: () =>
+      import('./subsidiewijzer/subsidie-wijzer.module')
+        .then(m => m.SubsidieWijzerModule)},
+  {path: 'admin', loadChildren: () =>
+      import('./admin/admin.module')
+        .then(m => m.AdminModule)},
+  // {path:'not-found', component:ErrorPageComponent, data:{message: 'Page not found'}},
+  {path: '**', redirectTo: '/subsidiewijzer'}
 ];
 
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes,
+      {preloadingStrategy:
+        PreloadAllModules
+        // RouterPreloader
+      }
+    )
   ],
   exports: [
     RouterModule
   ]
 })
 export class AppRoutingModule { }
-export const routingComponents = [BeginComponent, QuestionScreenComponent, AdminPanelComponent, LoginComponent, ForgotPasswordComponent, EditAdviceComponent, EditGrantComponent, EditQuestionComponent]

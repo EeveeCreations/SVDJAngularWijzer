@@ -1,0 +1,20 @@
+<div class="sidenav" id="sideNav">
+    <button (click)="closeMenu()" class="close-button">&#10006;</button>
+    <a [routerLink]="['/']"
+       [routerLinkActive]="['is-active']">Home <i class="svdj-corner"></i></a>
+    <a [routerLink]="['subsidie']"
+       [routerLinkActive]="['is-active']">Subsidies <i class="svdj-corner"></i></a>
+    <a [routerLink]="['advies']"
+       [routerLinkActive]="['is-active']">Adviezen <i class="svdj-corner"></i></a>
+    <a [routerLink]="['vraag']"
+       [routerLinkActive]="['is-active']">Vragen <i class="svdj-corner"></i></a>
+    <a [routerLink]="['gebruikers-inzicht']"
+       [routerLinkActive]="['is-active']">Gebruikers inzicht <i class="svdj-corner"></i></a>
+
+    <!-- TODO: LogOut(); -->
+  <a><button class="btn logout" (click)="logOut()"> Uitloggen <i class="svdj-corner"></i></button></a>
+</div>
+
+<button (click)="openMenu()" class="open-button">
+    <b>&#9776;</b>
+</button>
