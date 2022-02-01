@@ -14,13 +14,13 @@
 
         <form *ngIf="currentAdvice">
 
-            <button type="button" (click)="deleteAdvice()" class="delete-button" *ngIf="currentAdvice._adviceID">Delete <i class="svdj-corner-delete"></i></button>
+            <button type="button" (click)="deleteAdvice()" class="delete-button" *ngIf="currentAdvice.adviceID">Delete <i class="svdj-corner-delete"></i></button>
 
             <p class="error">{{errorLabel}}</p>
 
-            <input type="text" placeholder="Naam advies" [(ngModel)]="currentAdvice._name" name="name" />
+            <input type="text" placeholder="Naam advies" [(ngModel)]="currentAdvice.name" name="name" />
 
-            <textarea type="text" placeholder="Beschrijving" [(ngModel)]="currentAdvice._description" name="description"></textarea>
+            <textarea type="text" placeholder="Beschrijving" [(ngModel)]="currentAdvice.description" name="description"></textarea>
 
             <!-- TODO: add grants to this advice -->
 
@@ -41,9 +41,9 @@
         <b class="close-popup-btn" (click)="closePopup()">&#10006;</b>
         <h4> Weet u zeker dat u dit advies wilt verwijderen?</h4>
         <div class="popup-card">
-            <h3> Advies #{{currentAdvice._adviceID}} </h3>
-            <h1> {{currentAdvice._name}} </h1>
-            <h2> {{currentAdvice._description}} </h2>
+            <h3> Advies #{{currentAdvice.adviceID}} </h3>
+            <h1> {{currentAdvice.name}} </h1>
+            <h2> {{currentAdvice.description}} </h2>
             <!-- TODO: add grants -->
         </div>
 
