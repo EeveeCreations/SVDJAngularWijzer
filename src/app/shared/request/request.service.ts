@@ -5,7 +5,7 @@ import {Route, Router} from "@angular/router";
 import {GivenAnswer} from "../models/given-answer.model";
 import {Grant} from "../models/grant.model";
 import {Result} from "../models/result.model";
-import { Advice } from "../models/advice.model";
+import {Advice} from "../models/advice.model";
 import {Answer} from "../models/answer.model";
 import {Question} from "../models/question.model";
 import {tap} from "rxjs";
@@ -50,7 +50,7 @@ export class RequestService {
 
     }, error =>{
       this.errorHandling(error);
-    }))
+    }));
   }
 
   sendRequestQuestion(request: Request) {
@@ -67,9 +67,7 @@ export class RequestService {
 
     }, error =>{
       this.errorHandling(error);
-    }))
-      }
-    )
+    }));
   }
 
   sendRequestQuestionItem(request: Request) {
@@ -78,7 +76,15 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    )
+    ).pipe(tap(answer => {
+
+    }, error => {
+      this.errorHandling(error);
+    })).pipe(tap(answer => {
+
+    }, error => {
+      this.errorHandling(error);
+    }));
   }
 
   sendRequestAnswer(request: Request) {
@@ -104,7 +110,15 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    )
+    ).pipe(tap(answer => {
+
+    }, error => {
+      this.errorHandling(error);
+    })).pipe(tap(answer => {
+
+    }, error => {
+      this.errorHandling(error);
+    }));
   }
 
   sendRequestGivenAnswer(request: Request) {
@@ -113,15 +127,15 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    ).pipe(tap(answer =>{
+    ).pipe(tap(answer => {
 
-    }, error =>{
+    }, error => {
       this.errorHandling(error);
-    })).pipe(tap(answer =>{
+    })).pipe(tap(answer => {
 
-    }, error =>{
+    }, error => {
       this.errorHandling(error);
-    }))
+    }));
 
   }
 
@@ -131,15 +145,15 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    ).pipe(tap(answer =>{
+    ).pipe(tap(answer => {
 
-    }, error =>{
+    }, error => {
       this.errorHandling(error);
-    })).pipe(tap(answer =>{
+    })).pipe(tap(answer => {
 
-    }, error =>{
+    }, error => {
       this.errorHandling(error);
-    }))
+    }));
 
   }
 
@@ -149,24 +163,32 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    ).pipe(tap(answer =>{
+    ).pipe(tap(answer => {
 
-    }, error =>{
+    }, error => {
       this.errorHandling(error);
-    })).pipe(tap(answer =>{
+    })).pipe(tap(answer => {
 
-    }, error =>{
+    }, error => {
       this.errorHandling(error);
-    }))
+    }));
 
   }
 
   sendRequestAdvice(request: Request) {
     this.setConnectionSpecifics("advice", request.specific);
     return this.http.request<Advice[]>(request.duty, this.url, {
-        headers: this.giveCorrectHeadingToRequest(request),
-        body: request.givenVariables,
-    })
+      headers: this.giveCorrectHeadingToRequest(request),
+      body: request.givenVariables,
+    }).pipe(tap(answer => {
+
+    }, error => {
+      this.errorHandling(error);
+    })).pipe(tap(answer => {
+
+    }, error => {
+      this.errorHandling(error);
+    }));
   }
 
   sendRequestAdviceItem(request: Request) {
@@ -175,7 +197,16 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    )
+    ).pipe(tap(answer => {
+
+    }, error => {
+      this.errorHandling(error);
+    })).pipe(tap(answer => {
+
+    }, error => {
+      this.errorHandling(error);
+    }));
+
   }
 
   private errorHandling(errorRes) {

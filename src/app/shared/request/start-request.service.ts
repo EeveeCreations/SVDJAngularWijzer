@@ -6,6 +6,8 @@ import { Advice } from '../models/advice.model';
 import {AuthService} from "../service/auth.service";
 import {Subscription} from "rxjs";
 import {Admin} from "../models/admin.model";
+import {Answer} from "../models/answer.model";
+import {Question} from "../models/question.model";
 
 @Injectable({providedIn: 'root'})
 export class StartRequestService {
@@ -38,23 +40,23 @@ export class StartRequestService {
     return this.requestService.sendRequestGrant(request);
   }
 
-  public makeRequestOfAnswer(duty: string, specific: string, variables?: []) {
+  public makeRequestOfAnswer(duty: string, specific: string, variables?: Answer) {
     const request: Request = new Request(this.currentAdmin.token, duty, specific, variables, false);
     return this.requestService.sendRequestAnswer(request);
   }
 
   public makeRequestOfAnswerItem(duty: string, specific: string, variables?: Answer) {
-    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    const request: Request = new Request(this.currentAdmin.token, duty, specific, variables, false);
     return this.requestService.sendRequestAnswerItem(request);
   }
 
   public makeRequestOfQuestion(duty: string, specific: string, variables?: Question) {
-    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    const request: Request = new Request(this.currentAdmin.token, duty, specific, variables, false);
     return this.requestService.sendRequestQuestion(request);
   }
 
   public makeRequestOfQuestionItem(duty: string, specific: string, variables?: []) {
-    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    const request: Request = new Request(this.currentAdmin.token, duty, specific, variables, false);
     return this.requestService.sendRequestQuestionItem(request);
   }
 
@@ -74,7 +76,7 @@ export class StartRequestService {
   }
 
   public makeRequestOfAdviceItem(duty: string, specific: string, variables?: Advice) {
-    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    const request: Request = new Request(this.currentAdmin.token, duty, specific, variables, false);
     return this.requestService.sendRequestAdviceItem(request);
   }
 }
