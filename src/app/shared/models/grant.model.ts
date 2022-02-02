@@ -1,6 +1,6 @@
 export class Grant {
 
-  constructor(private grantID: bigint, private name: string, private description: string,private _beginDate:string,private _endDate:string,private _adviseUrl) {
+  constructor(public grantID: bigint, public name: string, public description: string,public _beginDate:string,public _endDate:string,public _adviseUrl) {
     this.grantID = grantID
     this.name = name;
     this.description = description;

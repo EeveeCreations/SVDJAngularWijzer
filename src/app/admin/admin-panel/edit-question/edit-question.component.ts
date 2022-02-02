@@ -23,8 +23,6 @@ export class EditQuestionComponent implements OnInit {
 
   ngOnInit(): void {
     this.startRequestService.makeRequestOfQuestion("get", "all", null).subscribe(response => {
-      console.log(response[0]);
-      
       this.questions = response;
     });
 

@@ -16,7 +16,8 @@ export class EditGrantComponent implements OnInit {
   popup: boolean = false;
 
   constructor(private startRequestService: StartRequestService) {
-    console.log("Grant")
+    // console.log("Grant")
+    // Console Ruis weg gecomment
   }
 
   ngOnInit(): void {
