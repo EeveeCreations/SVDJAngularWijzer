@@ -61,4 +61,8 @@ export class EditAdviceComponent implements OnInit {
       location.reload();
     })
   }
+
+  closeAdvice() {
+    this.currentAdvice = null;
+  }
 }

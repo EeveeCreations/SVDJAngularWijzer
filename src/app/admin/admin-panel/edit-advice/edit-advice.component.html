@@ -13,6 +13,7 @@
     <section class="right-form">
 
         <form *ngIf="currentAdvice">
+            <button type="button" (click)="closeAdvice()" class="close-button">&#10006;</button>
 
             <button type="button" (click)="deleteAdvice()" class="delete-button" *ngIf="currentAdvice.adviceID">Delete <i class="svdj-corner-delete"></i></button>
 
