@@ -43,9 +43,19 @@ export class StartRequestService {
     return this.requestService.sendRequestAnswer(request);
   }
 
-  public makeRequestOfQuestion(duty: string, specific: string, variables?: []) {
-    const request: Request = new Request(this.currentAdmin.token, duty, specific, variables, false);
+  public makeRequestOfAnswerItem(duty: string, specific: string, variables?: Answer) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestAnswerItem(request);
+  }
+
+  public makeRequestOfQuestion(duty: string, specific: string, variables?: Question) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
     return this.requestService.sendRequestQuestion(request);
+  }
+
+  public makeRequestOfQuestionItem(duty: string, specific: string, variables?: []) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestQuestionItem(request);
   }
 
   public makeRequestOfRoute(duty: string, specific: string, variables?: []) {
@@ -63,4 +73,8 @@ export class StartRequestService {
     return this.requestService.sendRequestAdvice(request);
   }
 
+  public makeRequestOfAdviceItem(duty: string, specific: string, variables?: Advice) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestAdviceItem(request);
+  }
 }

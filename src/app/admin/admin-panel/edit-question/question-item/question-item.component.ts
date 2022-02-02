@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Question } from 'src/app/shared/models/question.model';
 
 @Component({
@@ -14,4 +14,10 @@ export class QuestionItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  setCurrentQuestion(questionID: bigint, questionText: string, answers: [], Title: string, Description: string, url: string) {
+    let question: Question = new Question(questionID, questionText, answers, Title, Description, url);
+    this.onQuestionSelected.emit(question);
+  }
+
+  @Output() onQuestionSelected = new EventEmitter<Question>();
 }

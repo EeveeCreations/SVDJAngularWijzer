@@ -75,6 +75,13 @@ app-answer {
   transition: 0.3s;
 }
 
+.error {
+  height: 20px;
+  color: #e74c3c;
+  width: 100%;
+  text-align: center;
+}
+
 @media screen and (max-width: 1000px) {
   .answer-holder {
     width: 80vw;

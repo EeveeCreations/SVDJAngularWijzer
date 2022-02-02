@@ -1,59 +1,61 @@
+import { Answer } from "./answer.model";
+
 export class Question {
 
-  public constructor(private _questionID: bigint, private _questionText: string, private _answers: [], private _extraInfoTile: string, private _extraInfoDescription: string, private _extraInfoVideoURL: string) {
-    this._questionID = _questionID;
-    this._questionText = _questionText;
-    this._answers = _answers;
-    this._extraInfoTile = _extraInfoTile;
-    this._extraInfoDescription = _extraInfoDescription;
-    this._extraInfoVideoURL = _extraInfoVideoURL;
+  public constructor(public questionID: bigint, public questionText: string, public answers: Answer[], public extraInfoTile: string, public extraInfoDescription: string, public extraInfoVideoURL: string) {
+    this.questionID = questionID;
+    this.questionText = questionText;
+    this.answers = answers;
+    this.extraInfoTile = extraInfoTile;
+    this.extraInfoDescription = extraInfoDescription;
+    this.extraInfoVideoURL = extraInfoVideoURL;
   }
 
-  get questionID(): bigint {
-    return this._questionID;
+  get _questionID(): bigint {
+    return this.questionID;
   }
 
-  set questionID(value: bigint) {
-    this._questionID = value;
+  set _questionID(value: bigint) {
+    this.questionID = value;
   }
 
-  get questionText(): string {
-    return this._questionText;
+  get _questionText(): string {
+    return this.questionText;
   }
 
-  set questionText(value: string) {
-    this._questionText = value;
+  set _questionText(value: string) {
+    this.questionText = value;
   }
 
-  get answers(): [] {
-    return this._answers;
+  get _answers(): Answer[] {
+    return this.answers;
   }
 
-  set answers(value: []) {
-    this._answers = value;
+  set _answers(value: Answer[]) {
+    this.answers = value;
   }
 
-  get extraInfoTile(): string {
-    return this._extraInfoTile;
+  get _extraInfoTile(): string {
+    return this.extraInfoTile;
   }
 
-  set extraInfoTile(value: string) {
-    this._extraInfoTile = value;
+  set _extraInfoTile(value: string) {
+    this.extraInfoTile = value;
   }
 
-  get extraInfoDescription(): string {
-    return this._extraInfoDescription;
+  get _extraInfoDescription(): string {
+    return this.extraInfoDescription;
   }
 
-  set extraInfoDescription(value: string) {
-    this._extraInfoDescription = value;
+  set _extraInfoDescription(value: string) {
+    this.extraInfoDescription = value;
   }
 
-  get extraInfoVideoURL(): string {
-    return this._extraInfoVideoURL;
+  get _extraInfoVideoURL(): string {
+    return this.extraInfoVideoURL;
   }
 
-  set extraInfoVideoURL(value: string) {
-    this._extraInfoVideoURL = value;
+  set _extraInfoVideoURL(value: string) {
+    this.extraInfoVideoURL = value;
   }
 }

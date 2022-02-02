@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {CalculateQuestionService} from "../../shared/service/calculate-question.service";
-import {Question} from "../../shared/models/question.model";
+import { Router } from '@angular/router';
+import { Answer } from 'src/app/shared/models/answer.model';
+import { Question } from 'src/app/shared/models/question.model';
+import { StartRequestService } from 'src/app/shared/request/start-request.service';
 
 @Component({
   selector: 'app-question-screen',
@@ -9,21 +11,62 @@ import {Question} from "../../shared/models/question.model";
 })
 export class QuestionScreenComponent implements OnInit {
   currentQuestion: Question;
+  questions: Question[];
 
-  constructor(private questionService: CalculateQuestionService) {
+  previousQuestions: Question[] = [];
+
+  selectedAnswer: Answer = null;
+  errorLabel: string = "";
+
+  constructor(private startRequestService: StartRequestService, private router: Router) {
   }
 
   ngOnInit(): void {
-    this.currentQuestion = this.questionService.getFirstQuestion();
-    this.questionService.getQuestionsFromApi().subscribe();
+    this.startRequestService.makeRequestOfQuestion("get", "all", null).subscribe(response => {
+      console.log(response[0]);
+      
+      this.questions = response;
+      this.currentQuestion = response[0];
+    })
+
   }
 
   onNext() {
-    this.currentQuestion = this.questionService.getNextQuestion();
+    console.log(this.currentQuestion.extraInfoTile);
+    console.log(this.currentQuestion);
+    
+    
+    this.errorLabel = "";
+    if (this.selectedAnswer === null) {
+      this.errorLabel = "Selecteer graag eerst een antwoord"
+      return;
+    }
+
+    if (this.selectedAnswer.nextQuestion !== null) {
+      this.currentQuestion = this.selectedAnswer.nextQuestion;
+      this.previousQuestions.push(this.selectedAnswer.nextQuestion);
+      this.selectedAnswer = null;
+      return;
+    }
+    this.router.navigate(['subsidiewijzer/advies/' + this.selectedAnswer.advice.adviceID])    
   }
 
   onPrevious() {
-    this.currentQuestion = this.questionService.getPreviousQuestion();
+    this.errorLabel = "";
+    if(this.previousQuestions.length < 2) {
+      this.currentQuestion = this.questions[0];
+      this.previousQuestions = [];
+      return;
+    }
+
+    this.previousQuestions.splice(-1);
+    this.currentQuestion = this.previousQuestions[this.previousQuestions.length -1];
   }
 
+  selectAnswer(id: bigint) {
+    this.startRequestService.makeRequestOfAnswerItem("get", id.toString(), null).subscribe(response => {
+      this.selectedAnswer = response;
+    })
+    
+  }
 }

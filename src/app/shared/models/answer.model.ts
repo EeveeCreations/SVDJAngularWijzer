@@ -4,46 +4,46 @@ import { Advice } from "./advice.model";
 
 export class Answer{
 
-  constructor(private _answerID: bigint, private _answerText: string, private _parentQuestionID: Question, private _nextQuestionID: Question, private _advice: Advice) {
-    this._answerID = _answerID;
-    this._answerText = _answerText;
-    this._parentQuestionID = _parentQuestionID;
-    this._nextQuestionID = _nextQuestionID;
-    this._advice = _advice;
+  constructor(public answerID: bigint, public answerText: string, public parentQuestionID: Question, public nextQuestion: Question, public advice: Advice) {
+    this.answerID = answerID;
+    this.answerText = answerText;
+    this.parentQuestionID = parentQuestionID;
+    this.nextQuestion = nextQuestion;
+    this.advice = advice;
   }
 
-  public get answerID() : bigint {
-    return this._answerID;
+  public get _answerID() : bigint {
+    return this.answerID;
   }
-  public set answerID(v : bigint) {
-    this._answerID = v;
-  }
-  
-  public get answerText() : string {
-    return this._answerText;
-  }
-  public set answerText(v : string) {
-    this._answerText = v;
+  public set _answerID(v : bigint) {
+    this.answerID = v;
   }
   
-  public get parentQuestionID() : Question {
-    return this._parentQuestionID;
+  public get _answerText() : string {
+    return this.answerText;
   }
-  public set parentQuestionID(v : Question) {
-    this._parentQuestionID = v;
+  public set _answerText(v : string) {
+    this.answerText = v;
+  }
+  
+  public get _parentQuestionID() : Question {
+    return this.parentQuestionID;
+  }
+  public set _parentQuestionID(v : Question) {
+    this.parentQuestionID = v;
   }
  
-  public get nextQuestionID() : Question {
-    return this._nextQuestionID;
+  public get _nextQuestion() : Question {
+    return this.nextQuestion;
   }
-  public set nextQuestionID(v : Question) {
-    this._nextQuestionID = v;
+  public set _nextQuestion(v : Question) {
+    this.nextQuestion = v;
   }
   
-  public get advice() : Advice {
-    return this._advice;
+  public get _advice() : Advice {
+    return this.advice;
   }
-  public set advice(v : Advice) {
-    this._advice = v;
+  public set _advice(v : Advice) {
+    this.advice = v;
   }
 }
