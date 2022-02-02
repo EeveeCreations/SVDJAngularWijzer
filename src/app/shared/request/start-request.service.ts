@@ -2,8 +2,10 @@ import {Injectable} from '@angular/core';
 import {Request} from "./request.model";
 import {RequestService} from "./request.service";
 import {User} from "../models/user.model";
-import {Grant} from '../models/grant.model';
-import {Advice} from '../models/advice.model';
+import { Grant } from '../models/grant.model';
+import { Advice } from '../models/advice.model';
+import { Question } from '../models/question.model';
+import { Answer } from '../models/answer.model';
 
 @Injectable({providedIn: 'root'})
 export class StartRequestService {
@@ -26,14 +28,24 @@ export class StartRequestService {
     return this.requestService.sendRequestGrant(request);
   }
 
-  public makeRequestOfAnswer(duty: string, specific: string, variables?: []) {
+  public makeRequestOfAnswer(duty: string, specific: string, variables?: Answer) {
     const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
     return this.requestService.sendRequestAnswer(request);
   }
 
-  public makeRequestOfQuestion(duty: string, specific: string, variables?: []) {
+  public makeRequestOfAnswerItem(duty: string, specific: string, variables?: Answer) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestAnswerItem(request);
+  }
+
+  public makeRequestOfQuestion(duty: string, specific: string, variables?: Question) {
     const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
     return this.requestService.sendRequestQuestion(request);
+  }
+
+  public makeRequestOfQuestionItem(duty: string, specific: string, variables?: []) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestQuestionItem(request);
   }
 
   public makeRequestOfRoute(duty: string, specific: string, variables?: []) {
@@ -49,5 +61,10 @@ export class StartRequestService {
   public makeRequestOfAdvice(duty: string, specific: string, variables?: Advice) {
     const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
     return this.requestService.sendRequestAdvice(request);
+  }
+
+  public makeRequestOfAdviceItem(duty: string, specific: string, variables?: Advice) {
+    const request: Request = new Request(this.currentUser.id, duty, specific, variables, false);
+    return this.requestService.sendRequestAdviceItem(request);
   }
 }

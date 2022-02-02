@@ -5,7 +5,7 @@ import {Route} from "@angular/router";
 import {GivenAnswer} from "../models/given-answer.model";
 import {Grant} from "../models/grant.model";
 import {Result} from "../models/result.model";
-import { Advice } from "../models/advice.model";
+import {Advice} from "../models/advice.model";
 import {Answer} from "../models/answer.model";
 import {Question} from "../models/question.model";
 
@@ -46,6 +46,15 @@ export class RequestService {
     return this.http.request<Question[]>(request.duty, this.url, {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
+      }      
+    )
+  }
+
+  sendRequestQuestionItem(request: Request) {
+    this.setConnectionSpecifics("question", request.specific);
+    return this.http.request<Question>(request.duty, this.url, {
+        headers: this.giveCorrectHeadingToRequest(request),
+        body: request.givenVariables,
       }
     )
   }
@@ -53,6 +62,15 @@ export class RequestService {
   sendRequestAnswer(request: Request) {
     this.setConnectionSpecifics("answer", request.specific);
     return this.http.request<Answer[]>(request.duty, this.url, {
+        headers: this.giveCorrectHeadingToRequest(request),
+        body: request.givenVariables,
+      }
+    )
+  }
+
+  sendRequestAnswerItem(request: Request) {
+    this.setConnectionSpecifics("answer", request.specific);
+    return this.http.request<Answer>(request.duty, this.url, {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
@@ -95,5 +113,14 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
     })
+  }
+  
+  sendRequestAdviceItem(request: Request) {
+    this.setConnectionSpecifics("advice", request.specific);
+    return this.http.request<Advice>(request.duty, this.url, {
+        headers: this.giveCorrectHeadingToRequest(request),
+        body: request.givenVariables,
+      }
+    )
   }
 }

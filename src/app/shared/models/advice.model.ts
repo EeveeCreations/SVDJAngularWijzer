@@ -2,7 +2,7 @@ import { Grant } from "./grant.model";
 
 export class Advice{
 
-    constructor(private adviceID:bigint, private name: string, private description: string, private grants: Grant[]) {
+    constructor(public adviceID:bigint, public name: string, public description: string, public grants: Grant[]) {
       this.adviceID = adviceID;
       this.name = name;
       this.description = description;
