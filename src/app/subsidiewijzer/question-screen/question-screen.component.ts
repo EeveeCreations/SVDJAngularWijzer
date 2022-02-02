@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Question} from "../../shared/model/question.model";
 import {CalculateQuestionService} from "../../shared/service/calculate-question.service";
+import {Question} from "../../shared/models/question.model";
 
 @Component({
   selector: 'app-question-screen',

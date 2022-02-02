@@ -1,0 +1,55 @@
+<app-admin-nav></app-admin-nav>
+
+<section class="center-view-box">
+
+    <section class="left-list">
+        <button (click)="newAdvice()" class="new">
+            +
+        </button>
+
+        <app-advice [advices]="advices" (onAdviceSelected)="editAdvice($event)"></app-advice>
+    </section>
+
+    <section class="right-form">
+
+        <form *ngIf="currentAdvice">
+
+            <button type="button" (click)="deleteAdvice()" class="delete-button" *ngIf="currentAdvice._adviceID">Delete <i class="svdj-corner-delete"></i></button>
+
+            <p class="error">{{errorLabel}}</p>
+
+            <input type="text" placeholder="Naam advies" [(ngModel)]="currentAdvice._name" name="name" />
+
+            <textarea type="text" placeholder="Beschrijving" [(ngModel)]="currentAdvice._description" name="description"></textarea>
+
+            <!-- TODO: add grants to this advice -->
+
+            <button type="button" (click)="saveAdvice()" class="svdj-button">
+                Opslaan <i class="button-corner"></i>
+            </button>
+        </form>
+
+        <section class="nothing-selected">
+            Niks geselecteerd
+        </section>
+    </section>
+
+</section>
+
+<section class="block-screen" *ngIf="popup">
+    <section class="popup">
+        <b class="close-popup-btn" (click)="closePopup()">&#10006;</b>
+        <h4> Weet u zeker dat u dit advies wilt verwijderen?</h4>
+        <div class="popup-card">
+            <h3> Advies #{{currentAdvice._adviceID}} </h3>
+            <h1> {{currentAdvice._name}} </h1>
+            <h2> {{currentAdvice._description}} </h2>
+            <!-- TODO: add grants -->
+        </div>
+
+        <div class="delete-buttons">
+            <button type="button" class="svdj-button-del" (click)="closePopup()">Annuleren<i class="button-corner"></i></button>
+            <button type="button" class="svdj-button-del" id="red" (click)="confirmDeletion()">Bevestig verwijderen<i class="button-corner"></i></button>
+        </div>
+    </section>
+</section>

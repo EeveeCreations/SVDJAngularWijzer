@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Question} from "../model/question.model";
-import {QuestionList} from "../model/questionList.model";
 import {ApiService} from "../api/api.service";
 import {tap} from "rxjs";
+import {Question} from "../models/question.model";
+import {QuestionList} from "../models/question-list.model";
 
 
 @Injectable({
