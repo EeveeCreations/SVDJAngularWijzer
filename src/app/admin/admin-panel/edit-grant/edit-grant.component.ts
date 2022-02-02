@@ -64,4 +64,8 @@ export class EditGrantComponent implements OnInit {
       location.reload();
     })
   }
+
+  closeGrant() {
+    this.currentGrant = null;
+  }
 }
