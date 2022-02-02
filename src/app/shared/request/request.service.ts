@@ -1,13 +1,14 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Request} from "./request.model";
 import {Injectable} from "@angular/core";
-import {Route} from "@angular/router";
+import {Route, Router} from "@angular/router";
 import {GivenAnswer} from "../models/given-answer.model";
 import {Grant} from "../models/grant.model";
 import {Result} from "../models/result.model";
 import { Advice } from "../models/advice.model";
 import {Answer} from "../models/answer.model";
 import {Question} from "../models/question.model";
+import {tap} from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class RequestService {
@@ -15,6 +16,7 @@ export class RequestService {
 
 
   constructor(private http: HttpClient,
+              private router: Router
   ){
   }
 
@@ -22,7 +24,6 @@ export class RequestService {
     return new HttpHeaders({
       contentType: 'application/json',
       accept: 'application/json',
-      // origin: 'http://localhost:4200/',
       authorization: 'Bearer ' + readyRequest.adminToken
     });
 
@@ -41,7 +42,15 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    )
+    ).pipe(tap(answer =>{
+
+    }, error =>{
+      this.errorHandling(error);
+    })).pipe(tap(answer =>{
+
+    }, error =>{
+      this.errorHandling(error);
+    }))
   }
 
   sendRequestQuestion(request: Request) {
@@ -50,7 +59,15 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    )
+    ).pipe(tap(answer =>{
+
+    }, error =>{
+      this.errorHandling(error);
+    })).pipe(tap(answer =>{
+
+    }, error =>{
+      this.errorHandling(error);
+    }))
   }
 
   sendRequestAnswer(request: Request) {
@@ -59,7 +76,15 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    )
+    ).pipe(tap(answer =>{
+
+    }, error =>{
+      this.errorHandling(error);
+    })).pipe(tap(answer =>{
+
+    }, error =>{
+      this.errorHandling(error);
+    }))
   }
 
   sendRequestGivenAnswer(request: Request) {
@@ -68,7 +93,15 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    )
+    ).pipe(tap(answer =>{
+
+    }, error =>{
+      this.errorHandling(error);
+    })).pipe(tap(answer =>{
+
+    }, error =>{
+      this.errorHandling(error);
+    }))
 
   }
 
@@ -78,7 +111,15 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    )
+    ).pipe(tap(answer =>{
+
+    }, error =>{
+      this.errorHandling(error);
+    })).pipe(tap(answer =>{
+
+    }, error =>{
+      this.errorHandling(error);
+    }))
 
   }
 
@@ -88,7 +129,15 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    )
+    ).pipe(tap(answer =>{
+
+    }, error =>{
+      this.errorHandling(error);
+    })).pipe(tap(answer =>{
+
+    }, error =>{
+      this.errorHandling(error);
+    }))
 
   }
 
@@ -98,5 +147,17 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
     })
+  }
+
+  private errorHandling(errorRes) {
+      let errorMessage = 'Onbekende error';
+        switch (errorRes.status) {
+          case 403:
+            this.router.navigate(['/admin/login'])
+            alert("Sessie is voorbij")
+            break;
+          case 401:
+            this.router.navigate(['/geenAuthenticatie'])
+        }
   }
 }

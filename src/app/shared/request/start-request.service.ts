@@ -62,4 +62,5 @@ export class StartRequestService {
     const request: Request = new Request(this.currentAdmin.token, duty, specific, variables, false);
     return this.requestService.sendRequestAdvice(request);
   }
+
 }
