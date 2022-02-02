@@ -282,6 +282,7 @@ textarea {
         position: unset;
         height: 0;
         background-color: transparent;
+        overflow: hidden;
     }
 
     form {
@@ -291,6 +292,7 @@ textarea {
         left: 0px;
         top: 5vh;
         z-index: 2;
+        overflow-y: scroll;
     }
 
     .nothing-selected {

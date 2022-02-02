@@ -152,4 +152,8 @@ export class EditQuestionComponent implements OnInit {
       location.reload();
     })
   }
+
+  closeQuestion() {
+    this.currentQuestion = null;
+  }
 }
