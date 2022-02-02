@@ -1,6 +1,6 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AdminRoutingModule} from "./admin-routing.module";
 import {AdminPanelComponent} from "./admin-panel/admin-panel.component";
 import {LoginComponent} from "./login/login.component";
@@ -32,11 +32,12 @@ import {GrantComponent} from "./admin-panel/edit-grant/grant/grant.component";
     EditQuestionComponent,
     AdminNavComponent
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    AdminRoutingModule,
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        AdminRoutingModule,
+        ReactiveFormsModule,
+    ],
   exports:[
     AdminPanelComponent,
     LoginComponent,

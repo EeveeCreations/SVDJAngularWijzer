@@ -19,15 +19,12 @@ export class RequestService {
   }
 
   giveCorrectHeadingToRequest(readyRequest: Request): HttpHeaders {
-    const headerOfRequest: HttpHeaders = new HttpHeaders({
+    return new HttpHeaders({
       contentType: 'application/json',
       accept: 'application/json',
-      origin: 'http://localhost:4200/',
+      // origin: 'http://localhost:4200/',
       authorization: 'Bearer ' + readyRequest.adminToken
     });
-    headerOfRequest.append("origin", 'http://localhost:4200/');
-    console.log(headerOfRequest);
-    return headerOfRequest;
 
   }
 
