@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Admin} from "../models/admin.model";
 import {BehaviorSubject, catchError, map, throwError} from "rxjs";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Md5} from "ts-md5";
 
 @Injectable({providedIn: 'root'})
@@ -15,8 +15,8 @@ export class AuthService {
   constructor(private http: HttpClient,
               private router: Router) {
     this.admin.subscribe(() => {
-      if (this.admin != null) {
-        this.router.navigate(['/admin/advies']);
+      if (this.admin != null && this.router.url === "/admin/login") {
+        this.router.navigate(['/admin/advies'])
       }
     });
     this.autoLogIn();
