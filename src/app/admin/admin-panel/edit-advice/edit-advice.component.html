@@ -23,7 +23,21 @@
 
             <textarea type="text" placeholder="Beschrijving" [(ngModel)]="currentAdvice.description" name="description"></textarea>
 
-            <!-- TODO: add grants to this advice -->
+            <div class="grant-container">
+                <h4>Subsidies bij dit advies</h4>
+                <h4>Overige subsidies</h4>
+                <div class="grant-holder">
+
+                    <div class="grant-item">
+                        <h2>Subsidie #2</h2>
+                        <h1>Hier staat een naam</h1>
+                    </div>
+
+                </div>
+                <div class="grant-holder">
+                    
+                </div>
+            </div>
 
             <button type="button" (click)="saveAdvice()" class="svdj-button">
                 Opslaan <i class="button-corner"></i>
