@@ -37,8 +37,8 @@ export class EditGrantComponent implements OnInit {
   }
 
   saveGrant() {
-    if (!this.currentGrant._name || this.currentGrant._name === "") {
-      this.errorLabel = "Het invullen van een naam is verplicht";
+    if (!this.currentGrant._name || this.currentGrant._name === "" || !this.currentGrant.grant_link || this.currentGrant.grant_link === "") {
+      this.errorLabel = "Het invullen van een naam en link is verplicht";
       return;
     }
 

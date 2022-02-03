@@ -21,6 +21,8 @@
 
             <input type="text" placeholder="Naam subsidie" [(ngModel)]="currentGrant.name" name="name"/>
 
+            <input type="text" placeholder="Link naar subsidie" [(ngModel)]="currentGrant.grant_link" name="link"/>
+
             <textarea type="text" placeholder="Beschrijving" [(ngModel)]="currentGrant.description" name="description"></textarea>
 
             <button type="button" (click)="saveGrant()" class="svdj-button">
