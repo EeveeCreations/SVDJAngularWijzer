@@ -290,6 +290,8 @@ textarea {
     position: relative;
     height: 50px;
     margin-top: 15px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .grant-item > h1 {
@@ -309,6 +311,19 @@ textarea {
     font-size: 1em;
     font-weight: bold;
     color: #AAAAAA;
+    transition: 0.3s;
+}
+
+.remove:hover {
+    background-color: #e74d3c;
+}
+
+.remove:hover > h2, .add:hover > h2 {
+    color: #000000;
+}
+
+.add:hover {
+    background-color: #16a085;
 }
 
 @media screen and (max-width: 1500px) {
