@@ -281,6 +281,7 @@ textarea {
     background-color: #FFFFFF;
     height: 300px;
     overflow-y: scroll;
+    padding-bottom: 10px;
 }
 
 .grant-item {

@@ -28,7 +28,7 @@
                 <h4>Overige subsidies</h4>
                 <div class="grant-holder">
 
-                    <div class="grant-item remove" *ngFor="let grant of currentAdvice.grants">
+                    <div class="grant-item remove" *ngFor="let grant of currentAdvice.grants" (click)="removeGrant(grant)">
                         <h2>Subsidie #{{grant.grantID}}</h2>
                         <h1>{{grant.name.substr(0, 25)}}</h1>
                     </div>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="grant-holder">
 
-                    <div class="grant-item add" *ngFor="let grant of allGrants">
+                    <div class="grant-item add" *ngFor="let grant of allGrants" (click)="addGrant(grant)">
                         <h2>Subsidie #{{grant.grantID}}</h2>
                         <h1>{{grant.name.substr(0, 25)}}</h1>
                     </div>

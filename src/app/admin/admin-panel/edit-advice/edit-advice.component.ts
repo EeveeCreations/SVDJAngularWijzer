@@ -36,12 +36,14 @@ export class EditAdviceComponent implements OnInit {
 
   newAdvice() {
     this.errorLabel = "";
-    this.currentAdvice = new Advice(null, null, null, null)
+    this.getAllGrants();
+    this.currentAdvice = new Advice(null, null, null, [])
   }
 
   editAdvice(advice: Advice) {
     this.errorLabel = "";
     this.currentAdvice = advice;
+    this.checkGrants();
   }
 
   saveAdvice() {
@@ -75,5 +77,40 @@ export class EditAdviceComponent implements OnInit {
 
   closeAdvice() {
     this.currentAdvice = null;
+    this.getAllGrants();
+  }
+
+  addGrant(grant: Grant) {
+    this.currentAdvice.grants.push(grant);
+    
+    for(let i = 0; i < this.allGrants.length; i++) {
+      if (this.allGrants[i].grantID === grant.grantID) {
+        this.allGrants.splice(i, 1);
+      }
+    }
+  }
+
+  removeGrant(grant: Grant) {
+    this.allGrants.push(grant);
+
+    for(let i = 0; i < this.currentAdvice.grants.length; i++) {
+      if (this.currentAdvice.grants[i].grantID === grant.grantID) {
+        this.currentAdvice.grants.splice(i, 1);
+      }
+    }
+  }
+
+  checkGrants() {
+    this.startRequestService.makeRequestOfGrant("GET", "all", null).subscribe(response => {
+      this.allGrants = response;
+
+      this.currentAdvice.grants.forEach(grant => {
+        for(let i = 0; i < this.allGrants.length; i++) {
+          if (this.allGrants[i].grantID === grant.grantID) {
+            this.allGrants.splice(i, 1);
+          }
+        }
+      })
+    })
   }
 }
