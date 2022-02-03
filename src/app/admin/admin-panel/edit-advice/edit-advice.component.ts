@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Advice } from 'src/app/shared/models/advice.model';
+import { Grant } from 'src/app/shared/models/grant.model';
 import { StartRequestService } from 'src/app/shared/request/start-request.service';
 
 @Component({
@@ -13,6 +14,8 @@ export class EditAdviceComponent implements OnInit {
   currentAdvice: Advice;
   errorLabel: String;
 
+  allGrants: Grant[];
+
   popup: boolean = false;
 
   constructor(private startRequestService : StartRequestService) { }
@@ -20,6 +23,14 @@ export class EditAdviceComponent implements OnInit {
   ngOnInit(): void {
     this.startRequestService.makeRequestOfAdvice("GET", "all", null).subscribe(response => {
       this.advices = response;
+    })
+
+    this.getAllGrants();
+  }
+
+  getAllGrants() {
+    this.startRequestService.makeRequestOfGrant("GET", "all", null).subscribe(response => {
+      this.allGrants = response;
     })
   }
 

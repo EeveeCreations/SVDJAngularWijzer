@@ -28,14 +28,19 @@
                 <h4>Overige subsidies</h4>
                 <div class="grant-holder">
 
-                    <div class="grant-item">
-                        <h2>Subsidie #2</h2>
-                        <h1>Hier staat een naam</h1>
+                    <div class="grant-item" *ngFor="let grant of currentAdvice.grants">
+                        <h2>Subsidie #{{grant.grantID}}</h2>
+                        <h1>{{grant.name.substr(0, 25)}}</h1>
                     </div>
 
                 </div>
                 <div class="grant-holder">
-                    
+
+                    <div class="grant-item" *ngFor="let grant of allGrants">
+                        <h2>Subsidie #{{grant.grantID}}</h2>
+                        <h1>{{grant.name.substr(0, 25)}}</h1>
+                    </div>
+
                 </div>
             </div>
 
