@@ -15,6 +15,7 @@ import {QuestionItemComponent} from "./admin-panel/edit-question/question-item/q
 import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
 import {AdviceComponent} from "./admin-panel/edit-advice/advice/advice.component";
 import {GrantComponent} from "./admin-panel/edit-grant/grant/grant.component";
+import { HomeComponent } from './admin-panel/home/home.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {GrantComponent} from "./admin-panel/edit-grant/grant/grant.component";
     EditAdviceComponent,
     EditGrantComponent,
     EditQuestionComponent,
-    AdminNavComponent
+    AdminNavComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
