@@ -17,6 +17,9 @@ export class QuestionScreenComponent implements OnInit {
 
   selectedAnswer: Answer = null;
   errorLabel: string = "";
+  questionsHad: number = 0;
+
+  progress: number = 0;
 
   constructor(private startRequestService: StartRequestService, private router: Router) {
   }
@@ -40,6 +43,8 @@ export class QuestionScreenComponent implements OnInit {
       this.currentQuestion = this.selectedAnswer.nextQuestion;
       this.previousQuestions.push(this.selectedAnswer.nextQuestion);
       this.selectedAnswer = null;
+      this.questionsHad++;
+      this.checkProgress();
       return;
     }
     this.router.navigate(['subsidiewijzer/advies/' + this.selectedAnswer.advice.adviceID])    
@@ -50,17 +55,33 @@ export class QuestionScreenComponent implements OnInit {
     if(this.previousQuestions.length < 2) {
       this.currentQuestion = this.questions[0];
       this.previousQuestions = [];
+      this.questionsHad = 0;
+      this.checkProgress();
       return;
     }
 
     this.previousQuestions.splice(-1);
     this.currentQuestion = this.previousQuestions[this.previousQuestions.length -1];
+    this.questionsHad--;
+    this.checkProgress();
   }
 
   selectAnswer(id: bigint) {
     this.startRequestService.makeRequestOfAnswerItem("get", id.toString(), null).subscribe(response => {
       this.selectedAnswer = response;
     })
+  }
+
+  checkProgress() {
+    let i = 0;
+    let questionChild: Question = this.currentQuestion;
+    while (questionChild.answers[0].nextQuestion !== null) {
+      questionChild = questionChild.answers[0].nextQuestion;
+      i++;
+    }
     
+
+    let totalQuestions = i + this.questionsHad;
+    this.progress = (this.questionsHad / totalQuestions) * 100;    
   }
 }
