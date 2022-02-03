@@ -15,8 +15,8 @@ export class GrantComponent implements OnInit {
   }
 
   // This trips if you don't take it apart like this trust me.
-  setCurrentGrant(grantID: bigint, name: string, description: string) {
-    let grant: Grant = new Grant(grantID, name, description, null, null, null);
+  setCurrentGrant(grantID: bigint, name: string, description: string, grant_link: string) {
+    let grant: Grant = new Grant(grantID, name, description, grant_link);
     this.onGrantSelected.emit(grant);
   }
 

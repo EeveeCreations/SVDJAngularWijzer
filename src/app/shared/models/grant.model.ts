@@ -1,9 +1,10 @@
 export class Grant {
 
-  constructor(public grantID: bigint, public name: string, public description: string,public _beginDate:string,public _endDate:string,public _adviseUrl) {
+  constructor(public grantID: bigint, public name: string, public description: string,public grant_link:string) {
     this.grantID = grantID
     this.name = name;
     this.description = description;
+    this.grant_link = grant_link;
   }
 
   public get _grantID() : bigint {

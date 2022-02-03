@@ -22,4 +22,7 @@ export class AdviceComponentUser implements OnInit {
     })
   }
 
+  redirectTo(link: string) {
+    window.open(link, '_blank').focus();
+  }
 }

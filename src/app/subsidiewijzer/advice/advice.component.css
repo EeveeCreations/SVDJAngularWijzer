@@ -19,6 +19,7 @@
     padding: 10px 25px;
     position: relative;
     background-color: #FFFFFF;
+    cursor: pointer;
 }
 
 .grant-item-corner {

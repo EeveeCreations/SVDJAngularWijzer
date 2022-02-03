@@ -28,7 +28,7 @@ export class EditGrantComponent implements OnInit {
 
   newGrant() {
     this.errorLabel = "";
-    this.currentGrant = new Grant(null, null, null, null, null, null);
+    this.currentGrant = new Grant(null, null, null, null);
   }
 
   editGrant(grant: Grant) {
