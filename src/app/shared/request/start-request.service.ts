@@ -19,14 +19,11 @@ export class StartRequestService {
     this.findIfRegistered();
   }
 
-
   private findIfRegistered() {
     this.adminSubscription = this.authService.admin.subscribe(admin => {
       this.currentAdmin = admin;
     });
   }
-
-
 
   public establishConnection() {
     let request: Request = new Request("", "GET", "all", null, false)

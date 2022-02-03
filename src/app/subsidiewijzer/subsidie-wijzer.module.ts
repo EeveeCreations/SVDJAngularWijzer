@@ -12,13 +12,13 @@ import {MainScreenComponent} from './main-screen/main-screen.component';
 
 @NgModule({
   declarations: [
+    MainScreenComponent,
     BeginComponent,
-    ExtraInfoComponent,
-    MoreInfoComponent,
+    QuestionScreenComponent,
     QuestionComponent,
     AnswerComponent,
-    QuestionScreenComponent,
-    MainScreenComponent,
+    ExtraInfoComponent,
+    MoreInfoComponent,
   ],
   imports: [
     CommonModule,
@@ -26,13 +26,13 @@ import {MainScreenComponent} from './main-screen/main-screen.component';
     SubsidieWijzerRoutingModule,
   ],
   exports: [
+    MainScreenComponent,
     BeginComponent,
+    QuestionScreenComponent,
     QuestionComponent,
     AnswerComponent,
     ExtraInfoComponent,
     MoreInfoComponent,
-    QuestionScreenComponent,
-    MainScreenComponent,
   ]
 })
 export class SubsidieWijzerModule {

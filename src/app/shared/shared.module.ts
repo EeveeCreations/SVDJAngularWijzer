@@ -14,8 +14,6 @@ import { WrongAuthComponent } from '../admin/wrong-auth/wrong-auth.component';
     CommonModule,
     ReactiveFormsModule
   ],
-  // providers:[LoggingService]
-
 })
 export class SharedModule{
 
