@@ -1,4 +1,4 @@
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Request} from "./request.model";
 import {Injectable} from "@angular/core";
 import {Route, Router} from "@angular/router";
@@ -8,7 +8,7 @@ import {Result} from "../models/result.model";
 import {Advice} from "../models/advice.model";
 import {Answer} from "../models/answer.model";
 import {Question} from "../models/question.model";
-import {tap} from "rxjs";
+import {catchError, Observable} from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class RequestService {
@@ -16,8 +16,7 @@ export class RequestService {
 
 
   constructor(private http: HttpClient,
-              private router: Router
-  ){
+              private router: Router){
   }
 
   giveCorrectHeadingToRequest(readyRequest: Request): HttpHeaders {
@@ -42,15 +41,12 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    ).pipe(tap(answer =>{
+    ).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
 
-    }, error =>{
-      this.errorHandling(error);
-    })).pipe(tap(answer =>{
-
-    }, error =>{
-      this.errorHandling(error);
-    }));
   }
 
   sendRequestQuestion(request: Request) {
@@ -59,15 +55,11 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    ).pipe(tap(answer =>{
-
-    }, error =>{
-      this.errorHandling(error);
-    })).pipe(tap(answer =>{
-
-    }, error =>{
-      this.errorHandling(error);
-    }));
+    ).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
   }
 
   sendRequestQuestionItem(request: Request) {
@@ -76,15 +68,11 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    ).pipe(tap(answer => {
-
-    }, error => {
-      this.errorHandling(error);
-    })).pipe(tap(answer => {
-
-    }, error => {
-      this.errorHandling(error);
-    }));
+    ).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
   }
 
   sendRequestAnswer(request: Request) {
@@ -93,15 +81,11 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    ).pipe(tap(answer =>{
-
-    }, error =>{
-      this.errorHandling(error);
-    })).pipe(tap(answer =>{
-
-    }, error =>{
-      this.errorHandling(error);
-    }))
+    ).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
   }
 
   sendRequestAnswerItem(request: Request) {
@@ -110,15 +94,11 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    ).pipe(tap(answer => {
-
-    }, error => {
-      this.errorHandling(error);
-    })).pipe(tap(answer => {
-
-    }, error => {
-      this.errorHandling(error);
-    }));
+    ).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
   }
 
   sendRequestGivenAnswer(request: Request) {
@@ -127,15 +107,11 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    ).pipe(tap(answer => {
-
-    }, error => {
-      this.errorHandling(error);
-    })).pipe(tap(answer => {
-
-    }, error => {
-      this.errorHandling(error);
-    }));
+    ).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
 
   }
 
@@ -145,15 +121,11 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    ).pipe(tap(answer => {
-
-    }, error => {
-      this.errorHandling(error);
-    })).pipe(tap(answer => {
-
-    }, error => {
-      this.errorHandling(error);
-    }));
+    ).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
 
   }
 
@@ -163,15 +135,11 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    ).pipe(tap(answer => {
-
-    }, error => {
-      this.errorHandling(error);
-    })).pipe(tap(answer => {
-
-    }, error => {
-      this.errorHandling(error);
-    }));
+    ).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
 
   }
 
@@ -180,15 +148,11 @@ export class RequestService {
     return this.http.request<Advice[]>(request.duty, this.url, {
       headers: this.giveCorrectHeadingToRequest(request),
       body: request.givenVariables,
-    }).pipe(tap(answer => {
-
-    }, error => {
-      this.errorHandling(error);
-    })).pipe(tap(answer => {
-
-    }, error => {
-      this.errorHandling(error);
-    }));
+    }).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
   }
 
   sendRequestAdviceItem(request: Request) {
@@ -197,20 +161,15 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    ).pipe(tap(answer => {
-
-    }, error => {
-      this.errorHandling(error);
-    })).pipe(tap(answer => {
-
-    }, error => {
-      this.errorHandling(error);
-    }));
+    ).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
 
   }
 
   private errorHandling(errorRes) {
-      let errorMessage = 'Onbekende error';
         switch (errorRes.status) {
           case 403:
             this.router.navigate(['/admin/login'])
@@ -219,5 +178,6 @@ export class RequestService {
           case 401:
             this.router.navigate(['/geenAuthenticatie'])
         }
+        return;
   }
 }

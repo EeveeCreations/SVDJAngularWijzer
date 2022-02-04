@@ -12,7 +12,7 @@ const routes = [
       {path: '', component: BeginComponent, pathMatcher: 'full'},
       {path: 'vragenlijst', component: QuestionScreenComponent,
         resolve: {questionList: QuestionScreenResolver}},
-        {path: 'advies', component: AdviceComponent}
+        {path: 'advies/{:id}', component: AdviceComponent}
       ,
     ]
   }
