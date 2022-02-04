@@ -23,8 +23,6 @@ export class EditQuestionComponent implements OnInit {
 
   ngOnInit(): void {
     this.startRequestService.makeRequestOfQuestion("get", "all", null).subscribe(response => {
-      console.log(response[0]);
-      
       this.questions = response;
     });
 
@@ -57,7 +55,7 @@ export class EditQuestionComponent implements OnInit {
       this.startRequestService.makeRequestOfAnswer("delete", this.currentQuestion.answers[i].answerID.toString(), this.currentQuestion.answers[i]).subscribe(response => {
       })
     }
-    
+
     this.currentQuestion.answers.splice(i, 1);
   }
 
