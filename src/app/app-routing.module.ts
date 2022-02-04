@@ -15,11 +15,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot(routes,
-      {preloadingStrategy:
-        PreloadAllModules
-        // RouterPreloader
+    RouterModule.forRoot(routes,{
+      preloadingStrategy: PreloadAllModules
       }
+
     )
   ],
   exports: [

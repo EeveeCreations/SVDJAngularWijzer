@@ -23,7 +23,7 @@ export class StartRequestService {
   private findIfRegistered() {
     this.adminSubscription = this.authService.admin.subscribe(admin => {
       this.currentAdmin = admin;
-      this.adminToken = this.currentAdmin.token
+      this.adminToken = this.currentAdmin.token;
 
     });
   }
