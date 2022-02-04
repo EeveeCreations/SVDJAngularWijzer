@@ -9,6 +9,8 @@ import {RouterModule} from "@angular/router";
 import {WrongAuthComponent} from "./wrong-auth/wrong-auth.component";
 import {AuthGuard} from "../shared/guards/auth.guard";
 import { HomeComponent } from "./admin-panel/home/home.component";
+import {SendTokenComponent} from "./forgot-password/send-token/send-token.component";
+import {VerifyTokenComponent} from "./forgot-password/verify-token/verify-token.component";
 
 const routes = [
   {
@@ -21,7 +23,10 @@ const routes = [
   },
   {path: 'geenAuthenticate', component: WrongAuthComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'wachtwoord-vergeten', component: ForgotPasswordComponent},
+  {path: 'reset-wachtwoord', component: ForgotPasswordComponent},
+  {path: 'wachtwoord-vergeten', component: SendTokenComponent},
+  {path: 'verify', component: VerifyTokenComponent},
+
 ];
 @NgModule({
   imports:[

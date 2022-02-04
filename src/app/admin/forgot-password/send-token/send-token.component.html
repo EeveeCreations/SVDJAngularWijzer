@@ -1,9 +1,9 @@
 <section class="container">
-    <form>
+    <form [formGroup]="emailForm" >
         <h3>Subsidiewijzer Admin Portal</h3>
         <p>Stuur een token naar het email adres dat is verbonden met uw account.</p>
 
-        <input type="text" id="emailField" name="emailField" placeholder="Email" />
+        <input formControlName="email" type="text" id="emailField" name="emailField" placeholder="Email" />
 
         <a [routerLink]="['login']"
            [routerLinkActive]="['is-active']"
@@ -12,7 +12,7 @@
             <i class="svdj-small-corner"></i>
         </a>
 
-        <button type="button" class="svdj-button">
+        <button (click)="onSendToken()" type="button" class="svdj-button">
             Stuur een token per email
             <i class="button-corner"></i>
         </button>

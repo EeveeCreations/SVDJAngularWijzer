@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Admin} from "../models/admin.model";
 import {BehaviorSubject, catchError, map, throwError} from "rxjs";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import { Router} from "@angular/router";
+import {Router} from "@angular/router";
 import * as shajs from 'sha.js';
 
 @Injectable({providedIn: 'root'})
@@ -126,5 +126,35 @@ export class AuthService {
     this.tokenExpirationTimer = setTimeout(() => {
       this.logOut();
     }, MAX_MINUTES)
+  }
+
+  sendEmailOfPasswordReset(email: string) {
+    this.prepareURL('sendEmailPassword');
+    return this.http.post(
+      this.url, {}, {
+        headers: this.prepareHeader(),
+        params: {
+          email: email
+        }
+      }
+    ).pipe(
+      catchError(this.handleError)
+    );
+
+  }
+
+  checkTokenOfPasswordReset(email: string, token: string) {
+    this.prepareURL('checkPasswordToken');
+    return this.http.post<{ email: string, token: string }>(
+      this.url, {}, {
+        headers: this.prepareHeader(),
+        params: {
+          email: email,
+          token: token
+        }
+      }
+    ).pipe(
+      catchError(this.handleError)
+    );
   }
 }
