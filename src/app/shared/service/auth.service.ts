@@ -108,6 +108,15 @@ export class AuthService {
       case 401:
         errorMessage = 'Onjuiste inlog gegevens';
         break;
+      case 406:
+        errorMessage = 'Token niet geldig';
+        break;
+      case 404:
+        errorMessage = 'Admin bestaat niet';
+        break;
+      case 409:
+        errorMessage = 'Token Incorrect';
+        break;
     }
     return throwError(errorMessage);
   }
@@ -129,13 +138,12 @@ export class AuthService {
   }
 
   sendEmailOfPasswordReset(email: string) {
-    this.prepareURL('sendEmailPassword');
+    this.prepareURL('requestChangePassword');
     return this.http.post(
-      this.url, {}, {
+      this.url, {
+        email: email
+      }, {
         headers: this.prepareHeader(),
-        params: {
-          email: email
-        }
       }
     ).pipe(
       catchError(this.handleError)
@@ -143,18 +151,25 @@ export class AuthService {
 
   }
 
-  checkTokenOfPasswordReset(email: string, token: string) {
-    this.prepareURL('checkPasswordToken');
-    return this.http.post<{ email: string, token: string }>(
-      this.url, {}, {
+  resetPasswordOfAdmin(email: string, token: string, password: string) {
+    this.prepareURL('resetPassword');
+    return this.http.post< {username: string, role: string, accessToken: string, refreshToken: string }>(
+      this.url, {
+        password: password,
+        email: email,
+        token: token
+      }, {
         headers: this.prepareHeader(),
-        params: {
-          email: email,
-          token: token
-        }
       }
     ).pipe(
-      catchError(this.handleError)
+      catchError(this.handleError),
+      map( dataRes =>{
+        return this.handleAuth(
+          dataRes.username,
+          dataRes.role,
+          dataRes.accessToken,
+          dataRes.refreshToken);
+      })
     );
   }
 }

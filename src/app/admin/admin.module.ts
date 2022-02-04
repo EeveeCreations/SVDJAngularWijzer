@@ -17,6 +17,7 @@ import {AdviceComponent} from "./admin-panel/edit-advice/advice/advice.component
 import {GrantComponent} from "./admin-panel/edit-grant/grant/grant.component";
 import { HomeComponent } from './admin-panel/home/home.component';
 import {WrongAuthComponent} from "./wrong-auth/wrong-auth.component";
+import { EmailSendComponent } from './forgot-password/send-token/email-send/email-send.component';
 @NgModule({
   declarations: [
     AdminPanelComponent,
@@ -33,7 +34,8 @@ import {WrongAuthComponent} from "./wrong-auth/wrong-auth.component";
     EditQuestionComponent,
     AdminNavComponent,
     HomeComponent,
-    WrongAuthComponent
+    WrongAuthComponent,
+    EmailSendComponent
   ],
   imports: [
     CommonModule,

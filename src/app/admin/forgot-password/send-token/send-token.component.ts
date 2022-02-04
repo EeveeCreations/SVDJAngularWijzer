@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class SendTokenComponent implements OnInit {
   emailForm: FormGroup;
-  private error: null;
+  error: null;
 
   constructor(
     private router: Router,
@@ -38,8 +38,10 @@ export class SendTokenComponent implements OnInit {
     this.error = null;
     this.authService.sendEmailOfPasswordReset(this.emailForm.get('email').value).subscribe((answer) => {
       if (answer != null) {
-        this.router.navigate(['./verify'],{relativeTo: this.activeRoute});
+        this.router.navigate(['./tokenSend'],{relativeTo: this.activeRoute});
       }
-    });
+      },(error) =>{
+      this.error = error
+      });
   }
 }

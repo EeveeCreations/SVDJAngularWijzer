@@ -33,14 +33,5 @@ export class VerifyTokenComponent implements OnInit {
   }
 
   onVerify() {
-    if (!this.verifyTokenForm.valid) {
-      return;
-    }
-    this.error = null;
-    this.authService.checkTokenOfPasswordReset(this.email,this.verifyTokenForm.get('verifyToken').value).subscribe((answer) => {
-      if (answer != null) {
-        this.router.navigate(['./reset-wachtwoord'],{relativeTo: this.activeRoute});
-      }
-    });
   }
 }
