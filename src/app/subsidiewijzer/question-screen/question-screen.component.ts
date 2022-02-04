@@ -47,7 +47,7 @@ export class QuestionScreenComponent implements OnInit {
       this.checkProgress();
       return;
     }
-    this.router.navigate(['subsidiewijzer/advies/' + this.selectedAnswer.advice.adviceID])    
+    this.router.navigate(['subsidiewijzer/advies/' + this.selectedAnswer.advice.adviceID])
   }
 
   onPrevious() {

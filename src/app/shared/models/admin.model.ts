@@ -1,8 +1,14 @@
 export class Admin {
 
-  constructor(private _userName: string, private _password: string) {
+  constructor(private _userName: string,
+              private _role: string,
+              private _token: string,
+              private _refreshToken: string) {
     this._userName = _userName;
-    this._password = _password;
+    this._role = _role;
+    this._token = _token;
+    this._refreshToken = _refreshToken;
+
   }
 
   //Getters and Setters
@@ -14,11 +20,19 @@ export class Admin {
     this._userName = value;
   }
 
-  get password(): string {
-    return this._password;
+  get role(): string {
+    return this._role;
   }
 
-  set password(value: string) {
-    this._password = value;
+  set role(value: string) {
+    this._role = value;
+  }
+
+  get token(): string {
+    return this._token;
+  }
+
+  get refreshToken(): string {
+    return this._refreshToken;
   }
 }

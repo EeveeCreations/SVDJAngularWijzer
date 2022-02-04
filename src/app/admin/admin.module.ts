@@ -1,6 +1,6 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AdminRoutingModule} from "./admin-routing.module";
 import {AdminPanelComponent} from "./admin-panel/admin-panel.component";
 import {LoginComponent} from "./login/login.component";
@@ -16,7 +16,7 @@ import {ForgotPasswordComponent} from "./forgot-password/forgot-password.compone
 import {AdviceComponent} from "./admin-panel/edit-advice/advice/advice.component";
 import {GrantComponent} from "./admin-panel/edit-grant/grant/grant.component";
 import { HomeComponent } from './admin-panel/home/home.component';
-
+import {WrongAuthComponent} from "./wrong-auth/wrong-auth.component";
 @NgModule({
   declarations: [
     AdminPanelComponent,
@@ -38,6 +38,8 @@ import { HomeComponent } from './admin-panel/home/home.component';
     CommonModule,
     FormsModule,
     AdminRoutingModule,
+    WrongAuthComponent,
+    ReactiveFormsModule
   ],
   exports:[
     AdminPanelComponent,
@@ -52,7 +54,8 @@ import { HomeComponent } from './admin-panel/home/home.component';
     EditAdviceComponent,
     EditGrantComponent,
     EditQuestionComponent,
-    AdminNavComponent
+    AdminNavComponent,
+    WrongAuthComponent,
   ]
 })
 export class  AdminModule{}

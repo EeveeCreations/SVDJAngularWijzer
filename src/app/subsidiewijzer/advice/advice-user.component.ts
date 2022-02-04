@@ -5,10 +5,10 @@ import { StartRequestService } from 'src/app/shared/request/start-request.servic
 
 @Component({
   selector: 'app-adviceUser',
-  templateUrl: './advice.component.html',
-  styleUrls: ['./advice.component.css']
+  templateUrl: './advice-user.component.html',
+  styleUrls: ['./advice-user.component.css']
 })
-export class AdviceComponentUser implements OnInit {
+export class AdviceUserComponent implements OnInit {
   advice: Advice;
 
   constructor(private activatedRoute: ActivatedRoute, private startRequestService: StartRequestService) { }

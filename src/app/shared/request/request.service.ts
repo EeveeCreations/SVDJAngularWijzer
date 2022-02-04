@@ -1,27 +1,30 @@
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {Request} from "./request.model";
 import {Injectable} from "@angular/core";
-import {Route} from "@angular/router";
+import {Route, Router} from "@angular/router";
 import {GivenAnswer} from "../models/given-answer.model";
 import {Grant} from "../models/grant.model";
 import {Result} from "../models/result.model";
 import {Advice} from "../models/advice.model";
 import {Answer} from "../models/answer.model";
 import {Question} from "../models/question.model";
+import {catchError, Observable} from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class RequestService {
   private url: string;
 
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient,
+              private router: Router){
+  }
 
   giveCorrectHeadingToRequest(readyRequest: Request): HttpHeaders {
-    const headerOfRequest: HttpHeaders = new HttpHeaders({
+    return new HttpHeaders({
       contentType: 'application/json',
       accept: 'application/json',
-      origin: 'http://localhost:4200/'
+      authorization: 'Bearer ' + readyRequest.adminToken
     });
-    return headerOfRequest;
 
   }
 
@@ -38,7 +41,12 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    )
+    ).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
+
   }
 
   sendRequestQuestion(request: Request) {
@@ -46,8 +54,12 @@ export class RequestService {
     return this.http.request<Question[]>(request.duty, this.url, {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
-      }      
-    )
+      }
+    ).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
   }
 
   sendRequestQuestionItem(request: Request) {
@@ -56,7 +68,11 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    )
+    ).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
   }
 
   sendRequestAnswer(request: Request) {
@@ -65,7 +81,11 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    )
+    ).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
   }
 
   sendRequestAnswerItem(request: Request) {
@@ -74,7 +94,11 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    )
+    ).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
   }
 
   sendRequestGivenAnswer(request: Request) {
@@ -83,7 +107,11 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    )
+    ).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
 
   }
 
@@ -93,7 +121,11 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    )
+    ).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
 
   }
 
@@ -103,24 +135,49 @@ export class RequestService {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    )
+    ).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
 
   }
 
   sendRequestAdvice(request: Request) {
     this.setConnectionSpecifics("advice", request.specific);
     return this.http.request<Advice[]>(request.duty, this.url, {
-        headers: this.giveCorrectHeadingToRequest(request),
-        body: request.givenVariables,
-    })
+      headers: this.giveCorrectHeadingToRequest(request),
+      body: request.givenVariables,
+    }).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
   }
-  
+
   sendRequestAdviceItem(request: Request) {
     this.setConnectionSpecifics("advice", request.specific);
     return this.http.request<Advice>(request.duty, this.url, {
         headers: this.giveCorrectHeadingToRequest(request),
         body: request.givenVariables,
       }
-    )
+    ).pipe(catchError(
+      (error: HttpErrorResponse): Observable<any> => {
+        this.errorHandling(error);
+        return;
+      }));
+
+  }
+
+  private errorHandling(errorRes) {
+        switch (errorRes.status) {
+          case 403:
+            this.router.navigate(['/admin/login'])
+            alert("Sessie is voorbij")
+            break;
+          case 401:
+            this.router.navigate(['/geenAuthenticatie'])
+        }
+        return;
   }
 }

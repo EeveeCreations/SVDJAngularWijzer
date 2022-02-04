@@ -9,18 +9,19 @@ import {SubsidieWijzerRoutingModule} from "./subsidie-wijzer-routing.module";
 import {QuestionScreenComponent} from "./question-screen/question-screen.component";
 import {BeginComponent} from "./begin/begin.component";
 import {MainScreenComponent} from './main-screen/main-screen.component';
-import { AdviceComponentUser } from "./advice/advice.component";
+import {AdviceComponent} from "../admin/admin-panel/edit-advice/advice/advice.component";
+import {AdviceUserComponent} from "./advice/advice-user.component";
 
 @NgModule({
   declarations: [
+    MainScreenComponent,
     BeginComponent,
-    ExtraInfoComponent,
-    MoreInfoComponent,
+    QuestionScreenComponent,
     QuestionComponent,
     AnswerComponent,
-    QuestionScreenComponent,
-    MainScreenComponent,
-    AdviceComponentUser
+    ExtraInfoComponent,
+    MoreInfoComponent,
+    AdviceUserComponent
   ],
   imports: [
     CommonModule,
@@ -28,14 +29,14 @@ import { AdviceComponentUser } from "./advice/advice.component";
     SubsidieWijzerRoutingModule,
   ],
   exports: [
+    MainScreenComponent,
     BeginComponent,
+    QuestionScreenComponent,
     QuestionComponent,
     AnswerComponent,
     ExtraInfoComponent,
     MoreInfoComponent,
-    QuestionScreenComponent,
-    MainScreenComponent,
-    AdviceComponentUser
+    AdviceUserComponent
   ]
 })
 export class SubsidieWijzerModule {

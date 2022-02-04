@@ -55,7 +55,7 @@ export class EditQuestionComponent implements OnInit {
       this.startRequestService.makeRequestOfAnswer("delete", this.currentQuestion.answers[i].answerID.toString(), this.currentQuestion.answers[i]).subscribe(response => {
       })
     }
-    
+
     this.currentQuestion.answers.splice(i, 1);
   }
 

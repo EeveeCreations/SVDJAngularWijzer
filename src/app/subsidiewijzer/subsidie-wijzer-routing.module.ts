@@ -4,14 +4,13 @@ import {QuestionScreenResolver} from "../shared/resolvers/question-screen.resolv
 import {RouterModule} from "@angular/router";
 import {NgModule} from "@angular/core";
 import {MainScreenComponent} from "./main-screen/main-screen.component";
-import { AdviceComponentUser } from "./advice/advice.component";
-import { CommonModule } from "@angular/common";
+import {AdviceUserComponent} from "./advice/advice-user.component";
 
 const routes = [
   {
     path: '', component: MainScreenComponent, children: [
       {path: '', component: BeginComponent, pathMatcher: 'full'},
-      {path: 'advies/:id', component: AdviceComponentUser, pathMatcher: 'full'},
+      {path: 'advies/:id', component: AdviceUserComponent, pathMatcher: 'full'},
       {path: 'vragenlijst', component: QuestionScreenComponent,
         resolve: {questionList: QuestionScreenResolver}
       },
