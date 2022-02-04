@@ -103,10 +103,10 @@ export class AuthService {
     let errorMessage = 'Onbekende error';
     switch (errorRes.status) {
       case 418:
-        errorMessage = 'Deze email bestaat niet';
+        errorMessage = 'Onjuiste inlog gegevens';
         break;
       case 401:
-        errorMessage = 'Het wachtwoord gaat niet met de email';
+        errorMessage = 'Onjuiste inlog gegevens';
         break;
     }
     return throwError(errorMessage);

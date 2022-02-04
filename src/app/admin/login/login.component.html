@@ -3,9 +3,8 @@
       <form
         [formGroup]="loginForm">
         <div
-          class="alert-danger alert"
           *ngIf="error">
-          <h2>{{error}}</h2>
+          <p class="error">{{error}}</p>
         </div>
         <h3>Subsidiewijzer Admin Portal</h3>
         <input

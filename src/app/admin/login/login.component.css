@@ -91,6 +91,11 @@ input {
     border-color: #000000;
 }
 
+.error {
+    height: 20px;
+    color: #e74c3c;
+}
+
 @media screen and (max-width: 1650px) {
     .container {
         width: 50vw;
