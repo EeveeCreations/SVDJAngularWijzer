@@ -1,0 +1,25 @@
+<div class="question-screen">
+  
+  <app-more-info [question]="currentQuestion"></app-more-info>
+
+  <app-question [question]="currentQuestion"></app-question>
+  
+  <div class="form-holder">
+  
+    <p class="error">{{errorLabel}}</p>
+    <app-answer [answers]="currentQuestion.answers" (onSelect)="selectAnswer($event)"></app-answer>
+  
+    <button type="button" class="svdj-button" (click)="onNext()">Volgende <i class="button-corner"></i></button>
+    <button type="button" class="svdj-button" (click)="onPrevious()" *ngIf="previousQuestions.length > 0">Vorige <i class="button-corner"></i></button>
+  
+  </div>
+  
+  <div class="progress-section">
+    <h4>Voortgang</h4>
+  
+    <div class="progress-bar">
+      <div class="bar" [style.width.%]="progress"></div>
+    </div>
+  </div>
+
+</div>

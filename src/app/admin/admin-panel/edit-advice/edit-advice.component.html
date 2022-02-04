@@ -1,0 +1,75 @@
+<app-admin-nav></app-admin-nav>
+
+<section class="center-view-box">
+
+    <section class="left-list">
+        <button (click)="newAdvice()" class="new">
+            +
+        </button>
+
+        <app-advice [advices]="advices" (onAdviceSelected)="editAdvice($event)"></app-advice>
+    </section>
+
+    <section class="right-form">
+
+        <form *ngIf="currentAdvice">
+            <button type="button" (click)="closeAdvice()" class="close-button">&#10006;</button>
+
+            <button type="button" (click)="deleteAdvice()" class="delete-button" *ngIf="currentAdvice.adviceID">Delete <i class="svdj-corner-delete"></i></button>
+
+            <p class="error">{{errorLabel}}</p>
+
+            <input type="text" placeholder="Naam advies" [(ngModel)]="currentAdvice.name" name="name" />
+
+            <textarea type="text" placeholder="Beschrijving" [(ngModel)]="currentAdvice.description" name="description"></textarea>
+
+            <div class="grant-container">
+                <h4>Subsidies bij dit advies</h4>
+                <h4>Overige subsidies</h4>
+                <div class="grant-holder">
+
+                    <div class="grant-item remove" *ngFor="let grant of currentAdvice.grants" (click)="removeGrant(grant)">
+                        <h2>Subsidie #{{grant.grantID}}</h2>
+                        <h1>{{grant.name.substr(0, 25)}}</h1>
+                    </div>
+
+                </div>
+                <div class="grant-holder">
+
+                    <div class="grant-item add" *ngFor="let grant of allGrants" (click)="addGrant(grant)">
+                        <h2>Subsidie #{{grant.grantID}}</h2>
+                        <h1>{{grant.name.substr(0, 25)}}</h1>
+                    </div>
+
+                </div>
+            </div>
+
+            <button type="button" (click)="saveAdvice()" class="svdj-button">
+                Opslaan <i class="button-corner"></i>
+            </button>
+        </form>
+
+        <section class="nothing-selected">
+            Niks geselecteerd
+        </section>
+    </section>
+
+</section>
+
+<section class="block-screen" *ngIf="popup">
+    <section class="popup">
+        <b class="close-popup-btn" (click)="closePopup()">&#10006;</b>
+        <h4> Weet u zeker dat u dit advies wilt verwijderen?</h4>
+        <div class="popup-card">
+            <h3> Advies #{{currentAdvice.adviceID}} </h3>
+            <h1> {{currentAdvice.name}} </h1>
+            <h2> {{currentAdvice.description}} </h2>
+            <!-- TODO: add grants -->
+        </div>
+
+        <div class="delete-buttons">
+            <button type="button" class="svdj-button-del" (click)="closePopup()">Annuleren<i class="button-corner"></i></button>
+            <button type="button" class="svdj-button-del" id="red" (click)="confirmDeletion()">Bevestig verwijderen<i class="button-corner"></i></button>
+        </div>
+    </section>
+</section>

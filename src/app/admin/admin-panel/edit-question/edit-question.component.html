@@ -1,0 +1,108 @@
+<app-admin-nav></app-admin-nav>
+
+<section class="center-view-box">
+
+    <section class="left-list">
+        <button (click)="newQuestion()" class="new">
+            +
+        </button>
+
+        <app-question-item [questions]="questions" (onQuestionSelected)="editQuestion($event)"></app-question-item>
+    </section>
+
+    <section class="right-form">
+
+        <form *ngIf="currentQuestion">
+            <button type="button" (click)="closeQuestion()" class="close-button">&#10006;</button>
+            
+            <button type="button" (click)="deleteQuestion()" class="delete-button" *ngIf="currentQuestion.questionID">Delete <i class="svdj-corner-delete"></i></button>
+
+            <p class="error">{{errorLabel}}</p>
+
+            <input type="text" placeholder="Vraag" [(ngModel)]="currentQuestion.questionText" name="Question"/>
+
+            <h2>Antwoorden</h2>
+
+            <div class="answer-container">
+                <div class="answer-item" *ngFor="let answer of currentQuestion.answers; let i = index">
+                    <div class="answer-part">
+                        <input type="text" placeholder="Antwoord" [(ngModel)]="currentQuestion.answers[i].answerText" name="#{{answer.answerID}}" class="smaller-field"/>
+                        
+                        <div class="reference-point">
+                            <b>vraag</b>
+                            <label class="switch">
+                                <input id="{{i}}" type="checkbox" title="questionOrAdvice" (change)="true" #checkBox [checked]="answer.advice !== null">
+                                <span class="slider"></span>
+                            </label>
+                            <b>advies</b>
+    
+                            <div class="select-boxes">
+    
+                                <select title="nextQuestionBox" name="nextQuestion" *ngIf="!checkBox.checked" (change)="changeNextQuestion(i, $event.target.value)">
+                                    <option [value]="answer.nextQuestion.questionID" *ngIf="answer.nextQuestion !== null" selected>Origineel: Vraag #{{answer.nextQuestion.questionID}}: {{answer.nextQuestion.questionText}}</option>
+                                    <option *ngIf="answer.nextQuestion === null" disabled selected>Selecteer graag een volgende vraag</option>
+                                    <option *ngFor="let question of questions" [value]="question.questionID">Vraag #{{question.questionID}}: {{question.questionText}}</option>
+                                </select>
+    
+                                <select title="nextAdviceBox" name="nextAdvice" *ngIf="checkBox.checked" (change)="changeNextAdvice(i, $event.target.value)">
+                                    <option [value]="answer.advice.adviceID" *ngIf="answer.advice !== null" selected >Origineel: Advies #{{answer.advice.adviceID}}: {{answer.advice.name}}</option>
+                                    <option *ngIf="answer.advice === null" disabled selected>Selecteer graag een advies</option>
+                                    <option *ngFor="let advice of advices" [value]="advice.adviceID">Advies #{{advice.adviceID}}: {{advice.name}}</option>
+                                </select>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="delete-answer-button" (click)="removeAnswer(i)">
+                        &#10006;
+                    </div>
+                    
+                </div>
+
+                <button type="button" (click)="addAnswerToQuestion()" class="add-answer" *ngIf="currentQuestion.answers.length < 4">
+                    +
+                </button>
+            </div>
+
+            <h2>Meer Informatie<b>(niet verplicht)</b></h2>
+
+            <input type="text" placeholder="Titel" [(ngModel)]="currentQuestion.extraInfoTile" name="extraInfoTitle"/>
+
+            <textarea type="text" placeholder="Extra info" [(ngModel)]="currentQuestion.extraInfoDescription" name="extraInfoDescription"></textarea>
+
+            <input type="text" placeholder="Info Video URL" [(ngModel)]="currentQuestion.extraInfoVideoURL" name="extraInfoVideo"/>
+
+            <div class="button-container">
+                <button type="button" (click)="saveQuestion()" class="svdj-button">
+                    Opslaan <i class="button-corner"></i>
+                </button>
+            </div>
+
+        </form>
+
+        <section class="nothing-selected">
+            Niks geselecteerd
+        </section>
+    </section>
+
+</section>
+
+<section class="block-screen" *ngIf="popup">
+    <section class="popup">
+        <b class="close-popup-btn" (click)="closePopup()">&#10006;</b>
+        <h4> Weet u zeker dat u deze vraag wilt verwijderen?</h4>
+        <div class="popup-card">
+            <h3> Vraag #{{currentQuestion.questionID}} </h3>
+            <h1> {{currentQuestion.questionText}} </h1>
+            <h2 *ngFor="let answer of currentQuestion.answers"> {{answer.answerText}}
+                <i *ngIf="answer.nextQuestion">&#8680; Vraag #{{answer.nextQuestion.questionID}}</i>
+                <i *ngIf="answer.advice">&#8680; Advies #{{answer.advice.adviceID}}</i>
+            </h2>
+        </div>
+
+        <div class="delete-buttons">
+            <button type="button" class="svdj-button-del" (click)="closePopup()">Annuleren<i class="button-corner"></i></button>
+            <button type="button" class="svdj-button-del" id="red" (click)="confirmDeletion()">Bevestig verwijderen<i class="button-corner"></i></button>
+        </div>
+    </section>
+</section>

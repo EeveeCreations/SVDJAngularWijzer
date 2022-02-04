@@ -1,0 +1,7 @@
+<div>
+    <div *ngFor="let advice of advices" class="advice-item" (click)="setCurrentAdvice(advice.adviceID, advice.name, advice.description, advice.grants)">
+        <h4>Advies #{{advice.adviceID}}</h4>
+        <h3>{{advice.name}}</h3>
+        <p>{{advice.description}}</p>
+    </div>
+</div>

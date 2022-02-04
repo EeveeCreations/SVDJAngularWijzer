@@ -1,0 +1,8 @@
+<div>
+  <div *ngFor="let answer of answers" for="{{answer.answerID}}" (click)="selectAnswer(answer.answerID)">
+    <label class="answer-box">
+      <input title="{{ answer.answerID }}" type="radio" id="{{ answer.answerID }}" name="answer" value="{{answer.answerText}}">
+      {{ answer.answerText }}
+    </label>
+  </div>
+</div>
