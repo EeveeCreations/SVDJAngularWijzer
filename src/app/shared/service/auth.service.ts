@@ -3,7 +3,7 @@ import {Admin} from "../models/admin.model";
 import {BehaviorSubject, catchError, map, throwError} from "rxjs";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import { Router} from "@angular/router";
-import {Md5} from "ts-md5";
+import * as shajs from 'sha.js';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -49,7 +49,7 @@ export class AuthService {
   }
 
   passwordHash(password: string): string {
-    return Md5.hashStr(password);
+    return shajs('sha256').update(password).digest('hex');
   }
 
   logIn(adminName: string, password: string) {
