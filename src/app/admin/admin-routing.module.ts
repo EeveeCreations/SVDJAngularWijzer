@@ -13,11 +13,10 @@ import { HomeComponent } from "./admin-panel/home/home.component";
 const routes = [
   {
     path: '', component: AdminPanelComponent, children: [
-      {path: '', component: AdminPanelComponent, canActivate: [AuthGuard], pathMatch: 'full'},
+      {path: '', component: HomeComponent, canActivate: [AuthGuard], pathMatch: 'full'},
       {path: 'advies', canActivate: [AuthGuard], component: EditAdviceComponent},
       {path: 'subsidie', canActivate: [AuthGuard], component: EditGrantComponent},
-      {path: 'vraag', canActivate: [AuthGuard], component: EditQuestionComponent},
-      {path: 'home', canActivate: [AuthGuard], component: HomeComponent}
+      {path: 'vraag', canActivate: [AuthGuard], component: EditQuestionComponent}
     ]
   },
   {path: 'geenAuthenticate', component: WrongAuthComponent},
