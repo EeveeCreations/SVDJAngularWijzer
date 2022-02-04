@@ -13,12 +13,15 @@
     <section class="right-form">
 
         <form *ngIf="currentGrant">
+            <button type="button" (click)="closeGrant()" class="close-button">&#10006;</button>
 
             <button type="button" (click)="deleteGrant()" class="delete-button" *ngIf="currentGrant.grantID">Delete <i class="svdj-corner-delete"></i></button>
 
             <p class="error">{{errorLabel}}</p>
 
             <input type="text" placeholder="Naam subsidie" [(ngModel)]="currentGrant.name" name="name"/>
+
+            <input type="text" placeholder="Link naar subsidie" [(ngModel)]="currentGrant.grant_link" name="link"/>
 
             <textarea type="text" placeholder="Beschrijving" [(ngModel)]="currentGrant.description" name="description"></textarea>
 

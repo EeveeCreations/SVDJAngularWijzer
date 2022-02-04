@@ -254,3 +254,74 @@ textarea {
 #red:hover {
     background-color: #e74c3c;
 }
+
+.close-button {
+    display: block;
+    font-size: 3em;
+    font-weight: bold;
+    width: 50px;
+    margin: 10px auto auto 10px;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 25px;
+    outline: none;
+    visibility: hidden;
+}
+
+@media screen and (max-width: 1500px) {
+    .center-view-box {
+        display: block;
+        position: relative;
+    }
+
+    .left-list {
+        width: 100%;
+    }
+
+    .right-form {
+        position: unset;
+        height: 0;
+        background-color: transparent;
+        overflow: hidden;
+    }
+
+    form {
+        padding: 25px;
+        height: 90vh;
+        background-color: #F7F7F7;
+        left: 0px;
+        top: 5vh;
+        z-index: 2;
+        overflow-y: scroll;
+    }
+
+    .nothing-selected {
+        visibility: hidden;
+    }
+
+    .close-button {
+        visibility: visible;
+    }
+
+    .popup {
+        width: 95vw;
+        margin-top: 5vh;
+        padding-left: 15px;
+        padding-right: 15px;
+        height: 90vh;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .center-view-box {
+        margin: auto;
+        width: 95vw;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .svdj-button-del {
+        display: block;
+        margin-top: 15px;
+    }
+}

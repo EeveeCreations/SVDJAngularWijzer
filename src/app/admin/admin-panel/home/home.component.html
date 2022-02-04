@@ -1,0 +1,32 @@
+<p>{{greeting}}</p>
+
+<div class="center-panel">
+
+    <div class="column" [routerLink]="['../subsidie']">
+        <h1>
+            {{grantCount}}
+        </h1>
+        <h3>
+            Aantal subsidies
+        </h3>
+    </div>
+    
+    <div class="column" [routerLink]="['../advies']">
+        <h1>
+            {{adviceCount}}
+        </h1>
+        <h3>
+            Aantal Adviezen
+        </h3>
+    </div>
+    
+    <div class="column" [routerLink]="['../vraag']">
+        <h1>
+            {{questionCount}}
+        </h1>
+        <h3>
+            Aantal Vragen
+        </h3>
+    </div>
+    
+</div>

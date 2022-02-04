@@ -6,7 +6,7 @@
         <p>{{advice.description}}</p>
 
         <div class="grant-container" *ngFor="let grant of advice.grants">
-            <div class="grant-item">
+            <div class="grant-item" (click)="redirectTo(grant.grant_link)">
                 <div class="grant-item-corner"></div>
                 <h4>Subsidie #{{grant.grantID}}</h4>
                 <h3>{{grant.name}}</h3>

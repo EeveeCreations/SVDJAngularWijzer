@@ -10,10 +10,10 @@ const routes = [
   {
     path: '', component: MainScreenComponent, children: [
       {path: '', component: BeginComponent, pathMatcher: 'full'},
+      {path: 'advies/:id', component: AdviceUserComponent, pathMatcher: 'full'},
       {path: 'vragenlijst', component: QuestionScreenComponent,
-        resolve: {questionList: QuestionScreenResolver}},
-        {path: 'advies/:id', component: AdviceUserComponent}
-      ,
+        resolve: {questionList: QuestionScreenResolver}
+      },
     ]
   }
 ];

@@ -37,7 +37,6 @@ import {AdviceUserComponent} from "./advice/advice-user.component";
     ExtraInfoComponent,
     MoreInfoComponent,
     AdviceUserComponent
-
   ]
 })
 export class SubsidieWijzerModule {

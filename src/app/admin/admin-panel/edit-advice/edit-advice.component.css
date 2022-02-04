@@ -254,3 +254,133 @@ textarea {
 #red:hover {
     background-color: #e74c3c;
 }
+
+.close-button {
+    display: block;
+    font-size: 3em;
+    font-weight: bold;
+    width: 50px;
+    margin: 10px auto auto 10px;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 25px;
+    outline: none;
+    visibility: hidden;
+}
+
+.grant-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-top: 40px;
+}
+
+.grant-holder {
+    width: 80%;
+    margin: auto;
+    background-color: #FFFFFF;
+    height: 300px;
+    overflow-y: scroll;
+    padding-bottom: 10px;
+}
+
+.grant-item {
+    width: 95%;
+    margin: auto;
+    background-color: #F7F7F7;
+    position: relative;
+    height: 50px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.grant-item > h1 {
+    font-size: 1.4em;
+    text-align: left;
+    margin: 5px;
+    position: absolute;
+    top: 10px;
+}
+
+.grant-item > h2 {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    font-weight: bold;
+    color: #AAAAAA;
+    transition: 0.3s;
+}
+
+.remove:hover {
+    background-color: #e74d3c;
+}
+
+.remove:hover > h2, .add:hover > h2 {
+    color: #000000;
+}
+
+.add:hover {
+    background-color: #16a085;
+}
+
+@media screen and (max-width: 1500px) {
+    .center-view-box {
+        display: block;
+        position: relative;
+    }
+
+    .left-list {
+        width: 100%;
+    }
+
+    .right-form {
+        position: unset;
+        height: 0;
+        background-color: transparent;
+        overflow: hidden;
+    }
+
+    form {
+        padding: 25px;
+        height: 90vh;
+        background-color: #F7F7F7;
+        left: 0px;
+        top: 5vh;
+        z-index: 2;
+        overflow-y: scroll;
+    }
+
+    .nothing-selected {
+        visibility: hidden;
+    }
+
+    .close-button {
+        visibility: visible;
+    }
+
+    .popup {
+        width: 95vw;
+        margin-top: 5vh;
+        padding-left: 15px;
+        padding-right: 15px;
+        height: 90vh;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .center-view-box {
+        margin: auto;
+        width: 95vw;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .svdj-button-del {
+        display: block;
+        margin-top: 15px;
+    }
+}

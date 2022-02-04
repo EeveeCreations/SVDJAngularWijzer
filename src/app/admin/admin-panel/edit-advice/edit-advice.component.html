@@ -13,6 +13,7 @@
     <section class="right-form">
 
         <form *ngIf="currentAdvice">
+            <button type="button" (click)="closeAdvice()" class="close-button">&#10006;</button>
 
             <button type="button" (click)="deleteAdvice()" class="delete-button" *ngIf="currentAdvice.adviceID">Delete <i class="svdj-corner-delete"></i></button>
 
@@ -22,7 +23,26 @@
 
             <textarea type="text" placeholder="Beschrijving" [(ngModel)]="currentAdvice.description" name="description"></textarea>
 
-            <!-- TODO: add grants to this advice -->
+            <div class="grant-container">
+                <h4>Subsidies bij dit advies</h4>
+                <h4>Overige subsidies</h4>
+                <div class="grant-holder">
+
+                    <div class="grant-item remove" *ngFor="let grant of currentAdvice.grants" (click)="removeGrant(grant)">
+                        <h2>Subsidie #{{grant.grantID}}</h2>
+                        <h1>{{grant.name.substr(0, 25)}}</h1>
+                    </div>
+
+                </div>
+                <div class="grant-holder">
+
+                    <div class="grant-item add" *ngFor="let grant of allGrants" (click)="addGrant(grant)">
+                        <h2>Subsidie #{{grant.grantID}}</h2>
+                        <h1>{{grant.name.substr(0, 25)}}</h1>
+                    </div>
+
+                </div>
+            </div>
 
             <button type="button" (click)="saveAdvice()" class="svdj-button">
                 Opslaan <i class="button-corner"></i>

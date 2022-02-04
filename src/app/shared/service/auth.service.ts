@@ -16,7 +16,7 @@ export class AuthService {
               private router: Router) {
     this.admin.subscribe(() => {
       if (this.admin != null && this.router.url === "/admin/login") {
-        this.router.navigate(['/admin/advies'])
+        this.router.navigate(['/admin'])
       }
     });
     this.autoLogIn();

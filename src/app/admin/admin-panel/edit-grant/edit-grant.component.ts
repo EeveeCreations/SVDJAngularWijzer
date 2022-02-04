@@ -25,7 +25,7 @@ export class EditGrantComponent implements OnInit {
 
   newGrant() {
     this.errorLabel = "";
-    this.currentGrant = new Grant(null, null, null, null, null, null);
+    this.currentGrant = new Grant(null, null, null, null);
   }
 
   editGrant(grant: Grant) {
@@ -34,8 +34,8 @@ export class EditGrantComponent implements OnInit {
   }
 
   saveGrant() {
-    if (!this.currentGrant._name || this.currentGrant._name === "") {
-      this.errorLabel = "Het invullen van een naam is verplicht";
+    if (!this.currentGrant._name || this.currentGrant._name === "" || !this.currentGrant.grant_link || this.currentGrant.grant_link === "") {
+      this.errorLabel = "Het invullen van een naam en link is verplicht";
       return;
     }
 
@@ -60,5 +60,9 @@ export class EditGrantComponent implements OnInit {
     this.startRequestService.makeRequestOfGrant("delete", this.currentGrant._grantID.toString(), this.currentGrant).subscribe(response => {
       location.reload();
     })
+  }
+
+  closeGrant() {
+    this.currentGrant = null;
   }
 }

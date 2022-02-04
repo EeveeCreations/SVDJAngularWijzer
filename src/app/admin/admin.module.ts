@@ -15,6 +15,7 @@ import {QuestionItemComponent} from "./admin-panel/edit-question/question-item/q
 import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
 import {AdviceComponent} from "./admin-panel/edit-advice/advice/advice.component";
 import {GrantComponent} from "./admin-panel/edit-grant/grant/grant.component";
+import { HomeComponent } from './admin-panel/home/home.component';
 import {WrongAuthComponent} from "./wrong-auth/wrong-auth.component";
 @NgModule({
   declarations: [
@@ -31,14 +32,15 @@ import {WrongAuthComponent} from "./wrong-auth/wrong-auth.component";
     EditGrantComponent,
     EditQuestionComponent,
     AdminNavComponent,
+    HomeComponent,
     WrongAuthComponent
   ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        AdminRoutingModule,
-        ReactiveFormsModule,
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AdminRoutingModule,
+    ReactiveFormsModule
+  ],
   exports:[
     AdminPanelComponent,
     LoginComponent,
