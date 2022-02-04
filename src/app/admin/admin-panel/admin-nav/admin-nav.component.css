@@ -11,7 +11,7 @@
     display: block;
 }
 
-.sidenav a ,.login-btn{
+.sidenav a ,.logout-btn {
     display: inline-block;
     width: 100%;
     padding: 25px 15px;
@@ -21,7 +21,14 @@
     transition: 0.3s;
 }
 
-.sidenav a:hover {
+.logout-btn {
+    outline: none;
+    text-align: left;
+    border: none;
+    background-color: #F7F7F7;
+}
+
+.sidenav a:hover, .logout-btn:hover {
     background-color: #FFFFFF;
 }
 
