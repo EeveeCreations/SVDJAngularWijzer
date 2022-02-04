@@ -23,8 +23,6 @@ export class QuestionScreenComponent implements OnInit {
 
   ngOnInit(): void {
     this.startRequestService.makeRequestOfQuestion("get", "all", null).subscribe(response => {
-      console.log(response[0]);
-      
       this.questions = response;
       this.currentQuestion = response[0];
     })
@@ -32,11 +30,7 @@ export class QuestionScreenComponent implements OnInit {
   }
 
   onNext() {
-    console.log(this.currentQuestion.extraInfoTile);
-    console.log(this.currentQuestion);
-    
-    
-    this.errorLabel = "";
+     this.errorLabel = "";
     if (this.selectedAnswer === null) {
       this.errorLabel = "Selecteer graag eerst een antwoord"
       return;
@@ -48,7 +42,7 @@ export class QuestionScreenComponent implements OnInit {
       this.selectedAnswer = null;
       return;
     }
-    this.router.navigate(['subsidiewijzer/advies/' + this.selectedAnswer.advice.adviceID])    
+    this.router.navigate(['subsidiewijzer/advies/' + this.selectedAnswer.advice.adviceID])
   }
 
   onPrevious() {
@@ -67,6 +61,6 @@ export class QuestionScreenComponent implements OnInit {
     this.startRequestService.makeRequestOfAnswerItem("get", id.toString(), null).subscribe(response => {
       this.selectedAnswer = response;
     })
-    
+
   }
 }

@@ -1,6 +1,6 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AdminRoutingModule} from "./admin-routing.module";
 import {AdminPanelComponent} from "./admin-panel/admin-panel.component";
 import {LoginComponent} from "./login/login.component";
@@ -15,7 +15,7 @@ import {QuestionItemComponent} from "./admin-panel/edit-question/question-item/q
 import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
 import {AdviceComponent} from "./admin-panel/edit-advice/advice/advice.component";
 import {GrantComponent} from "./admin-panel/edit-grant/grant/grant.component";
-
+import {WrongAuthComponent} from "./wrong-auth/wrong-auth.component";
 @NgModule({
   declarations: [
     AdminPanelComponent,
@@ -30,13 +30,15 @@ import {GrantComponent} from "./admin-panel/edit-grant/grant/grant.component";
     EditAdviceComponent,
     EditGrantComponent,
     EditQuestionComponent,
-    AdminNavComponent
+    AdminNavComponent,
+    WrongAuthComponent
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    AdminRoutingModule,
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        AdminRoutingModule,
+        ReactiveFormsModule,
+    ],
   exports:[
     AdminPanelComponent,
     LoginComponent,
@@ -50,7 +52,8 @@ import {GrantComponent} from "./admin-panel/edit-grant/grant/grant.component";
     EditAdviceComponent,
     EditGrantComponent,
     EditQuestionComponent,
-    AdminNavComponent
+    AdminNavComponent,
+    WrongAuthComponent,
   ]
 })
 export class  AdminModule{}

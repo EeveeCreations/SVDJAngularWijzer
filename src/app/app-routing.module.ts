@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {PreloadAllModules, PreloadingStrategy, RouterModule, RouterPreloader, Routes} from '@angular/router';
+import {PreloadAllModules, RouterModule, RouterPreloader, Routes} from '@angular/router';
 const routes: Routes = [
   {path: '', redirectTo: '/subsidiewijzer', pathMatch: 'full'},
   {path: 'subsidiewijzer', loadChildren: () =>
@@ -15,11 +15,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot(routes,
-      {preloadingStrategy:
-        PreloadAllModules
-        // RouterPreloader
+    RouterModule.forRoot(routes,{
+      preloadingStrategy: PreloadAllModules
       }
+
     )
   ],
   exports: [

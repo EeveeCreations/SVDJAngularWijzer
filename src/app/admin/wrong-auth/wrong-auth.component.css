@@ -1,0 +1,14 @@
+.wrongAuth{
+  background-color:#9AC2D5;
+  padding: 0 7vw;
+}
+article{
+  height: 100vh;
+  background-image: url(../../../assets/images/begin-background.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.login-btn{
+  text-decoration: none;
+
+}

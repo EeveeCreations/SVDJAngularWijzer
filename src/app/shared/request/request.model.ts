@@ -1,8 +1,8 @@
 export class Request {
 
 //    Constructor
-  constructor(private _userNr: number, private _duty: string, private _specific: string, private _givenVariables: any, private _isNewData: boolean) {
-    this._userNr = _userNr;
+  constructor(private _adminToken: string, private _duty: string, private _specific: string, private _givenVariables: any, private _isNewData: boolean) {
+    this._adminToken = _adminToken;
     this._duty = _duty.toLowerCase();
     this._specific = _specific;
     this._givenVariables = _givenVariables;
@@ -11,20 +11,16 @@ export class Request {
 
   // Getters and setters
 
-  get userNr(): number {
-    return this._userNr;
+  get adminToken(): string {
+    return this._adminToken;
   }
 
-  set userNr(value: number) {
-    this._userNr = value;
+  set adminToken(value: string) {
+    this._adminToken = value;
   }
 
   get duty(): string {
     return this._duty;
-  }
-
-  set duty(value: string) {
-    this._duty = value;
   }
 
   get specific(): string {

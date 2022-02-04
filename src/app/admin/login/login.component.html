@@ -1,24 +1,31 @@
 <body>
     <section class="container">
-        <form>
-            <h3>Subsidiewijzer Admin Portal</h3>
+      <form
+        [formGroup]="loginForm">
+        <div
+          class="alert-danger alert"
+          *ngIf="error">
+          <h2>{{error}}</h2>
+        </div>
+        <h3>Subsidiewijzer Admin Portal</h3>
+        <input
+          formControlName="email"
+          type="text" id="emailField" placeholder="Email"/>
+        <input
+          formControlName="password"
+          type="password" id="passwordField" placeholder="Wachtwoord"/>
+        <a [routerLink]="['../wachtwoord-vergeten']"
+           [routerLinkActive]="['is-active']"
+           class="small-button">
+          wachtwoord vergeten
+          <i class="svdj-small-corner"></i>
+        </a>
+        <button
+          (click)="onSubmit()" type="button" class="svdj-button">
+          Log in
+          <i class="button-corner"></i>
+        </button>
 
-            <input type="text" id="emailField" placeholder="Email" />
-
-            <input type="password" id="passwordField" placeholder="Wachtwoord" />
-
-            <a [routerLink]="['../wachtwoord-vergeten']"
-               [routerLinkActive]="['is-active']"
-               class="small-button">
-                wachtwoord vergeten
-                <i class="svdj-small-corner"></i>
-            </a>
-
-            <button type="button" class="svdj-button">
-                Log in
-                <i class="button-corner"></i>
-            </button>
-
-        </form>
+      </form>
     </section>
 </body>
