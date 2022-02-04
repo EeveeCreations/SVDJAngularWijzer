@@ -32,13 +32,13 @@ import {WrongAuthComponent} from "./wrong-auth/wrong-auth.component";
     EditGrantComponent,
     EditQuestionComponent,
     AdminNavComponent,
-    HomeComponent
+    HomeComponent,
+    WrongAuthComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     AdminRoutingModule,
-    WrongAuthComponent,
     ReactiveFormsModule
   ],
   exports:[
